@@ -15,7 +15,7 @@ export const getMoviesByGenre = async (genre) => {
   }
 }
 export const getAllBoardGames = async () => {
-  const response = await fetch('localhost:3000/api/v1/movies/boardgames')
+  const response = await fetch('localhost:3000/api/v1/boardgames')
   if (response.ok) {
     return await response.json()
   } else {
@@ -23,7 +23,7 @@ export const getAllBoardGames = async () => {
   }
 }
 export const getAllCardGames = async () => {
-  const response = await fetch('localhost:3000/api/v1/movies/cardgames')
+  const response = await fetch('localhost:3000/api/v1/cardgames')
   if (response.ok) {
     return await response.json()
   } else {
@@ -31,7 +31,7 @@ export const getAllCardGames = async () => {
   }
 }
 export const getAllMusic = async () => {
-  const response = await fetch('localhost:3000/api/v1/movies/music')
+  const response = await fetch('localhost:3000/api/v1/music')
   if (response.ok) {
     return await response.json()
   } else {
@@ -39,7 +39,23 @@ export const getAllMusic = async () => {
   }
 }
 export const getMusicByGenre = async (genre) => {
-  const response = await fetch(`localhost:3000/api/v1/movies/music/${genre}`)
+  const response = await fetch(`localhost:3000/api/v1/music/${genre}`)
+  if (response.ok) {
+    return await response.json()
+  } else {
+    return response.error
+  }
+}
+export const getAllPodcasts = async () => {
+  const response = await fetch('localhost:3000/api/v1/podcasts')
+  if (response.ok) {
+    return await response.json()
+  } else {
+    return response.error
+  }
+}
+export const getPodcastsByGenre = async (genre) => {
+  const response = await fetch(`localhost:3000/api/v1/podcasts/${genre}`)
   if (response.ok) {
     return await response.json()
   } else {
