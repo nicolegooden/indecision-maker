@@ -38,3 +38,11 @@ export const getAllMusic = async () => {
     return response.error
   }
 }
+export const getMusicByGenre = async (genre) => {
+  const response = await fetch(`localhost:3000/api/v1/movies/music/${genre}`)
+  if (response.ok) {
+    return await response.json()
+  } else {
+    return response.error
+  }
+}
