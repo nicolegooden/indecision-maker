@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Indecision MAker",
+  "name": "An app to find your next fun activity",
   "icons": [
     {
       "src": "favicon.ico",
