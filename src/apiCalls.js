@@ -14,3 +14,11 @@ export const getMoviesByGenre = async (genre) => {
     return response.error
   }
 }
+export const getAllBoardGames = async () => {
+  const response = await fetch('localhost:3000/api/v1/movies/boardgames')
+  if (response.ok) {
+    return await response.json()
+  } else {
+    return response.error
+  }
+}
