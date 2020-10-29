@@ -22,3 +22,19 @@ export const getAllBoardGames = async () => {
     return response.error
   }
 }
+export const getAllCardGames = async () => {
+  const response = await fetch('localhost:3000/api/v1/movies/cardgames')
+  if (response.ok) {
+    return await response.json()
+  } else {
+    return response.error
+  }
+}
+export const getAllMusic = async () => {
+  const response = await fetch('localhost:3000/api/v1/movies/music')
+  if (response.ok) {
+    return await response.json()
+  } else {
+    return response.error
+  }
+}
