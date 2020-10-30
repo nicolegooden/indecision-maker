@@ -17,8 +17,6 @@ export function Homepage() {
               <li className="link">About</li>
               <li className="link">Developers</li>
               <li className="link"></li>
-              <li className="link"><a href="https://github.com/nicolegooden/indecision-maker"><FaServer className="repo-link"/></a></li>
-              <li className="link"><a href="https://github.com/Atos20/indecision-maker-server"><FaGithub className="repo-link"/></a></li>
             </ul>
           </nav>
 
@@ -47,6 +45,14 @@ export function Homepage() {
               </div>
             </div>
           </section>
+
+          <footer className="social-section">
+            <ul className="footer-links">
+              <li className="foot-link"><a target="_blank" href="https://github.com/Atos20/indecision-maker-server"><FaServer className="repo-link"/></a></li>
+              <li className="foot-link"><a target="_blank" href="https://github.com/nicolegooden/indecision-maker"><FaGithub className="repo-link"/></a></li>
+            </ul>
+            <p className="copy-rights">Ⓒ Indecision Maker is a product of Nicole, Blake and Orlando's Inc.</p>
+          </footer>
         </div>
     )
 }
