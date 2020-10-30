@@ -1,5 +1,5 @@
 import './App.scss';
-import {Homepage} from '../Homepage/Homepage'
+import {Homepage} from '../HomePage/Homepage'
 import Header from '../Header/Header'
 import React, {Component} from 'react'
 import {Route} from 'react-router-dom'
@@ -11,7 +11,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
         <Route exact path='/'>
           <Homepage />
         </Route>
