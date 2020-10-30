@@ -33,7 +33,57 @@
     }
 
     .activities-info{
-      height: 40vh;
-      background-color:$vanilla;
+        padding: 2%;
+        background-color:$light;
+
+        .activity-container{
+            height: 40vh;
+            background-color:$light;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-gap: 25px;
+            justify-content: center;
+
+            .inner-activity-container{
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                align-content: center;
+                text-align: center;
+                .activity-icon{
+                    
+                    background-color: $vanilla;
+                    border-radius: 50%;
+                    font-size: 2.5em;
+                    font-weight: 100;
+                    margin:5%;
+                    width: 20%;
+                    align-self: center;
+
+                    .icon{
+                        color: $darkPurple;
+                    }
+                }
+
+                .activity-name{
+                    font-family: $Oswald;
+                }
+
+                .activity-legend{
+                    color: darken(#e8e8e8, 20%);
+                }
+
+                .quote{
+                    margin:2%;
+                    font-family: $Comfortaa;
+                }
+
+                .quote-by{
+                    display: flex;
+                    align-self: center;
+                    color: darken(#e8e8e8, 10%);
+                }
+            }
+        }
     }
 }
