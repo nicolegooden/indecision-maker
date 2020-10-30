@@ -2,7 +2,7 @@ import React from 'react'
 import { RiMovie2Line , RiMusic2Line} from "react-icons/ri";
 import { FaPodcast, FaChessKnight} from "react-icons/fa";
 import { CgCardHearts } from "react-icons/cg";
-
+import './ActivityCards.scss'
 export const ActivityCards = () => {
     return (
         <div className='activities-info'>

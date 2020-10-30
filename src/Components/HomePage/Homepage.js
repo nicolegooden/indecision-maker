@@ -12,6 +12,7 @@ export function Homepage() {
           </div>
 
             <ActivityCards />
+
         </div>
     )
 }
