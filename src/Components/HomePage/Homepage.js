@@ -12,13 +12,13 @@ export function Homepage() {
             <div className="app-logo">
               <CgUserlane className="logo"/>
             </div>
+
             <ul className="nav-links">
               <li className="link">About</li>
               <li className="link">Developers</li>
               <li className="link"></li>
-              <li className="link"><a className="link" href="https://github.com/nicolegooden/indecision-maker"><FaServer/></a></li>
-              <li className="link"><a href="https://github.com/Atos20/indecision-maker-server"><FaGithub/></a></li>
-              
+              <li className="link"><a href="https://github.com/nicolegooden/indecision-maker"><FaServer className="repo-link"/></a></li>
+              <li className="link"><a href="https://github.com/Atos20/indecision-maker-server"><FaGithub className="repo-link"/></a></li>
             </ul>
           </nav>
 
