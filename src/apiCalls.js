@@ -3,7 +3,7 @@ export const getAllMovies = async () => {
   if (response.ok) {
     return await response.json()
   } else {
-    return reponse.error
+    return response.error
   }
 }
 export const getMoviesByGenre = async (genre) => {
