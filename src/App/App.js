@@ -1,7 +1,7 @@
 import './App.scss';
 import {Homepage} from '../Homepage/Homepage'
 import React, {Component} from 'react'
-import {Router} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 
 class App extends Component {
   constructor() {
@@ -10,7 +10,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Homepage />
+        <Route>
+          <Homepage />
+        </Route>
       </div>
     );
   }
