@@ -14,16 +14,26 @@
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         grid-template-rows: repeat(6, 1fr);
-        
+
         .app-title1{
             color: $bones;
+            font-size: 6em;
+            font-family: $poiret-one;
             text-align: left;
             grid-area: 3/ 4/ 4/ 6;
         }
 
         .app-title2{
+            color: $bones;
+            font-size: 4em;
+            font-family: $poiret-one;
             text-align: left;
             grid-area: 4/ 4/ 5/ 6;
         }
+    }
+
+    .activities-info{
+      height: 40vh;
+      background-color:$vanilla;
     }
 }
