@@ -1,4 +1,11 @@
+@import  '../../styles/variables.scss';
+
+html{
+  background-color: $dark;
+}
+
 .App {
+
   text-align: center;
 }
 
