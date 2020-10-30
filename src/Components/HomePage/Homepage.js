@@ -31,6 +31,22 @@ export function Homepage() {
 
             <ActivityCards />
 
+          <section className="team-section">
+            <h1 className="team-title">A passionate team</h1>
+            <div className="team-container">
+                <p className="desc description1">Love the outdoors</p>
+              <div className=" dev developer-card1">
+                <div className="border"></div>
+              </div>
+              <p className="desc description2">Your regular florida man</p>
+              <div className="dev developer-card2">
+                <div className="border"></div></div>
+              <p className="desc description3">Love Herper</p>
+              <div className="dev developer-card3">
+                <div className="border"></div>
+              </div>
+            </div>
+          </section>
         </div>
     )
 }
