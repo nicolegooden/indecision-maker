@@ -1,0 +1,52 @@
+@import url(https://fonts.googleapis.com/css2?family=Poiret+One&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Oswald:wght@200;300;400;500&display=swap);
+//font families
+$poiret-one: 'Poiret One', cursive; 
+$Comfortaa: 'Comfortaa', cursive; 
+$Oswald: 'Oswald', sans-serif;
+//colors
+$purple: #794C74;
+$mexicanPink: #C56183;
+$mango: #fadcaa;
+$cloud: #b2deec;
+$marineBlue: #00416d;
+$gold: #f8bd7f;
+$bones: #f5f1da;
+$vanilla: #e3dfc8;
+$light: #eeecda;
+$darkPurple: #1a1c20;
+$dark: #1a1c20;
+
+
+@mixin buttonStyle() {
+  display:inline-block;
+  padding: 5%;
+  margin: 20% 0% 0% 0%;
+  border: none;
+  border-radius:2em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family: $Comfortaa;
+  font-size: 1em;;
+  font-weight:300;
+  color:$darkPurple;
+  text-shadow: 0 0.04em 0.04em $darkPurple;
+  text-align:center;
+  transition: all 0.2s;
+  height: 17%;
+}
+
+@mixin border(){
+    height: 90%;
+    width: 90%;
+    background-color: transparent;
+    border: 2px solid$cloud;
+    position: absolute;
+    top: 14%;
+    left: 14%;
+    margin: -25px 0 0 -25px;
+}
+
+
+     
