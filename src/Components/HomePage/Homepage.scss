@@ -1,0 +1,29 @@
+@import  '../../styles/variables.scss';
+
+
+.homepage-container{
+    height: 100vh;
+    background-color:darken($purple, 20%);
+
+    .homepage-inner-container{
+        height: 100%;
+        background-image:url("https://images.unsplash.com/photo-1531776691428-a0096d20137c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        
+        .app-title1{
+            color: $bones;
+            text-align: left;
+            grid-area: 3/ 4/ 4/ 6;
+        }
+
+        .app-title2{
+            text-align: left;
+            grid-area: 4/ 4/ 5/ 6;
+        }
+    }
+}
