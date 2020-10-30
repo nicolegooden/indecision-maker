@@ -16,3 +16,31 @@ $bones: #f5f1da;
 $vanilla: #e3dfc8;
 $light: #eeecda;
 $darkPurple: #1a1c20;
+
+
+// @mixin buttonStyle() {
+//     font-family: $bangersFont;
+//     color: #f5f3f2;
+//     font-weight: 400;
+// }
+
+@mixin buttonStyle() {
+  display:inline-block;
+  padding: 5%;
+  margin: 20% 0% 0% 0%;
+  border: none;
+  border-radius:2em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family: $Comfortaa;
+  font-size: 1em;;
+  font-weight:300;
+  color:$darkPurple;
+  text-shadow: 0 0.04em 0.04em $darkPurple;
+  text-align:center;
+  transition: all 0.2s;
+  height: 17%;
+}
+
+
+     
