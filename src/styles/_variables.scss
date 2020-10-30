@@ -16,13 +16,8 @@ $bones: #f5f1da;
 $vanilla: #e3dfc8;
 $light: #eeecda;
 $darkPurple: #1a1c20;
+$dark: #1a1c20;
 
-
-// @mixin buttonStyle() {
-//     font-family: $bangersFont;
-//     color: #f5f3f2;
-//     font-weight: 400;
-// }
 
 @mixin buttonStyle() {
   display:inline-block;
@@ -40,6 +35,17 @@ $darkPurple: #1a1c20;
   text-align:center;
   transition: all 0.2s;
   height: 17%;
+}
+
+@mixin border(){
+    height: 90%;
+    width: 90%;
+    background-color: transparent;
+    border: 2px solid$cloud;
+    position: absolute;
+    top: 14%;
+    left: 14%;
+    margin: -25px 0 0 -25px
 }
 
 
