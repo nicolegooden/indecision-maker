@@ -1,7 +1,11 @@
 @import url(https://fonts.googleapis.com/css2?family=Poiret+One&display=swap);
-
-$poiret-one: 'Poiret One', cursive;; 
-
+@import url(https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Oswald:wght@200;300;400;500&display=swap);
+//font families
+$poiret-one: 'Poiret One', cursive; 
+$Comfortaa: 'Comfortaa', cursive; 
+$Oswald: 'Oswald', sans-serif;
+//colors
 $purple: #794C74;
 $mexicanPink: #C56183;
 $mango: #fadcaa;
@@ -11,3 +15,4 @@ $gold: #f8bd7f;
 $bones: #f5f1da;
 $vanilla: #e3dfc8;
 $light: #eeecda;
+$darkPurple: #1a1c20;
