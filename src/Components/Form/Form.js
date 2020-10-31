@@ -6,7 +6,8 @@ export class Form extends Component {
   constructor() {
     super()
     this.state = {
-      answers: [],
+      allAnswers: [],
+      currentAnswers: [],
       activities: [],
       familyFriendly: true
     }
@@ -23,23 +24,35 @@ export class Form extends Component {
     // the rest: depend on answer to question 2
   }
 
+  updateCurrentAnswers = (event) => {
+    event.preventDefault();
+    this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]})
+  }
 
+  updateAllAnswers = (event) => {
+    event.preventDefault();
+    this.setState({allAnswers: [...this.state.allAnswers, ...this.state.currentAnswers]})
+  }
 
   showQuestion = () => {
-    if (!this.state.activities.length && !this.state.answers.length) {
+    if (!this.state.activities.length && !this.state.allAnswers.length) {
       return (
         <article className='question-with-choices'>
           <h2 className='single-question'>{questionSet[0].question}</h2>
           <div>
             {questionSet[0].choices.map(choice => {
-              return <h2 className='choice'>{choice}</h2>
+              return <h2 onClick={this.updateCurrentAnswers} value={choice} className='choice'>{choice}</h2>
             })}
           </div>
         </article>
       )
-    }
-    // set state for the questions array
-    //show one question at a time
+    } 
+  }
+
+  showCurrentAnswers = () => {
+    return this.state.currentAnswers.map(answer => {
+      return <h3 className='current-answer'>{answer}</h3>
+    })
   }
 
   render() {
@@ -49,9 +62,9 @@ export class Form extends Component {
          <article className='possible-answers'>
            {/* {this.determineChoices()} */}
          </article>
-         <h3 className='chosen-answers'>{this.state.answers}</h3>
+         {this.showCurrentAnswers()}
          <button className='back-button form-button'>back</button>
-         <button className='next-button form-button'>next</button>
+         <button onClick={this.updateAllAnswers} className='next-button form-button'>next</button>
       </form>
     )
   }
