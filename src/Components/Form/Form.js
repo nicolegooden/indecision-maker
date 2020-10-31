@@ -6,20 +6,7 @@ export class Form extends Component {
   constructor() {
     super()
     this.state = {
-      allQuestions: [
-          {
-            question: 'Does your group include kids?', 
-            choices: ['yes', 'no'],
-            answers: [],
-            activities: ['movies', 'board games', 'music', 'card games', 'podcasts']
-          }, 
-          {
-            question: 'Which activities excite you right now?',
-            choices: ['movies', 'board games', 'music', 'card games', 'podcasts'],
-            answers: [],
-            activities: ['movies', 'board games', 'music', 'card games', 'podcasts'],
-          }
-        ],
+      allQuestions: [],
       activities: [],
       familyFriendly: true
     }
