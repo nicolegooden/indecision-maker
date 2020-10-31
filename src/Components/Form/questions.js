@@ -15,12 +15,19 @@ export const questionSet = [
       activities: ['music', 'podcasts', 'movies']
     },
     {
-      question: 'Which genre(s)?',
-      choices: [
-                {musicGenres: ['Pop', 'Rock', 'Country', 'Hard Core', 'Dance', 'Alternative', 'Hip-Hop', 'R&B/Soul', 'Rap']},
-                {podcastGenres: ['Comedy', 'Daily News', 'History', 'Documentary', 'Technology', 'True Crime', 'Education', 'Sports', 'Relationships', 'Design', 'Music', 'Science']},
-                {movieGenres: ['Adventure', 'Animation', 'Documentary', 'Comedy', 'Family', 'Fantasy', 'Horror', 'Mystery', 'Sci-Fi']}],
-     activities:['music','podcasts','movies'],
+      question: 'Which music genre(s)?',
+      choices: ['Pop', 'Rock', 'Country', 'Hard Core', 'Dance', 'Alternative', 'Hip-Hop', 'R&B/Soul', 'Rap'],
+      activities:['music'],
+    },
+    {
+      question: 'Which podcast genre(s)?',
+      choices: ['Comedy', 'Daily News', 'History', 'Documentary', 'Technology', 'True Crime', 'Education', 'Sports', 'Relationships', 'Design', 'Music', 'Science'],
+      activities:['podcasts'],
+    },
+    {
+      question: 'Which movie genre(s)?',
+      choices: ['Adventure', 'Animation', 'Documentary', 'Comedy', 'Family', 'Fantasy', 'Horror', 'Mystery', 'Sci-Fi'],
+      activities:['movies'],
     },
     {
       question: 'Would you like your movie to be shorter than 2 hours?', 
