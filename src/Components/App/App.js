@@ -7,8 +7,16 @@ import {Route} from 'react-router-dom';
 
 class App extends Component {
   constructor() {
-    super()
+    super();
+    this.state = {
+      activities: []
+    }
   }
+
+  setActivities = (activities) => {
+    this.setState({activities: [...activities]})
+  }
+
   render() {
     return (
       <div className="App">
@@ -17,7 +25,7 @@ class App extends Component {
           <Homepage />
         </Route>
         <Route exact path='/form'>
-          <Form />
+          <Form activities={this.state.activities} setActivities={this.setActivities}/>
         </Route>
       </div>
     );
