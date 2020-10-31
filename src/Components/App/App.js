@@ -1,8 +1,9 @@
 import './App.scss';
-import {Homepage} from '../HomePage/Homepage'
-import Header from '../Header/Header'
-import React, {Component} from 'react'
-import {Route} from 'react-router-dom'
+import {Homepage} from '../HomePage/Homepage';
+import Header from '../Header/Header';
+import { Form } from '../Form/Form';
+import React, {Component} from 'react';
+import {Route} from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -14,6 +15,9 @@ class App extends Component {
         <Route 
           exact path='/'>
           <Homepage />
+        </Route>
+        <Route exact path='/form'>
+          <Form />
         </Route>
       </div>
     );
