@@ -31,7 +31,7 @@ export class Form extends Component {
 
   updateAllAnswers = (event) => {
     event.preventDefault();
-    this.setState({allAnswers: [...this.state.allAnswers, ...this.state.currentAnswers]})
+    this.setState({allAnswers: [...this.state.allAnswers, ...this.state.currentAnswers], currentAnswers: []})
   }
 
   showQuestion = () => {
