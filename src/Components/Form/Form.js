@@ -6,7 +6,7 @@ export class Form extends Component {
   constructor() {
     super()
     this.state = {
-      allQuestions: [],
+      answers: [],
       activities: [],
       familyFriendly: true
     }
@@ -17,14 +17,27 @@ export class Form extends Component {
   //return one question at a time based on a single render
 
   determineAllQuestions = () => {
-    // questionSet
-    return questionSet.filter(question => {
+    const relevantQuestions = questionSet.filter(question => {
       return question.activities.includes()  
     })
     // the rest: depend on answer to question 2
   }
 
+
+
   showQuestion = () => {
+    if (!this.state.activities.length && !this.state.answers.length) {
+      return (
+        <article className='question-with-choices'>
+          <h2 className='single-question'>{questionSet[0].question}</h2>
+          <div>
+            {questionSet[0].choices.map(choice => {
+              return <h2 className='choice'>{choice}</h2>
+            })}
+          </div>
+        </article>
+      )
+    }
     // set state for the questions array
     //show one question at a time
   }
@@ -34,7 +47,7 @@ export class Form extends Component {
       <form className='question-form'>
          <h2 className='question'>{this.showQuestion()}</h2>
          <article className='possible-answers'>
-           {this.determineChoices()}
+           {/* {this.determineChoices()} */}
          </article>
          <h3 className='chosen-answers'>{this.state.answers}</h3>
          <button className='back-button form-button'>back</button>
