@@ -66,7 +66,10 @@ export class Form extends Component {
       let unansweredSet = this.state.questionsPerActivity.find(set => {
         return !set.answered 
       })
-        return this.determinePrompt(1, unansweredSet.questions)
+        return unansweredSet.questions.map((question, i) => {
+          return this.determinePrompt(i, unansweredSet.questions)
+        })
+
     
       // remember update answered to true 
     }
