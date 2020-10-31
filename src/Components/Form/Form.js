@@ -34,18 +34,22 @@ export class Form extends Component {
     this.setState({allAnswers: [...this.state.allAnswers, ...this.state.currentAnswers], currentAnswers: []})
   }
 
-  showQuestion = () => {
-    if (!this.state.activities.length && !this.state.allAnswers.length) {
-      return (
+  determinePrompt = (index) => {
+    return (
         <article className='question-with-choices'>
-          <h2 className='single-question'>{questionSet[0].question}</h2>
+          <h2 className='single-question'>{questionSet[index].question}</h2>
           <div>
-            {questionSet[0].choices.map(choice => {
+            {questionSet[index].choices.map(choice => {
               return <h2 onClick={this.updateCurrentAnswers} value={choice} className='choice'>{choice}</h2>
             })}
           </div>
         </article>
       )
+  }
+
+  showQuestion = () => {
+    if (!this.state.activities.length && !this.state.allAnswers.length) {
+      return this.determinePrompt(0);
     } 
   }
 
