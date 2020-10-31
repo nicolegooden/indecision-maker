@@ -3,12 +3,11 @@ import { questionSet } from './questions'
 import './Form.scss';
 
 export class Form extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       allAnswers: [],
       currentAnswers: [],
-      activities: [],
       familyFriendly: true
     }
   }
@@ -17,12 +16,12 @@ export class Form extends Component {
   //save filtered array of relevant questions to a variable at local scope
   //return one question at a time based on a single render
 
-  determineAllQuestions = () => {
-    const relevantQuestions = questionSet.filter(question => {
-      return question.activities.includes()  
-    })
-    // the rest: depend on answer to question 2
-  }
+//   determineAllQuestions = () => {
+//     const relevantQuestions = questionSet.filter(question => {
+//       return question.activities.includes()  
+//     })
+//     // the rest: depend on answer to question 2
+//   }
 
   updateCurrentAnswers = (event) => {
     event.preventDefault();
@@ -32,7 +31,10 @@ export class Form extends Component {
   updateAllAnswers = (event) => {
     event.preventDefault();
     this.setState({allAnswers: [...this.state.allAnswers, ...this.state.currentAnswers], currentAnswers: []})
-  }
+    if (this.state.allAnswers.length === 1) {
+      this.props.setActivities(this.state.currentAnswers);
+    }
+ }
 
   determinePrompt = (index) => {
     return (
@@ -48,9 +50,13 @@ export class Form extends Component {
   }
 
   showQuestion = () => {
-    if (!this.state.activities.length && !this.state.allAnswers.length) {
+    if (!this.props.activities.length && !this.state.allAnswers.length) {
       return this.determinePrompt(0);
-    } 
+    } else if (!this.props.activities.length && this.state.allAnswers.length) {
+      return this.determinePrompt(1);
+    } else {
+    
+    }
   }
 
   showCurrentAnswers = () => {
@@ -63,9 +69,6 @@ export class Form extends Component {
     return (
       <form className='question-form'>
          <h2 className='question'>{this.showQuestion()}</h2>
-         <article className='possible-answers'>
-           {/* {this.determineChoices()} */}
-         </article>
          {this.showCurrentAnswers()}
          <button className='back-button form-button'>back</button>
          <button onClick={this.updateAllAnswers} className='next-button form-button'>next</button>
@@ -73,3 +76,5 @@ export class Form extends Component {
     )
   }
 }
+
+//add prop types
