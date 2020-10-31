@@ -15,6 +15,9 @@ export class Form extends Component {
 
   updateCurrentAnswers = (event) => {
     event.preventDefault();
+    if (this.state.currentAnswers.includes(event.target.textContent)){
+      return 
+    }
     this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]})
   }
 
