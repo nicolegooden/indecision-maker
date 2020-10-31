@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { questionSet } from './questions'
 import './Form.scss';
 
 export class Form extends Component {
   constructor() {
     super()
     this.state = {
-      questionSets: [
+      allQuestions: [
           {
             question: 'Does your group include kids?', 
             choices: ['yes', 'no'],
@@ -24,38 +25,15 @@ export class Form extends Component {
     }
   }
 
-// const questions = [
-//     {
-//       question: 'How old is too old?',
-//       choices: [2010, 2000, 1990, 1980, "No such thing as too old"]
-//       answers: [],
-//       activities: ['music', 'podcast', 'movies]
-//     },
-//     {
-//       question: 'Which genre(s)?',
-//       choices: [{musicGenres: ['Pop', 'Rock', 'Country', 'Hard Core', 'Dance', 'Alternative', 'Hip-Hop', 'R&B/Soul', 'Rap']},
-//                 {podcastGenres: ['Comedy', 'Daily News', 'History', 'Documentary', 'Technology', 'True Crime', 'Education', 'Sports', 'Relationships', 'Design', 'Music', 'Science']}],
-//                 {movieGenres: ['Adventure', 'Animation', 'Documentary', 'Comedy', 'Family', 'Fantasy', 'Horror', 'Mystery', 'Sci-Fi]}],
-//      answers: [],      
-//      activities:['music', 'podcast', 'movies'],
-//     }
-//     {
-//       question: 'Would you like your movie to be shorter than 2 hours?', 
-//       choices: ['yes', 'no'], 
-//       answers: [],
-//       activities: ['movies']
-//     }
-//     {
-//       question: 'How many people are playing?',
-//       choices: ['1', '2', '3', '4', '5', 'more than 5'],
-//       answers: [],
-//       activities: ['board games', 'card games']
-//      }
-
-//   ]
+  //FILTER through the questions array based on which activities are INCLUDED (which activities the user wants)
+  //save filtered array of relevant questions to a variable at local scope
+  //return one question at a time based on a single render
 
   determineAllQuestions = () => {
-    // 
+    // questionSet
+    return questionSet.filter(question => {
+      return question.activities.includes()  
+    })
     // the rest: depend on answer to question 2
   }
 
