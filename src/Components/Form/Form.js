@@ -8,6 +8,7 @@ export class Form extends Component {
     this.state = {
       allAnswers: [],
       currentAnswers: [],
+      questionsPerActivity: [],
       familyFriendly: true
     }
   }
@@ -32,20 +33,20 @@ export class Form extends Component {
     event.preventDefault();
     this.setState({allAnswers: [...this.state.allAnswers, ...this.state.currentAnswers], currentAnswers: []})
     if (this.state.allAnswers.length === 1) {
-      this.state.currentAnswers.reduce((relevantQuestions, activity) => {
+      this.props.setActivities(this.state.currentAnswers);
+      let relevantQuestions = this.state.currentAnswers.reduce((relevantQuestions, activity) => {
         let filteredQuestions = questionSet.filter(question => {
           return question.activities.includes(activity); 
         })
         let questionsByActivity = {
-          activity: [activity],
+          activity: activity,
           questions: filteredQuestions,
           answered: false
         }
         relevantQuestions.push(questionsByActivity)
-        console.log(relevantQuestions)
         return relevantQuestions;  
       }, [])
-      this.props.setActivities(this.state.currentAnswers);
+      this.setState({questionsPerActivity: [...relevantQuestions]})
     }
  }
 
