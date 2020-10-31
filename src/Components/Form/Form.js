@@ -13,17 +13,6 @@ export class Form extends Component {
     }
   }
 
-  //FILTER through the questions array based on which activities are INCLUDED (which activities the user wants)
-  //save filtered array of relevant questions to a variable at local scope
-  //return one question at a time based on a single render
-
-//   determineAllQuestions = () => {
-//     const relevantQuestions = questionSet.filter(question => {
-//       return question.activities.includes()  
-//     })
-//     // the rest: depend on answer to question 2
-//   }
-
   updateCurrentAnswers = (event) => {
     event.preventDefault();
     this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]})
@@ -31,7 +20,7 @@ export class Form extends Component {
 
   updateAllAnswers = (event) => {
     event.preventDefault();
-    this.setState({allAnswers: [...this.state.allAnswers, ...this.state.currentAnswers], currentAnswers: []})
+    this.setState({allAnswers: [...this.state.allAnswers, this.state.currentAnswers], currentAnswers: []})
     if (this.state.allAnswers.length === 1) {
       this.props.setActivities(this.state.currentAnswers);
       let relevantQuestions = this.state.currentAnswers.reduce((relevantQuestions, activity) => {
@@ -50,12 +39,12 @@ export class Form extends Component {
     }
  }
 
-  determinePrompt = (index) => {
+  determinePrompt = (index, data) => {
     return (
         <article className='question-with-choices'>
-          <h2 className='single-question'>{questionSet[index].question}</h2>
+          <h2 className='single-question'>{data[index].question}</h2>
           <div>
-            {questionSet[index].choices.map(choice => {
+            {data[index].choices.map(choice => {
               return <h2 onClick={this.updateCurrentAnswers} value={choice} className='choice'>{choice}</h2>
             })}
           </div>
@@ -65,10 +54,18 @@ export class Form extends Component {
 
   showQuestion = () => {
     if (!this.props.activities.length && !this.state.allAnswers.length) {
-      return this.determinePrompt(0);
+      return this.determinePrompt(0, questionSet);
     } 
     if (!this.props.activities.length && this.state.allAnswers.length) {
-      return this.determinePrompt(1);
+      return this.determinePrompt(1, questionSet);
+    }
+    if (this.state.questionsPerActivity.length) {
+      let unansweredSet = this.state.questionsPerActivity.find(set => {
+        return !set.answered 
+      })
+        return this.determinePrompt(1, unansweredSet.questions)
+    
+      // remember update answered to true 
     }
   }
 
