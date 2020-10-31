@@ -1,5 +1,17 @@
 export const questionSet = [
     {
+        question: 'Does your group include kids?', 
+        choices: ['yes', 'no'],
+        answers: [],
+        activities: ['movies', 'board games', 'music', 'card games', 'podcasts']
+    }, 
+    {
+        question: 'Which activities excite you right now?',
+        choices: ['movies', 'board games', 'music', 'card games', 'podcasts'],
+        answers: [],
+        activities: ['movies', 'board games', 'music', 'card games', 'podcasts'],
+    },
+    {
       question: 'How old is too old?',
       choices: [2010, 2000, 1990, 1980, "No such thing as too old"],
       answers: [],
