@@ -9,20 +9,24 @@ export class Form extends Component {
       allAnswers: [],
       currentAnswers: [],
       questionsPerActivity: [],
-      familyFriendly: true
+      familyFriendly: true,
     }
   }
+
 
   updateCurrentAnswers = (event) => {
     event.preventDefault();
     if (this.state.currentAnswers.includes(event.target.textContent)){
       return 
     }
+    console.log(event.target)
+    this.props.updateActivityAnswers(event)
     this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]})
   }
 
   updateAllAnswers = (event) => {
     event.preventDefault();
+  
     this.setState({allAnswers: [...this.state.allAnswers, this.state.currentAnswers], currentAnswers: []})
     if (this.state.allAnswers.length === 1) {
       this.props.setActivities(this.state.currentAnswers);
@@ -43,12 +47,18 @@ export class Form extends Component {
  }
 
   determinePrompt = (index, data) => {
+    console.log(data[index].answerType)
     return (
         <article className='question-with-choices'>
           <h2 className='single-question'>{data[index].question}</h2>
           <div>
             {data[index].choices.map(choice => {
-              return <h2 onClick={this.updateCurrentAnswers} value={choice} className='choice'>{choice}</h2>
+              return <h2
+                id={data[index].answerType}
+                onClick={this.updateCurrentAnswers} 
+                value={choice} 
+                className='choice'>{choice}
+                </h2>
             })}
           </div>
         </article>
@@ -70,8 +80,6 @@ export class Form extends Component {
           return this.determinePrompt(i, unansweredSet.questions)
         })
 
-    
-      // remember update answered to true 
     }
   }
 
@@ -87,7 +95,10 @@ export class Form extends Component {
          <h2 className='question'>{this.showQuestion()}</h2>
          {this.showCurrentAnswers()}
          <button className='back-button form-button'>back</button>
-         <button onClick={this.updateAllAnswers} className='next-button form-button'>next</button>
+         <button 
+            onClick={this.updateAllAnswers} 
+            className='next-button form-button'>
+            next</button>
       </form>
     )
   }
