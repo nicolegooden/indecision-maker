@@ -19,14 +19,12 @@ export class Form extends Component {
     if (this.state.currentAnswers.includes(event.target.textContent)){
       return 
     }
-    console.log(event.target)
     this.props.updateActivityAnswers(event)
     this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]})
   }
 
   updateAllAnswers = (event) => {
     event.preventDefault();
-  
     this.setState({allAnswers: [...this.state.allAnswers, this.state.currentAnswers], currentAnswers: []})
     if (this.state.allAnswers.length === 1) {
       this.props.setActivities(this.state.currentAnswers);
@@ -36,8 +34,7 @@ export class Form extends Component {
         })
         let questionsByActivity = {
           activity: activity,
-          questions: filteredQuestions,
-          answered: false
+          questions: filteredQuestions
         }
         relevantQuestions.push(questionsByActivity)
         return relevantQuestions;  
@@ -47,7 +44,6 @@ export class Form extends Component {
  }
 
   determinePrompt = (index, data) => {
-    console.log(data[index].answerType)
     return (
         <article className='question-with-choices'>
           <h2 className='single-question'>{data[index].question}</h2>
@@ -73,9 +69,12 @@ export class Form extends Component {
     if (!this.props.activities.length && this.state.allAnswers.length) {
       return this.determinePrompt(1, questionSet);
     }
+    if (this.state.questionsPerActivity.length === this.state.allAnswers.length -2) {
+      return;//show all user answers?? and submit 
+    }
     if (this.state.questionsPerActivity.length) {
       let unansweredSet = this.state.questionsPerActivity.find(set => {
-        return !set.answered 
+        return this.state.allAnswers[1][this.state.allAnswers.length -2] === set.activity
       })
         return unansweredSet.questions.map((question, i) => {
           return this.determinePrompt(i, unansweredSet.questions)
