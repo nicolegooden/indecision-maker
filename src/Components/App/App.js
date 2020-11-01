@@ -19,14 +19,9 @@ class App extends Component {
   }
 
   updateActivityAnswers = (event) => {
-    // console.log('in app target.id', event.target.id)
-    // console.log('in app target.content', event.target.textContent)
     if (event.target.id !== 'default') {
       this.setState({ [event.target.id]:  [...this.state[event.target.id], event.target.textContent]})
     }
-    // console.log('in app', key)
-    // console.log('in app', currentAnswer)
- 
   }
 
   setActivities = (activities) => {
