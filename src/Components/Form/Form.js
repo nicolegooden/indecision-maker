@@ -52,8 +52,9 @@ export class Form extends Component {
         <article className='question-with-choices'>
           <h2 className='single-question'>{data[index].question}</h2>
           <div>
-            {data[index].choices.map(choice => {
+            {data[index].choices.map((choice, i) => {
               return <h2
+                key={i}
                 id={data[index].answerType}
                 onClick={this.updateCurrentAnswers} 
                 value={choice} 
@@ -79,13 +80,15 @@ export class Form extends Component {
         return unansweredSet.questions.map((question, i) => {
           return this.determinePrompt(i, unansweredSet.questions)
         })
-
     }
   }
 
   showCurrentAnswers = () => {
-    return this.state.currentAnswers.map(answer => {
-      return <h3 className='current-answer'>{answer}</h3>
+    return this.state.currentAnswers.map((answer, i) => {
+      return <h3 
+        key={i}
+        className='current-answer'
+        >{answer}</h3>
     })
   }
 
