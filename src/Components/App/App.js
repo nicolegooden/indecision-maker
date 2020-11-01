@@ -9,8 +9,24 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      activities: []
+      activities: [],
+      musicAnswers:[],
+      moviesAnswers:[],
+      podcastsAnswers:[],
+      boardGamesAnswers:[],
+      cardGamesAnswers:[]
     }
+  }
+
+  updateActivityAnswers = (event) => {
+    // console.log('in app target.id', event.target.id)
+    // console.log('in app target.content', event.target.textContent)
+    if (event.target.id !== 'default') {
+      this.setState({ [event.target.id]:  [...this.state[event.target.id], event.target.textContent]})
+    }
+    // console.log('in app', key)
+    // console.log('in app', currentAnswer)
+ 
   }
 
   setActivities = (activities) => {
@@ -25,7 +41,11 @@ class App extends Component {
           <Homepage />
         </Route>
         <Route exact path='/form'>
-          <Form activities={this.state.activities} setActivities={this.setActivities}/>
+          <Form 
+            activities={this.state.activities} 
+            setActivities={this.setActivities}
+            updateActivityAnswers={this.updateActivityAnswers}
+          />
         </Route>
       </div>
     );
