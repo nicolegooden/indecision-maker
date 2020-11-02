@@ -20,9 +20,22 @@ export const Homepage = () => {
 
             <nav className="nav-bar">
               <ul className="nav-links">
-                <li className="link">About</li>
-                <li className="link">Movies</li>
-                <li className="link">Music</li>
+              <Link
+                  className="link"
+                  to="/about">
+                <li >About</li>
+                </Link>
+                <Link
+                  className="link"
+                  to="/our_movies">
+                <li >Movies</li>
+                </Link>
+                <Link
+                  className="link"
+                  to="/our_music">
+                  <li > Music</li>
+                </Link>
+                
                 <li className="link">Card Games</li>
                 <li className="link">Podcast</li>
                 <li className="link">Board Games</li>
