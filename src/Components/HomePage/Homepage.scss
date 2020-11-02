@@ -2,20 +2,20 @@
 
 
 .homepage-container{
-    height: 100vh;
-    background-image:url("https://images.unsplash.com/photo-1531776691428-a0096d20137c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    height: 300vh;
+    
+    .homepage-inner-container{
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(5, .5fr);
+        background-image:url("https://images.unsplash.com/photo-1531776691428-a0096d20137c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
 
-    .nav-bar{
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        height: 15%;
 
         .app-logo{
-
+            grid-area: 1/ 1/ 1/ 1;
             .logo{
                 margin: 50%;
                 font-size: 9em;
@@ -23,33 +23,39 @@
                 color: $mango;
             }
         }
-        
-        .nav-links{
+
+        .nav-bar{
             display: flex;
             flex-direction: row;
-            list-style-type: none;
-            color: $gold;
-            margin: 0%;
-            height: 18vh;
-            justify-content: flex-end;
             width: 100%;
-            height: 20%;
+            height: 10%;
+            grid-area: 1/ 2/ 1/ 6;
 
-            .link{
+            .nav-links{
+                display: flex;
+                flex-direction: row;
+                list-style-type: none;
                 color: $gold;
-                font-family: $Comfortaa;
-                font-size: 1.2em;
-                margin: 8% 2% 2% 1%;
+                margin: 0%;
+                height: 100%;
+                justify-content: flex-end;
+                width: 100%;
+                height: 20%;
+    
+                .link{
+                    color: $gold;
+                    font-family: $Comfortaa;
+                    font-size: 1.2em;
+                    margin: 8% 2% 2% 2%;
+                    padding: 0% 0% 2% 0%;
+                }
 
+                .link:hover{
+                    border-bottom: 5px solid $gold;
+                    color: $vanilla;
+                }
             }
         }
-    }
-    
-    
-    .homepage-inner-container{
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: repeat(5, .5fr);
 
         .app-title1{
             color: $bones;
@@ -78,11 +84,19 @@
             text-align: left;
         }
 
-        .find-activitty{
+
+        .find-activitty-container{
             grid-area: 4/ 4/ 6/ 5;
             @include buttonStyle;
             background-color: lighten(#1a1c20, 30%);
-            
+            .find-button{
+                color: $gold;
+                background-color: transparent;
+                text-decoration:none;
+                font-family: $Comfortaa;
+                font-size: 1em;
+                border: none;
+            }
         }
 
     }
@@ -146,36 +160,5 @@
         }
     }
 
-    .social-section{
-        background-color: darken($gold, 30%);
-        height: 30vh;
-        position: relative;
-    }
     
-    .footer-links{
-        display: flex;
-        flex-direction: row;
-        list-style-type: none;
-        position: absolute;
-        top: 45%;
-        left: 45%;
-        margin: -25px 0 0 -25px;
-
-        .foot-link{
-            margin: 35%;
-
-            .repo-link{
-                color: $darkPurple;
-                font-size: 2em;
-                margin: 5%;
-            }
-        }
-    }
-
-    .copy-rights{
-        position: absolute;
-        top: 83%;
-        left: 36%;
-        margin: -25px 0 0 -25px;
-    }
 }
