@@ -3,9 +3,9 @@ $hex-size: 6em; // Only change size here. Best used with sizes from 5em - 10em.
 
 .movies-section{
     @import  '../../styles/variables.scss';
-    height: 150vh;
+    height: 100%;
     background-color: darken(cadetblue, 30%);
-    overflow: auto;
+   
 
     .bar-menu{
         background-image: url(https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80);
@@ -25,13 +25,30 @@ $hex-size: 6em; // Only change size here. Best used with sizes from 5em - 10em.
         }
     
   }
-  .grid-container{
 
+  .title-container{
+      height: 10vh;
+      margin: 0%;
+    
+
+      .title{
+        color: $mango;
+        padding: 4%;
+        font-family: $Oswald;
+        font-size: 2.5em;
+      }
+  }
+
+  .grid-container{
+    margin: 0%;
+    padding: 5%;
+    height: 100vh;
+    // overflow: auto;
     .inner-grid{
         position: relative;
-        width: 60%;
-        margin: 0 auto;
-        padding: 0; /* Clears unordered list default of 40px */
+        // width: 85%;
+        margin: 2%;
+        padding: 0; 
 
         .hexa{
             list-style-type: none;
@@ -53,7 +70,19 @@ $hex-size: 6em; // Only change size here. Best used with sizes from 5em - 10em.
                 background: #fdbf00;
                 transform: skewY(-30deg) rotate(60deg);
                 visibility: visible;
+                
+                .hexa-image{
+                    width: 100%;
+                    // height: 100%;
+                }
             }
+
+            .inner-hexagon-back{
+                position: absolute;
+                z-index: 1;
+                text-align: center;
+            }
+           
         }
         .hexa:nth-child(3n+2){
                 margin: 0 1%;
