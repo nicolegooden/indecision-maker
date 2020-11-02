@@ -18,11 +18,6 @@ class App extends Component {
     }
   }
 
-  findSetOfQuestions = () => {
-  
-    // this.state
-  }
-
   updateActivityAnswers = (event) => {
     if (event.target.id !== 'default') {
       this.setState({ [event.target.id]:  [...this.state[event.target.id], event.target.textContent]})
