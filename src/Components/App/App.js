@@ -19,7 +19,7 @@ class App extends Component {
       cardGamesAnswers:[],
       movies: [],
       music: [],
-      podcast: [],
+      podcasts: [],
       boradGames: [],
       cardGames: []
     }
@@ -29,6 +29,7 @@ class App extends Component {
     try{
       const moviesPromise = await getAllMovies()
       this.setState({movies : moviesPromise})
+        
     } catch (error){
       console.log(error)
     }
@@ -46,6 +47,7 @@ class App extends Component {
   }
 
   render() {
+    const { movies } = this.state
     return (
       <div className="App">
         <Route 
@@ -55,10 +57,15 @@ class App extends Component {
           />
         </Route>
 
-        <BrowsePage />
+        <Route
+          exact path='/our_movies'>
+            <BrowsePage 
+            movies={ movies }
+          />
+        </Route>
 
         <Footer />
-        
+
         <Route exact path='/form'>
           <Form 
             activities={this.state.activities} 
