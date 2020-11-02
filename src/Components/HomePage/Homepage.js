@@ -5,30 +5,36 @@ import { CgUserlane } from "react-icons/cg";
 import { FaServer, FaGithub} from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
-export function Homepage() {
+
+export const Homepage = () => {
+
     return (
         <div className='homepage-container'>
 
-          <nav className="nav-bar">
+
+          <div className="homepage-inner-container">
+
             <div className="app-logo">
               <CgUserlane className="logo"/>
             </div>
 
-            <ul className="nav-links">
-              <li className="link">About</li>
-              <li className="link">Movies</li>
-              <li className="link">Music</li>
-              <li className="link">Card Games</li>
-              <li className="link">Podcast</li>
-              <li className="link">Board Games</li>
-            </ul>
-          </nav>
+            <nav className="nav-bar">
+              <ul className="nav-links">
+                <li className="link">About</li>
+                <li className="link">Movies</li>
+                <li className="link">Music</li>
+                <li className="link">Card Games</li>
+                <li className="link">Podcast</li>
+                <li className="link">Board Games</li>
+              </ul>
+            </nav>
 
-          <div className="homepage-inner-container">
             <h1 className="app-title1">Indecision</h1>
             <h1 className="app-title2">maker</h1>
             <p className="intro">Thus, our indecision may lie in our fears and doubts about the outcomes of our decisions or about the process of decision-making: </p>
-            <Link to='/form'><button className="find-activitty">find activity</button></Link>
+            <Link to='/form' className="find-activitty-container">
+              <button className="find-button">find activity</button>
+            </Link>
           </div>
 
             <ActivityCards />
@@ -50,13 +56,6 @@ export function Homepage() {
             </div>
           </section>
 
-          <footer className="social-section">
-            <ul className="footer-links">
-              <li className="foot-link"><a target="_blank" href="https://github.com/Atos20/indecision-maker-server"><FaServer className="repo-link"/></a></li>
-              <li className="foot-link"><a target="_blank" href="https://github.com/nicolegooden/indecision-maker"><FaGithub className="repo-link"/></a></li>
-            </ul>
-            <p className="copy-rights">Ⓒ Indecision Maker is a product of Nicole, Blake and Orlando's Inc.</p>
-          </footer>
         </div>
     )
 }
