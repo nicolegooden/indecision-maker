@@ -30,7 +30,7 @@ export class Form extends Component {
       this.props.setActivities(this.state.currentAnswers);
       let relevantQuestions = this.state.currentAnswers.reduce((relevantQuestions, activity) => {
         let filteredQuestions = questionSet.filter(question => {
-          return question.activities.includes(activity); 
+          return question.activity === activity; 
         })
         let questionsByActivity = {
           activity: activity,
