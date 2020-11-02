@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import { Form } from '../Form/Form';
 import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
+import { getAllMovies } from '../../apiCalls.js'
 
 class App extends Component {
   constructor() {
@@ -18,9 +19,14 @@ class App extends Component {
     }
   }
 
-  findSetOfQuestions = () => {
-  
-    // this.state
+  componentDidMount = async () => {
+    try{
+      const moviesPromise = await getAllMovies()
+      console.log(moviesPromise)
+    } catch (error){
+      console.log(error)
+    }
+
   }
 
   updateActivityAnswers = (event) => {
