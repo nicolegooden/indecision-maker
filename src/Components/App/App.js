@@ -5,7 +5,8 @@ import { Form } from '../Form/Form';
 import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
 import { getAllMovies } from '../../apiCalls.js'
-
+import { BrowsePage } from '../BrowsePage/BrowsePage'
+import { Footer } from '../Footer/Footer'
 class App extends Component {
   constructor() {
     super();
@@ -15,14 +16,19 @@ class App extends Component {
       moviesAnswers:[],
       podcastsAnswers:[],
       boardGamesAnswers:[],
-      cardGamesAnswers:[]
+      cardGamesAnswers:[],
+      movies: [],
+      music: [],
+      podcast: [],
+      boradGames: [],
+      cardGames: []
     }
   }
 
   componentDidMount = async () => {
     try{
       const moviesPromise = await getAllMovies()
-      console.log(moviesPromise)
+      this.setState({movies : moviesPromise})
     } catch (error){
       console.log(error)
     }
@@ -44,13 +50,21 @@ class App extends Component {
       <div className="App">
         <Route 
           exact path='/'>
-          <Homepage />
+          <Homepage 
+             allMovies={this.state.movies}
+          />
         </Route>
+
+        <BrowsePage />
+
+        <Footer />
+        
         <Route exact path='/form'>
           <Form 
             activities={this.state.activities} 
             setActivities={this.setActivities}
             updateActivityAnswers={this.updateActivityAnswers}
+  
           />
         </Route>
       </div>

@@ -16,8 +16,11 @@ export function Homepage() {
 
             <ul className="nav-links">
               <li className="link">About</li>
-              <li className="link">Developers</li>
-              <li className="link"></li>
+              <li className="link">Movies</li>
+              <li className="link">Music</li>
+              <li className="link">Card Games</li>
+              <li className="link">Podcast</li>
+              <li className="link">Board Games</li>
             </ul>
           </nav>
 
