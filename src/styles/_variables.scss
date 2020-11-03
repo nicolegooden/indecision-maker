@@ -28,13 +28,13 @@ $dark: #1a1c20;
   box-sizing: border-box;
   text-decoration:none;
   font-family: $Comfortaa;
-  font-size: 1em;
+  font-size: 1em;;
   font-weight:300;
   color:$darkPurple;
   text-shadow: 0 0.04em 0.04em $darkPurple;
   text-align:center;
   transition: all 0.2s;
-  height: 10%;
+  height: 17%;
 }
 
 @mixin border(){

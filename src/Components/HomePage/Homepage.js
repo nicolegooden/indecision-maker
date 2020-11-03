@@ -2,96 +2,30 @@ import React from 'react'
 import './Homepage.scss'
 import { ActivityCards }  from '../ActivityCards/ActivityCards'
 import { CgUserlane } from "react-icons/cg";
+import { FaServer, FaGithub} from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
-
-
-export const Homepage = (props) => {
-
+export function Homepage() {
     return (
         <div className='homepage-container'>
 
-          <div className="homepage-inner-container">
-
+          <nav className="nav-bar">
             <div className="app-logo">
               <CgUserlane className="logo"/>
             </div>
 
-            <nav className="nav-bar">
-              <ul className="nav-links">
-              <Link
-                  id="About"
-                  className="link"
-                  to="/about">
-                <li 
-                  id="About"
-                  name="About"
-                  >About</li>
-              </Link>
-              <Link
-                  id="movies"
-                  name="movies"
-                  className="link"
-                  onClick={props.getActivityData}
-                  to="/movies">
-                <li 
-                  id="movies"
-                  name="movies"
-                  >Movies</li>
-              </Link>
-              <Link
-                  id="music"
-                  className="link"
-                  onClick={props.getActivityData}
-                  to="/music">
-                  <li
-                    id="music"
-                    name="music"
-                    >Music</li>
-              </Link>
-                
-              <Link
-                  id="cardGames"
-                  className="link"
-                  onClick={props.getActivityData}
-                  to="/cardGames">
-                <li 
-                  id="cardGames"
-                  name="cardGames"
-                >Card Games</li>
-              </Link>
+            <ul className="nav-links">
+              <li className="link">About</li>
+              <li className="link">Developers</li>
+              <li className="link"></li>
+            </ul>
+          </nav>
 
-              <Link
-                  id="podcasts"
-                  className="link"
-                  onClick={props.getActivityData}
-                  to="/podcasts">
-                <li 
-                  id="podcasts"
-                  name="podcasts"
-                  >Podcasts</li>
-              </Link>
-
-              <Link
-                  id="boardGames"
-                  className="link"
-                  onClick={props.getActivityData}
-                  to="/boardGames">
-                <li
-                  id="boardGames"
-                  name="boardGames"
-                  >Board Games</li>
-              </Link>
-                
-              </ul>
-            </nav>
-
+          <div className="homepage-inner-container">
             <h1 className="app-title1">Indecision</h1>
             <h1 className="app-title2">maker</h1>
             <p className="intro">Thus, our indecision may lie in our fears and doubts about the outcomes of our decisions or about the process of decision-making: </p>
-            <Link to='/form' className="find-activitty-container">
-              <button className="find-button">find activity</button>
-            </Link>
+            <Link to='/form'><button className="find-activitty">find activity</button></Link>
           </div>
 
             <ActivityCards />
@@ -99,21 +33,27 @@ export const Homepage = (props) => {
           <section className="team-section">
             <h1 className="team-title">A passionate team</h1>
             <div className="team-container">
-            <p className="desc description3">Love Harper</p>
+                <p className="desc description1">Love the outdoors</p>
               <div className=" dev developer-card1">
                 <div className="border"></div>
               </div>
-              <p className="desc description2">Your regular Florida man</p>
+              <p className="desc description2">Your regular florida man</p>
               <div className="dev developer-card2">
                 <div className="border"></div></div>
-                <p className="desc description1">Love the outdoors</p>
-              
+              <p className="desc description3">Love Herper</p>
               <div className="dev developer-card3">
                 <div className="border"></div>
               </div>
             </div>
           </section>
 
+          <footer className="social-section">
+            <ul className="footer-links">
+              <li className="foot-link"><a target="_blank" href="https://github.com/Atos20/indecision-maker-server"><FaServer className="repo-link"/></a></li>
+              <li className="foot-link"><a target="_blank" href="https://github.com/nicolegooden/indecision-maker"><FaGithub className="repo-link"/></a></li>
+            </ul>
+            <p className="copy-rights">Ⓒ Indecision Maker is a product of Nicole, Blake and Orlando's Inc.</p>
+          </footer>
         </div>
     )
 }
