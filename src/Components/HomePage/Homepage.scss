@@ -17,7 +17,7 @@
         .app-logo{
             grid-area: 1/ 1/ 1/ 1;
             .logo{
-                margin: 50%;
+                margin: 33%;
                 font-size: 9em;
                 font-weight: 400;
                 color: $mango;
@@ -40,7 +40,7 @@
                 height: 100%;
                 justify-content: flex-end;
                 width: 100%;
-                height: 20%;
+                height: 10%;
     
                 .link{
                     color: $gold;
@@ -48,10 +48,11 @@
                     font-size: 1.2em;
                     margin: 8% 5% 2% 0%;
                     padding: 0% 0% 2% 0%;
+                    text-decoration: none;
                 }
 
                 .link:hover{
-                    border-bottom: 5px solid $gold;
+                    border-bottom: 3px solid $gold;
                     color: $vanilla;
                 }
             }
@@ -89,6 +90,8 @@
             grid-area: 4/ 4/ 6/ 5;
             @include buttonStyle;
             background-color: lighten(#1a1c20, 30%);
+            height: 14%;
+
             .find-button{
                 color: $gold;
                 background-color: transparent;
@@ -97,8 +100,21 @@
                 font-size: 1em;
                 border: none;
             }
+            .find-button:hover{
+                background-color: $bones;
+                color: $darkPurple;
+            }
         }
 
+        .find-activitty-container:hover{
+            background-color: $bones;
+            color: $darkPurple;
+
+            .find-button:hover{
+                background-color: $bones;
+                color: $darkPurple;
+            }
+        }
     }
 
     .team-section{
