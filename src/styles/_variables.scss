@@ -45,12 +45,17 @@ $dark: #1a1c20;
     height: 93%;
     width: 93%;
     background-color: transparent;
-    border: 2px solid$cloud;
+    border: 2px solid $cloud;
     position: absolute;
     top: 14%;
     left: 14%;
     margin: -25px 0 0 -25px;
 }
 
+@mixin logo(){
+  margin: 3%;
+  color: $mango;
+  font-size: 3em;
+}
 
      
