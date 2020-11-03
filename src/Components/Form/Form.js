@@ -17,13 +17,16 @@ export class Form extends Component {
     this.setState({prompts: await getAllQuestions()})
   }
 
-  updateCurrentAnswers = (event) => {
-    console.log(event.target.id)
-    if (event.target.id.includes("Games")) {
-      return this.setState({currentAnswers: [event.target.textContent]})
-    }
-    if (this.state.currentAnswers.includes(event.target.textContent)) {
-      return
+  updateCurrentAnswers = (event, allowedResponses) => {
+    allowedResponses.answered = true
+    console.log(allowedResponses)
+    if (+allowedResponses.allowedResponses) {
+      let indexToReplace = this.state.currentAnswers.indexOf(event.target.textContent)
+      let answerToReplace = this.state.currentAnswers.splice(indexToReplace, 1, event.target.textContent)
+      if (answerToReplace) {
+        return this.setState({currentAnswers: answerToReplace})
+      }
+      return this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]})
     }
     else {
       this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]})
@@ -74,7 +77,11 @@ export class Form extends Component {
             return <h2
               key={i}
               id={data[index].answerType}
-              onClick={this.updateCurrentAnswers}
+              answered={false}
+              onClick={(e) => {
+                this.updateCurrentAnswers(e, data[index])
+              }
+              }
               value={choice}
               className='choice'>{choice}
             </h2>
