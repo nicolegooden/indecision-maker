@@ -80,7 +80,40 @@ class App extends Component {
   }
 
   determineRandomActivity = () => {
- 
+    let reduce = this.state.activities.reduce((filtered, activity) => {
+      if (activity.includes('games')) {
+        activity = activity.replace(/ games/gi, 'Games')
+      }
+      let filteredActivities = this.filterActivity(activity, this.state[`${activity}Answers`])
+      filtered.push(filteredActivities)
+      return filtered
+    }, [])
+    // console.log(reduce.flat())
+  }
+
+  filterActivity = (activity, answers) => {
+    let genreGroup = ['movies', 'podcasts', 'music']
+    let gamesGroup = ['boardGames', 'cardGames']
+    let ageGroup = ['movies', 'music']
+    let possibleSuggestions;
+    if (genreGroup.includes(activity)) {
+      possibleSuggestions = this.state[activity].filter(singleActivity => {
+        if (activity === 'movies') {
+          return singleActivity.genre.some(genre => answers.includes(genre))
+        }
+        return answers.some(genre => genre === singleActivity.genre)
+      })
+    }
+    if (ageGroup.includes(activity)) {
+      let ageRestriction = answers.find(answer => {
+        return answer.includes('\'s')
+      })
+      possibleSuggestions = possibleSuggestions.filter(element => {
+        return element.release_date.split('-')[0] > ageRestriction.split('\'s')[0]
+      })
+    }
+  }
+
     // redirect to temporary loading page while the below logic is run
     // what activities did the user select?
     // fetch all activities and place somewhere to be filtered through, here? Result component?
@@ -92,7 +125,7 @@ class App extends Component {
     // let user select to see more info or skip
     // if user selects skip, get another random activity from set which should no longer include the one they skipped if we removed it
     // Should user be able to skip once they have selected to see more info? If they are no longer interested?
-  }
+  
 
   render() {
     return (
