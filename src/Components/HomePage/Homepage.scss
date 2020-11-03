@@ -16,6 +16,7 @@
 
         .app-logo{
             grid-area: 1/ 1/ 1/ 1;
+            
             .logo{
                 margin: 33%;
                 font-size: 9em;
@@ -132,7 +133,7 @@
             grid-template-columns: repeat(5, 1fr);
             grid-template-rows: repeat(5, 1fr);
             background-color: $dark;
-            height: 70vh;
+            height: 57vh;
             padding: 5%;
 
             .desc{
@@ -163,18 +164,15 @@
                 .border{
                     @include border;
                 }
-
             }
 
             .developer-card2{
                 grid-area: 3/ 2 / 5 / 3;
-              
             }
+
             .developer-card3{
                 grid-area: 3/ 4 / 5 / 5;
             }
         }
     }
-
-    
 }
