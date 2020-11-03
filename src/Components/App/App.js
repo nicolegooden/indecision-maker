@@ -7,7 +7,7 @@ import { Music } from '../Music/Music';
 import { Podcast } from '../Podcast/Podcast';
 import { BoardGame } from '../BoardGame/BoardGame';
 import { CardGame } from '../CardGame/CardGame';
-import { Result } from '../Result/Result';
+// import { Result } from '../Result/Result';
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { getAllMovies, 
@@ -36,25 +36,31 @@ class App extends Component {
     }
   }
 
-  getActivityData = async (event) => {
+  getActivityData = async (name) => {
+    if (name.target) {
+      name = name.target.id
+    }
+    if (name.includes('games')) {
+      name = name.replace(/ games/gi, 'Games')
+    }
     let promise;
     try {
-      if (event.target.id === 'movies') {
+      if (name === 'movies') {
         promise = await getAllMovies();
       }
-      if (event.target.id === 'boardGames') {
+      if (name === 'boardGames') {
         promise = await getAllBoardGames();
       }
-      if (event.target.id === 'cardGames') {
+      if (name === 'cardGames') {
         promise = await getAllCardGames();
       }
-      if (event.target.id === 'music') {
+      if (name === 'music') {
         promise = await getAllMusic();
       }
-      if (event.target.id === 'podcasts') {
+      if (name === 'podcasts') {
         promise = await getAllPodcasts();
       }
-      this.setState({[event.target.id]: promise})
+      this.setState({[name]: promise})
     } catch (error) {
       console.log(error)
     }
@@ -71,7 +77,7 @@ class App extends Component {
   }
 
   determineRandomActivity = () => {
-
+ 
     // redirect to temporary loading page while the below logic is run
     // what activities did the user select?
     // fetch all activities and place somewhere to be filtered through, here? Result component?
@@ -104,9 +110,9 @@ class App extends Component {
               determineRandomActivity={this.determineRandomActivity}
             />
           </Route>
-          <Route exact path='/result'>
-            <Result />
-          </Route>
+          {/* <Route exact path='/result'>
+            <Result determineRandomActivity={this.determineRandomActivity}/>
+          </Route> */}
           <Route
             exact path='/:activity'
             render={({match}) => {
