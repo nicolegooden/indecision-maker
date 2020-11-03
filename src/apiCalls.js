@@ -61,8 +61,8 @@ export const getPodcastsByGenre = async (genre) => {
   } else {
     return response.error
   }
-}
 
+}
 export const getAllQuestions = async () => {
   const response = await fetch('http://localhost:3000/api/v1/questions')
   if (response.ok) {
