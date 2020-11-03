@@ -1,11 +1,5 @@
 export const questionSet = [
     {
-        question: 'Does your group include kids?', 
-        choices: ['yes', 'no'],
-        activity: '',
-        answerType: 'default'
-    }, 
-    {
         question: 'Which activity excite you right now?',
         choices: ['movies', 'board games', 'music', 'card games', 'podcasts'],
         activit: '',
