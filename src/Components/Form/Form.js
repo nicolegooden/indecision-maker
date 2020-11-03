@@ -31,32 +31,33 @@ export class Form extends Component {
     await this.setState({allAnswers: [...this.state.allAnswers, this.state.currentAnswers], currentAnswers: []})
     if (this.state.allAnswers.length === 1) {
       this.props.setActivities(this.state.allAnswers[0]);
-
-      let relevantQuestions = this.state.allAnswers[0].reduce((relevantQuestions, activity) => {
-        let filteredQuestions = this.state.prompts.filter(question => {
-          return question.activity === activity;
-        })
-        let questionsByActivity = {
-          activity: activity,
-          questions: filteredQuestions
-        }
-        relevantQuestions.push(questionsByActivity)
-        return relevantQuestions;
-      }, [])
+      let activitySet = this.handleBothGames()
+      let relevantQuestions = this.determineRelevantQuestions(activitySet)
       this.setState({questionsPerActivity: [...relevantQuestions]})
     }
   }
+  determineRelevantQuestions = (activitySet) => {
+    return activitySet.reduce((relevantQuestions, activity) => {
+      let filteredQuestions = this.state.prompts.filter(question => {
+        return question.activity === activity;
+      })
+      let questionsByActivity = {
+        activity: activity,
+        questions: filteredQuestions
+      }
+      relevantQuestions.push(questionsByActivity)
+      return relevantQuestions;
+    }, [])
+  }
 
   handleBothGames = () => {
-
-    if (this.state.currentAnswers.includes('card games') && this.state.currentAnswers.includes('board games')) {
-      current = this.state.currentAnswers.sort((a, b) => {
+    if (this.state.allAnswers[0].includes('card games') && this.state.allAnswers[0].includes('board games')) {
+      let filteredSet = this.state.allAnswers[0].sort((a, b) => {
         return a > b ? - 1 : 1
       })
-    } else {
-      current = this.state.currentAnswers
+      return filteredSet.slice(0, -1)
     }
-
+    return this.state.allAnswers[0]
   }
 
   determinePrompt = (index, data) => {
@@ -101,7 +102,9 @@ export class Form extends Component {
     })
   }
 
-  handleSubmission = () => {
+  handleSubmission = (event) => {
+    this.updateAllAnswers({event})
+    event.preventDefault()
     //invoke app's method for showing suggested activity
   }
 
