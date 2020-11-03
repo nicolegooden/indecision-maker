@@ -7,6 +7,7 @@ import { Music } from '../Music/Music';
 import { Podcast } from '../Podcast/Podcast';
 import { BoardGame } from '../BoardGame/BoardGame';
 import { CardGame } from '../CardGame/CardGame';
+import { Result } from '../Result/Result';
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { getAllMovies, 
@@ -70,7 +71,7 @@ class App extends Component {
   }
 
   determineRandomActivity = () => {
-    console.log('yeet')
+
     // redirect to temporary loading page while the below logic is run
     // what activities did the user select?
     // fetch all activities and place somewhere to be filtered through, here? Result component?
@@ -95,17 +96,17 @@ class App extends Component {
               allMovies={this.state.movies}
             />
           </Route>
-
           <Route exact path='/form'>
             <Form
               activities={this.state.activities}
               setActivities={this.setActivities}
               updateActivityAnswers={this.updateActivityAnswers}
               determineRandomActivity={this.determineRandomActivity}
-
             />
           </Route>
-
+          <Route exact path='/result'>
+            <Result />
+          </Route>
           <Route
             exact path='/:activity'
             render={({match}) => {
@@ -115,9 +116,6 @@ class App extends Component {
               />
             }}>
           </Route>
-
-          
-
             {/* <Route exact path='/movie'>
               <Movie />
             </Route>
