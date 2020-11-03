@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { questionSet } from './questions'
 import './Form.scss';
-
+import { RiHomeSmileLine } from "react-icons/ri";
+import { Link } from 'react-router-dom';
+import { CgUserlane } from "react-icons/cg";
 export class Form extends Component {
   constructor(props) {
     super(props)
@@ -16,6 +18,10 @@ export class Form extends Component {
   updateCurrentAnswers = (event) => {
     event.preventDefault();
     if (this.state.currentAnswers.includes(event.target.textContent)){
+      const answersPerQuestion = [...this.state.currentAnswers]
+      const index = this.state.currentAnswers.indexOf(event.target.textContent)
+      answersPerQuestion.splice(index, 1)
+      this.setState({currentAnswers: answersPerQuestion })
       return 
     }
     this.props.updateActivityAnswers(event)
@@ -44,17 +50,21 @@ export class Form extends Component {
 
   determinePrompt = (index, data) => {
     return (
-        <article className='question-with-choices'>
-          <h2 className='single-question'>{data[index].question}</h2>
-          <div>
+        <article className='form-container'>
+          <h2 className='question'>{data[index].question}</h2>
+          <div className='possible-answers'>
             {data[index].choices.map((choice, i) => {
-              return <h2
-                key={i}
-                id={data[index].answerType}
-                onClick={this.updateCurrentAnswers} 
-                value={choice} 
-                className='choice'>{choice}
-                </h2>
+              return (
+                <div className='choice'>
+                  <h3
+                    key={i}
+                    id={data[index].answerType}
+                    onClick={this.updateCurrentAnswers} 
+                    value={choice} 
+                    className='option'>{choice}
+                  </h3>
+                </div>
+                )
             })}
           </div>
         </article>
@@ -77,10 +87,13 @@ export class Form extends Component {
 
   showCurrentAnswers = () => {
     return this.state.currentAnswers.map((answer, i) => {
-      return <h3 
-        key={i}
-        className='current-answer'
-        >{answer}</h3>
+      return (
+         <h3 
+          key={i}
+          className='current-answer'
+          >{answer}
+        </h3>
+      )
     })
   }
 
@@ -104,10 +117,30 @@ export class Form extends Component {
   render() {
     return (
       <form className='question-form'>
-         <h2 className='question'>{this.showQuestion()}</h2>
-         {this.showCurrentAnswers()}
+
+        <div className="bar-menu">
+          <CgUserlane className="logo"/>
+          <Link to='/'>
+            <RiHomeSmileLine className="logo"/>
+          </Link>
+        </div>
+
+        <div className="form-container">
+          {this.showQuestion()}
+        </div>
+
+        <div className="picks-title-container">
+          <h4 className="picks-title">Your picks!</h4>
+        </div>
+        <div className="user-picks-container">
+          {this.showCurrentAnswers()}
+        </div>
+
+        <div className="form-controls">
          <button className='back-button form-button'>back</button>
          {this.determineNextOrSubmit()}
+        </div>
+        
       </form>
     )
   }

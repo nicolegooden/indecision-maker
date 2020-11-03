@@ -89,7 +89,9 @@ export const Homepage = (props) => {
             <h1 className="app-title1">Indecision</h1>
             <h1 className="app-title2">maker</h1>
             <p className="intro">Thus, our indecision may lie in our fears and doubts about the outcomes of our decisions or about the process of decision-making: </p>
-            <Link to='/form' className="find-activitty-container">
+            <Link 
+              to='/form'
+              className="find-activitty-container">
               <button className="find-button">find activity</button>
             </Link>
           </div>
