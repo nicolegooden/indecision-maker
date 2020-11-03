@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { questionSet } from './questions'
+import { getAllQuestions } from '../../apiCalls'
 import './Form.scss';
 import { RiHomeSmileLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
@@ -8,12 +8,16 @@ export class Form extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      prompts: [],
       allAnswers: [],
       currentAnswers: [],
       questionsPerActivity: [],
     }
   }
 
+  componentDidMount = async () => {
+    this.setState({prompts: await getAllQuestions()})
+  }
 
   updateCurrentAnswers = (event) => {
     event.preventDefault();
@@ -33,20 +37,34 @@ export class Form extends Component {
     await this.setState({allAnswers: [...this.state.allAnswers, this.state.currentAnswers], currentAnswers: []})
     if (this.state.allAnswers.length === 1) {
       this.props.setActivities(this.state.allAnswers[0]);
-      let relevantQuestions = this.state.allAnswers[0].reduce((relevantQuestions, activity) => {
-        let filteredQuestions = questionSet.filter(question => {
-          return question.activity === activity; 
-        })
-        let questionsByActivity = {
-          activity: activity,
-          questions: filteredQuestions
-        }
-        relevantQuestions.push(questionsByActivity)
-        return relevantQuestions;  
-      }, [])
+      let activitySet = this.handleBothGames()
+      let relevantQuestions = this.determineRelevantQuestions(activitySet)
       this.setState({questionsPerActivity: [...relevantQuestions]})
     }
- }
+  }
+  determineRelevantQuestions = (activitySet) => {
+    return activitySet.reduce((relevantQuestions, activity) => {
+      let filteredQuestions = this.state.prompts.filter(question => {
+        return question.activity === activity;
+      })
+      let questionsByActivity = {
+        activity: activity,
+        questions: filteredQuestions
+      }
+      relevantQuestions.push(questionsByActivity)
+      return relevantQuestions;
+    }, [])
+  }
+
+  handleBothGames = () => {
+    if (this.state.allAnswers[0].includes('card games') && this.state.allAnswers[0].includes('board games')) {
+      let filteredSet = this.state.allAnswers[0].sort((a, b) => {
+        return a > b ? - 1 : 1
+      })
+      return filteredSet.slice(0, -1)
+    }
+    return this.state.allAnswers[0]
+  }
 
   determinePrompt = (index, data) => {
     return (
@@ -59,7 +77,10 @@ export class Form extends Component {
                   <h3
                     key={i}
                     id={data[index].answerType}
-                    onClick={this.updateCurrentAnswers} 
+                    onClick={(e) => {
+                      this.updateCurrentAnswers(e, data[index])
+                      }
+                    }
                     value={choice} 
                     className='option'>{choice}
                   </h3>
@@ -73,19 +94,20 @@ export class Form extends Component {
 
   showQuestion = () => {
     if (!this.props.activities.length && !this.state.allAnswers.length) {
-      return this.determinePrompt(0, questionSet);
-    } 
+      return this.determinePrompt(0, this.state.prompts);
+    }
     if (this.state.questionsPerActivity.length) {
       let unansweredSet = this.state.questionsPerActivity.find(set => {
-        return this.state.allAnswers[0][this.state.allAnswers.length -1] === set.activity
+        return this.state.allAnswers[0][this.state.allAnswers.length - 1] === set.activity
       })
-        return unansweredSet.questions.map((question, i) => {
-          return this.determinePrompt(i, unansweredSet.questions)
-        })
+      return unansweredSet.questions.map((question, i) => {
+        return this.determinePrompt(i, unansweredSet.questions)
+      })
     }
   }
 
   showCurrentAnswers = () => {
+    console.log('yeet')
     return this.state.currentAnswers.map((answer, i) => {
       return (
          <h3 
@@ -97,8 +119,9 @@ export class Form extends Component {
     })
   }
 
-  handleSubmission = () => {
-    //invoke app's method for showing suggested activity
+  handleSubmission = (event) => {
+    event.preventDefault()
+    this.props.determineRandomActivity()
   }
 
   determineNextOrSubmit = () => {
@@ -126,7 +149,8 @@ export class Form extends Component {
         </div>
 
         <div className="form-container">
-          {this.showQuestion()}
+          {this.state.prompts.length && this.showQuestion()}
+
         </div>
 
         <div className="picks-title-container">

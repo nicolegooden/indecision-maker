@@ -22,11 +22,11 @@ class App extends Component {
     super();
     this.state = {
       activities: [],
-      musicAnswers:[],
-      moviesAnswers:[],
-      podcastsAnswers:[],
-      boardGamesAnswers:[],
-      cardGamesAnswers:[],
+      musicAnswers: [],
+      moviesAnswers: [],
+      podcastsAnswers: [],
+      boardGamesAnswers: [],
+      cardGamesAnswers: [],
       movies: [],
       music: [],
       podcasts: [],
@@ -37,31 +37,31 @@ class App extends Component {
 
   getActivityData = async (event) => {
     let promise;
-    try{
-      if(event.target.id === 'movies' ) {
-          promise = await getAllMovies();
+    try {
+      if (event.target.id === 'movies') {
+        promise = await getAllMovies();
       }
-      if(event.target.id === 'boardGames' ) {
+      if (event.target.id === 'boardGames') {
         promise = await getAllBoardGames();
       }
-      if(event.target.id === 'cardGames' ) {
+      if (event.target.id === 'cardGames') {
         promise = await getAllCardGames();
       }
-      if(event.target.id === 'music' ) {
-          promise = await getAllMusic();
+      if (event.target.id === 'music') {
+        promise = await getAllMusic();
       }
-      if(event.target.id === 'podcasts' ) {
+      if (event.target.id === 'podcasts') {
         promise = await getAllPodcasts();
       }
-      this.setState({ [event.target.id]: promise})
-      } catch (error){
-        console.log(error)
-      }
+      this.setState({[event.target.id]: promise})
+    } catch (error) {
+      console.log(error)
+    }
   }
-  
+
   updateActivityAnswers = (event) => {
     if (event.target.id !== 'default') {
-      this.setState({ [event.target.id]:  [...this.state[event.target.id], event.target.textContent]})
+      this.setState({[event.target.id]: [...this.state[event.target.id], event.target.textContent]})
     }
   }
 
@@ -69,60 +69,73 @@ class App extends Component {
     this.setState({activities: [...activities]})
   }
 
-  render() {
+  determineRandomActivity = () => {
+    console.log('yeet')
+    // redirect to temporary loading page while the below logic is run
+    // what activities did the user select?
+    // fetch all activities and place somewhere to be filtered through, here? Result component?
+    // if Result component we will also have to pass the answers of the questions down
+    // filter through All results from fetch with specific conditions based on selected answers
+    // store these further filtered results in somewhere where we can access them more than once, state?
+    // randomly choose one of these further filtered activities, maybe remove this from state at that time? 
+    // render component that will display the previewcard
+    // let user select to see more info or skip
+    // if user selects skip, get another random activity from set which should no longer include the one they skipped if we removed it
+    // Should user be able to skip once they have selected to see more info? If they are no longer interested?
+  }
 
+  render() {
     return (
       <div className="App">
-      <Switch>
-      
-        <Route 
-          exact path='/'>
-          <Homepage 
-            getActivityData={this.getActivityData}
-            allMovies={this.state.movies}
-          />
-        </Route>
-
-        <Route 
-          exact 
-          path='/form'>
-            <Form 
-            activities={this.state.activities} 
-            setActivities={this.setActivities}
-            updateActivityAnswers={this.updateActivityAnswers}
+        <Switch>
+          <Route
+            exact path='/'>
+            <Homepage
+              getActivityData={this.getActivityData}
+              allMovies={this.state.movies}
             />
-        </Route>
-        
-        <Route
-          exact 
-          path='/:activity'
-          render={({ match }) => {
-            return <BrowsePage 
-            name={match.params.activity}
-            data={ this.state[match.params.activity]}
-          />
-          }}>
-        </Route>
+          </Route>
 
-        {/* <Route exact path='/movie'>
-          <Movie />
-        </Route>
-        <Route exact path='/podcast'>
-          <Podcast />
-        </Route>
-        <Route exact path='/music'>
-          <Music />
-        </Route>
-        <Route exact path='/boardgame'>
-          <BoardGame />
-        </Route>
-        <Route exact path='/cardgame'>
-          <CardGame />
-        </Route> */}
-      </Switch>
+          <Route exact path='/form'>
+            <Form
+              activities={this.state.activities}
+              setActivities={this.setActivities}
+              updateActivityAnswers={this.updateActivityAnswers}
+              determineRandomActivity={this.determineRandomActivity}
 
-      <Footer />
-      </div>
+            />
+          </Route>
+
+          <Route
+            exact path='/:activity'
+            render={({match}) => {
+              return <BrowsePage
+                name={match.params.activity}
+                data={this.state[match.params.activity]}
+              />
+            }}>
+          </Route>
+
+          
+
+            {/* <Route exact path='/movie'>
+              <Movie />
+            </Route>
+            <Route exact path='/podcast'>
+              <Podcast />
+            </Route>
+            <Route exact path='/music'>
+              <Music />
+            </Route>
+            <Route exact path='/boardgame'>
+              <BoardGame />
+            </Route>
+            <Route exact path='/cardgame'>
+              <CardGame />
+            </Route> */}
+         </Switch>
+        <Footer />
+      </div >
     );
   }
 }
