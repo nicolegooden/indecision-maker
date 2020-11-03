@@ -1,5 +1,5 @@
 import './App.scss';
-import {Homepage} from '../HomePage/Homepage';
+import { Homepage } from '../HomePage/Homepage';
 import { Header } from '../Header/Header';
 import { Form } from '../Form/Form';
 import { Movie } from '../Movie/Movie';
@@ -7,8 +7,8 @@ import { Music } from '../Music/Music';
 import { Podcast } from '../Podcast/Podcast';
 import { BoardGame } from '../BoardGame/BoardGame';
 import { CardGame } from '../CardGame/CardGame';
-import React, {Component} from 'react';
-import {Route} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import { getAllMovies, getAllPodcasts, getAllCardGames, getAllMusic, getAllBoardGames} from '../../apiCalls.js'
 import { BrowsePage } from '../BrowsePage/BrowsePage'
 import { Footer } from '../Footer/Footer'
@@ -68,6 +68,7 @@ class App extends Component {
 
     return (
       <div className="App">
+      <Switch>
         <Route 
           exact path='/'>
           <Homepage 
@@ -76,8 +77,19 @@ class App extends Component {
           />
         </Route>
 
+        <Route 
+          exact 
+          path='/form'>
+            <Form 
+            activities={this.state.activities} 
+            setActivities={this.setActivities}
+            updateActivityAnswers={this.updateActivityAnswers}
+            />
+        </Route>
+
         <Route
-          exact path='/:activity'
+          exact 
+          path='/:activity'
           render={({ match }) => {
             return <BrowsePage 
             name={match.params.activity}
@@ -88,14 +100,9 @@ class App extends Component {
 
         <Footer />
 
-        <Route exact path='/form'>
-          <Form 
-            activities={this.state.activities} 
-            setActivities={this.setActivities}
-            updateActivityAnswers={this.updateActivityAnswers}
-  
-          />
-        </Route>
+       
+      
+
         <Route exact path='/movie'>
           <Movie />
         </Route>
@@ -111,6 +118,8 @@ class App extends Component {
         <Route exact path='/cardgame'>
           <CardGame />
         </Route>
+
+      </Switch>
       </div>
     );
   }
