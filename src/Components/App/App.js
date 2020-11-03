@@ -65,7 +65,16 @@ class App extends Component {
   }
 
   determineRandomActivity = () => {
-
+    console.log('yeet')
+    // what activities did the user select?
+    // fetch all activities and place somewhere to be filtered through, here? Result component?
+    // if Result component we will also have to pass the answers of the questions down
+    // filter through All results from fetch with specific conditions based on selected answers
+    // store these further filtered results in somewhere where we can access them more than once, state?
+    // randomly choose one of these further filtered activities, maybe remove this from state at that time? 
+    // let user select to see more info or skip
+    // if user selects no, get another random activity from set which should no longer include the one they passed on if we removed it
+    // Should user be able to skip once they have selected to see more info? If they are no longer interested?
   }
 
   render() {
