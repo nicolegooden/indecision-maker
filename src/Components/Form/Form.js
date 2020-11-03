@@ -18,12 +18,17 @@ export class Form extends Component {
   }
 
   updateCurrentAnswers = (event) => {
-    event.preventDefault();
+    console.log(event.target.id)
+    if (event.target.id.includes("Games")) {
+      return this.setState({currentAnswers: [event.target.textContent]})
+    }
     if (this.state.currentAnswers.includes(event.target.textContent)) {
       return
     }
+    else {
+      this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]})
+    }
     this.props.updateActivityAnswers(event)
-    this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]})
   }
 
   updateAllAnswers = async (event) => {
