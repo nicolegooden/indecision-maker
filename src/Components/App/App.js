@@ -64,6 +64,10 @@ class App extends Component {
     this.setState({activities: [...activities]})
   }
 
+  determineRandomActivity = () => {
+
+  }
+
   render() {
 
     return (
@@ -82,6 +86,7 @@ class App extends Component {
               activities={this.state.activities}
               setActivities={this.setActivities}
               updateActivityAnswers={this.updateActivityAnswers}
+              determineRandomActivity={this.determineRandomActivity}
 
             />
           </Route>
