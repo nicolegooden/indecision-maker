@@ -100,9 +100,6 @@
         
       }
 
-    .light-bul-icon{
-        @include logo()
-    }
 
     .activity-controls{
         grid-area: 3/ 4/ 4 / 6;
@@ -144,6 +141,10 @@
                 width: 90%;
                 align-self: center;
                 margin: 5%;
+
+                .bulb-icon{
+                    @include logo();
+                }
                 .title{
                     color: $mango;
                     font-family: $poiret-one;
