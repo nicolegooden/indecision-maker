@@ -23,7 +23,7 @@ export const getAllBoardGames = async () => {
   }
 }
 export const getAllCardGames = async () => {
-  const response = await fetch('localhost:3000/api/v1/cardgames')
+  const response = await fetch('http://localhost:3000/api/v1/cardgames')
   if (response.ok) {
     return await response.json()
   } else {
