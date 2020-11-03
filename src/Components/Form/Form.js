@@ -28,17 +28,10 @@ export class Form extends Component {
 
   updateAllAnswers = async (event) => {
     event.preventDefault();
-    let current;
-    if (this.state.currentAnswers.includes('card games') && this.state.currentAnswers.includes('board games')) {
-      current = this.state.currentAnswers.sort((a, b) => {
-        return a > b ? - 1 : 1
-      })
-    } else {
-      current = this.state.currentAnswers
-    }
-    await this.setState({allAnswers: [...this.state.allAnswers, current], currentAnswers: []})
+    await this.setState({allAnswers: [...this.state.allAnswers, this.state.currentAnswers], currentAnswers: []})
     if (this.state.allAnswers.length === 1) {
       this.props.setActivities(this.state.allAnswers[0]);
+
       let relevantQuestions = this.state.allAnswers[0].reduce((relevantQuestions, activity) => {
         let filteredQuestions = this.state.prompts.filter(question => {
           return question.activity === activity;
@@ -52,6 +45,18 @@ export class Form extends Component {
       }, [])
       this.setState({questionsPerActivity: [...relevantQuestions]})
     }
+  }
+
+  handleBothGames = () => {
+
+    if (this.state.currentAnswers.includes('card games') && this.state.currentAnswers.includes('board games')) {
+      current = this.state.currentAnswers.sort((a, b) => {
+        return a > b ? - 1 : 1
+      })
+    } else {
+      current = this.state.currentAnswers
+    }
+
   }
 
   determinePrompt = (index, data) => {
