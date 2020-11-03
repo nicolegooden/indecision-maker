@@ -18,11 +18,11 @@ export class Form extends Component {
   }
 
   updateCurrentAnswers = (event, allowedResponses) => {
-    allowedResponses.answered = true
-    console.log(allowedResponses)
-    if (+allowedResponses.allowedResponses) {
-      let indexToReplace = this.state.currentAnswers.indexOf(event.target.textContent)
-      let answerToReplace = this.state.currentAnswers.splice(indexToReplace, 1, event.target.textContent)
+    if (+allowedResponses.allowedResponses && this.state.currentAnswers.find(answer => allowedResponses.choices.includes(answer))) {
+      let choiceToSwap = this.state.currentAnswers.find(answer => allowedResponses.choices.includes(answer))
+      let indexToReplace = this.state.currentAnswers.indexOf(choiceToSwap)
+      let answerToReplace = this.state.currentAnswers.splice(indexToReplace, 0, event.target.textContent)
+      console.log(answerToReplace)
       if (answerToReplace) {
         return this.setState({currentAnswers: answerToReplace})
       }
@@ -77,7 +77,6 @@ export class Form extends Component {
             return <h2
               key={i}
               id={data[index].answerType}
-              answered={false}
               onClick={(e) => {
                 this.updateCurrentAnswers(e, data[index])
               }
