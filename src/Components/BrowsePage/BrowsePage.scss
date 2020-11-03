@@ -4,8 +4,8 @@ $hex-size: 6em; // Only change size here. Best used with sizes from 5em - 10em.
 .movies-section{
     @import  '../../styles/variables.scss';
     height: 100%;
-    background-color: darken(cadetblue, 30%);
-   
+    background-color: transparent;
+
 
     .bar-menu{
         background-image: url(https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80);
@@ -21,7 +21,7 @@ $hex-size: 6em; // Only change size here. Best used with sizes from 5em - 10em.
           font-size: 9em;
           font-weight: 400;
           color: $mango;
-        //   height: 100%;
+          height: 100%;
         }
     
   }
@@ -30,8 +30,9 @@ $hex-size: 6em; // Only change size here. Best used with sizes from 5em - 10em.
       height: 10vh;
       margin: 0%;
     
-
       .title{
+          margin: 0%;
+        background-color: $dark;
         color: $mango;
         padding: 4%;
         font-family: $Oswald;
@@ -42,15 +43,16 @@ $hex-size: 6em; // Only change size here. Best used with sizes from 5em - 10em.
   .grid-container{
     margin: 0%;
     padding: 5%;
-    height: 100vh;
-    // overflow: auto;
+    height: 100%;
+
     .inner-grid{
         position: relative;
-        // width: 85%;
+        width: 100%;
         margin: 2%;
         padding: 0; 
 
         .hexa{
+            border-radius: 25px;
             list-style-type: none;
             position: relative;
             float: left;
@@ -60,35 +62,48 @@ $hex-size: 6em; // Only change size here. Best used with sizes from 5em - 10em.
             overflow: hidden;
             visibility: hidden;
 
-
             .inner-hexagon{
                 position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: #fdbf00;
+                background: $mango;
                 transform: skewY(-30deg) rotate(60deg);
                 visibility: visible;
                 
                 .hexa-image{
-                    width: 100%;
-                    // height: 100%;
+                    border-radius: 25px;
+                    width: 55%;
+                    margin: 20%;
+                    height: 15vh;
+                
+                }
+
+                .title{
+
+                    color: $darkPurple;
+                    margin: -10%
+                }
+
+                .large-title{
+                    color: $darkPurple;
+                    margin: -10%;
+                    font-size: .8em;
+                    overflow: auto;
                 }
             }
-
-            .inner-hexagon-back{
-                position: absolute;
-                z-index: 1;
-                text-align: center;
+            .inner-hexagon:hover{
+                background-color: darken($mango, 20%);
             }
-           
         }
+                
+
         .hexa:nth-child(3n+2){
-                margin: 0 1%;
+            margin: 0 1%;
         }
 
-        .hexa:nth-child(6n+4),.hexa:nth-child(6n+5), .hexa:nth-child(6n+6) {
+        .hexa:nth-child(6n+4), .hexa:nth-child(6n+5), .hexa:nth-child(6n+6) {
             margin-top: -6.9285714285%;
             margin-bottom: -6.9285714285%;
             transform: translateX(50%) rotate(-60deg) skewY(30deg);
@@ -96,6 +111,10 @@ $hex-size: 6em; // Only change size here. Best used with sizes from 5em - 10em.
 
         .hexa:nth-child(6n+4) { 
             margin-left: 0.5%;
+        }
+
+        .hexa:hover{
+            background-color: yellow;
         }
     }
 
