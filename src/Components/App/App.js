@@ -73,6 +73,9 @@ class App extends Component {
   }
 
   setActivities = (activities) => {
+    activities.forEach(activity => {
+      this.getActivityData(activity)
+    })
     this.setState({activities: [...activities]})
   }
 
