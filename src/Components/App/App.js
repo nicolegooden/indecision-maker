@@ -9,9 +9,14 @@ import { BoardGame } from '../BoardGame/BoardGame';
 import { CardGame } from '../CardGame/CardGame';
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { getAllMovies, getAllPodcasts, getAllCardGames, getAllMusic, getAllBoardGames} from '../../apiCalls.js'
-import { BrowsePage } from '../BrowsePage/BrowsePage'
-import { Footer } from '../Footer/Footer'
+import { getAllMovies, 
+  getAllPodcasts, 
+  getAllCardGames, 
+  getAllMusic, 
+  getAllBoardGames} 
+  from '../../apiCalls.js'
+import { BrowsePage } from '../BrowsePage/BrowsePage';
+import { Footer } from '../Footer/Footer';
 class App extends Component {
   constructor() {
     super();
@@ -69,6 +74,7 @@ class App extends Component {
     return (
       <div className="App">
       <Switch>
+      
         <Route 
           exact path='/'>
           <Homepage 
@@ -86,7 +92,7 @@ class App extends Component {
             updateActivityAnswers={this.updateActivityAnswers}
             />
         </Route>
-
+        
         <Route
           exact 
           path='/:activity'
@@ -98,12 +104,7 @@ class App extends Component {
           }}>
         </Route>
 
-        <Footer />
-
-       
-      
-
-        <Route exact path='/movie'>
+        {/* <Route exact path='/movie'>
           <Movie />
         </Route>
         <Route exact path='/podcast'>
@@ -117,9 +118,10 @@ class App extends Component {
         </Route>
         <Route exact path='/cardgame'>
           <CardGame />
-        </Route>
-
+        </Route> */}
       </Switch>
+
+      <Footer />
       </div>
     );
   }
