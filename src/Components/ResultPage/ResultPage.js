@@ -32,7 +32,7 @@ export const ResultPage = () => {
                 </div>
 
             </div>
-c
+
           </div>
             
           <div className="activity-controls">
