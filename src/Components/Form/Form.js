@@ -18,6 +18,10 @@ export class Form extends Component {
   updateCurrentAnswers = (event) => {
     event.preventDefault();
     if (this.state.currentAnswers.includes(event.target.textContent)){
+      const answersPerQuestion = [...this.state.currentAnswers]
+      const index = this.state.currentAnswers.indexOf(event.target.textContent)
+      answersPerQuestion.splice(index, 1)
+      this.setState({currentAnswers: answersPerQuestion })
       return 
     }
     this.props.updateActivityAnswers(event)
@@ -53,11 +57,11 @@ export class Form extends Component {
               return (
                 <div className='choice'>
                   <h3
-                  key={i}
-                  id={data[index].answerType}
-                  onClick={this.updateCurrentAnswers} 
-                  value={choice} 
-                  className='option'>{choice}
+                    key={i}
+                    id={data[index].answerType}
+                    onClick={this.updateCurrentAnswers} 
+                    value={choice} 
+                    className='option'>{choice}
                   </h3>
                 </div>
                 )
@@ -83,10 +87,13 @@ export class Form extends Component {
 
   showCurrentAnswers = () => {
     return this.state.currentAnswers.map((answer, i) => {
-      return <h3 
-        key={i}
-        className='current-answer'
-        >{answer}</h3>
+      return (
+         <h3 
+          key={i}
+          className='current-answer'
+          >{answer}
+        </h3>
+      )
     })
   }
 
@@ -120,6 +127,12 @@ export class Form extends Component {
 
         <div className="form-container">
           {this.showQuestion()}
+        </div>
+
+        <div className="picks-title-container">
+          <h4 className="picks-title">Your picks!</h4>
+        </div>
+        <div className="user-picks-container">
           {this.showCurrentAnswers()}
         </div>
 
