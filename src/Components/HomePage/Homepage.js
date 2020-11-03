@@ -2,15 +2,14 @@ import React from 'react'
 import './Homepage.scss'
 import { ActivityCards }  from '../ActivityCards/ActivityCards'
 import { CgUserlane } from "react-icons/cg";
-import { FaServer, FaGithub} from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 
-export const Homepage = () => {
+
+export const Homepage = (props) => {
 
     return (
         <div className='homepage-container'>
-
 
           <div className="homepage-inner-container">
 
@@ -21,24 +20,69 @@ export const Homepage = () => {
             <nav className="nav-bar">
               <ul className="nav-links">
               <Link
+                  id="About"
                   className="link"
                   to="/about">
-                <li >About</li>
-                </Link>
-                <Link
+                <li 
+                  id="About"
+                  name="About"
+                  >About</li>
+              </Link>
+              <Link
+                  id="movies"
+                  name="movies"
                   className="link"
-                  to="/our_movies">
-                <li >Movies</li>
-                </Link>
-                <Link
+                  onClick={props.getActivityData}
+                  to="/movies">
+                <li 
+                  id="movies"
+                  name="movies"
+                  >Movies</li>
+              </Link>
+              <Link
+                  id="music"
                   className="link"
-                  to="/our_music">
-                  <li > Music</li>
-                </Link>
+                  onClick={props.getActivityData}
+                  to="/music">
+                  <li
+                    id="music"
+                    name="music"
+                    >Music</li>
+              </Link>
                 
-                <li className="link">Card Games</li>
-                <li className="link">Podcast</li>
-                <li className="link">Board Games</li>
+              <Link
+                  id="cardGames"
+                  className="link"
+                  onClick={props.getActivityData}
+                  to="/cardGames">
+                <li 
+                  id="cardGames"
+                  name="cardGames"
+                >Card Games</li>
+              </Link>
+
+              <Link
+                  id="podcasts"
+                  className="link"
+                  onClick={props.getActivityData}
+                  to="/podcasts">
+                <li 
+                  id="podcasts"
+                  name="podcasts"
+                  >Podcasts</li>
+              </Link>
+
+              <Link
+                  id="boardGames"
+                  className="link"
+                  onClick={props.getActivityData}
+                  to="/boardGames">
+                <li
+                  id="boardGames"
+                  name="boardGames"
+                  >Board Games</li>
+              </Link>
+                
               </ul>
             </nav>
 
@@ -55,14 +99,15 @@ export const Homepage = () => {
           <section className="team-section">
             <h1 className="team-title">A passionate team</h1>
             <div className="team-container">
-                <p className="desc description1">Love the outdoors</p>
+            <p className="desc description3">Love Harper</p>
               <div className=" dev developer-card1">
                 <div className="border"></div>
               </div>
-              <p className="desc description2">Your regular florida man</p>
+              <p className="desc description2">Your regular Florida man</p>
               <div className="dev developer-card2">
                 <div className="border"></div></div>
-              <p className="desc description3">Love Herper</p>
+                <p className="desc description1">Love the outdoors</p>
+              
               <div className="dev developer-card3">
                 <div className="border"></div>
               </div>
