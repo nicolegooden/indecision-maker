@@ -1,7 +1,12 @@
 import './App.scss';
 import {Homepage} from '../HomePage/Homepage';
-import Header from '../Header/Header';
+import { Header } from '../Header/Header';
 import { Form } from '../Form/Form';
+import { Movie } from '../Movie/Movie';
+import { Music } from '../Music/Music';
+import { Podcast } from '../Podcast/Podcast';
+import { BoardGame } from '../BoardGame/BoardGame';
+import { CardGame } from '../CardGame/CardGame';
 import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
 import { getAllMovies, getAllPodcasts, getAllCardGames, getAllMusic, getAllBoardGames} from '../../apiCalls.js'
@@ -48,7 +53,7 @@ class App extends Component {
         console.log(error)
       }
   }
-
+  
   updateActivityAnswers = (event) => {
     if (event.target.id !== 'default') {
       this.setState({ [event.target.id]:  [...this.state[event.target.id], event.target.textContent]})
@@ -90,6 +95,21 @@ class App extends Component {
             updateActivityAnswers={this.updateActivityAnswers}
   
           />
+        </Route>
+        <Route exact path='/movie'>
+          <Movie />
+        </Route>
+        <Route exact path='/podcast'>
+          <Podcast />
+        </Route>
+        <Route exact path='/music'>
+          <Music />
+        </Route>
+        <Route exact path='/boardgame'>
+          <BoardGame />
+        </Route>
+        <Route exact path='/cardgame'>
+          <CardGame />
         </Route>
       </div>
     );

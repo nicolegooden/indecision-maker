@@ -9,7 +9,6 @@ export class Form extends Component {
       allAnswers: [],
       currentAnswers: [],
       questionsPerActivity: [],
-      familyFriendly: true,
     }
   }
 
@@ -23,14 +22,14 @@ export class Form extends Component {
     this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]})
   }
 
-  updateAllAnswers = (event) => {
+  updateAllAnswers = async (event) => {
     event.preventDefault();
-    this.setState({allAnswers: [...this.state.allAnswers, this.state.currentAnswers], currentAnswers: []})
+    await this.setState({allAnswers: [...this.state.allAnswers, this.state.currentAnswers], currentAnswers: []})
     if (this.state.allAnswers.length === 1) {
-      this.props.setActivities(this.state.currentAnswers);
-      let relevantQuestions = this.state.currentAnswers.reduce((relevantQuestions, activity) => {
+      this.props.setActivities(this.state.allAnswers[0]);
+      let relevantQuestions = this.state.allAnswers[0].reduce((relevantQuestions, activity) => {
         let filteredQuestions = questionSet.filter(question => {
-          return question.activities.includes(activity); 
+          return question.activity === activity; 
         })
         let questionsByActivity = {
           activity: activity,
@@ -66,15 +65,9 @@ export class Form extends Component {
     if (!this.props.activities.length && !this.state.allAnswers.length) {
       return this.determinePrompt(0, questionSet);
     } 
-    if (!this.props.activities.length && this.state.allAnswers.length) {
-      return this.determinePrompt(1, questionSet);
-    }
-    if (this.state.questionsPerActivity.length === this.state.allAnswers.length -2) {
-      return;//show all user answers?? and submit 
-    }
     if (this.state.questionsPerActivity.length) {
       let unansweredSet = this.state.questionsPerActivity.find(set => {
-        return this.state.allAnswers[1][this.state.allAnswers.length -2] === set.activity
+        return this.state.allAnswers[0][this.state.allAnswers.length -1] === set.activity
       })
         return unansweredSet.questions.map((question, i) => {
           return this.determinePrompt(i, unansweredSet.questions)
@@ -91,16 +84,30 @@ export class Form extends Component {
     })
   }
 
+  handleSubmission = () => {
+    //invoke app's method for showing suggested activity
+  }
+
+  determineNextOrSubmit = () => {
+    let button;
+    if (this.state.allAnswers.length === 0) {
+      return <button onClick={this.updateAllAnswers} className='next-button form-button'>next</button>
+    } else if (this.state.allAnswers.length === this.state.questionsPerActivity.length) {
+      button = <button onClick={this.handleSubmission} className='submit-button form-button'>submit</button>
+    }
+    if (this.state.questionsPerActivity && button === undefined) {
+      button = <button onClick={this.updateAllAnswers} className='next-button form-button'>next</button>
+    }
+    return button;
+  }
+
   render() {
     return (
       <form className='question-form'>
          <h2 className='question'>{this.showQuestion()}</h2>
          {this.showCurrentAnswers()}
          <button className='back-button form-button'>back</button>
-         <button 
-            onClick={this.updateAllAnswers} 
-            className='next-button form-button'>
-            next</button>
+         {this.determineNextOrSubmit()}
       </form>
     )
   }
