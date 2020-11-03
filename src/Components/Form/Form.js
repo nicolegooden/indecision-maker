@@ -119,17 +119,17 @@ export class Form extends Component {
     })
   }
 
-  handleSubmission = (event) => {
-    event.preventDefault()
-    this.props.determineRandomActivity()
-  }
+  // handleSubmission = (event) => {
+  //   event.preventDefault()
+    
+  // }
 
   determineNextOrSubmit = () => {
     let button;
     if (this.state.allAnswers.length === 0) {
       return <button onClick={this.updateAllAnswers} className='next-button form-button'>next</button>
     } else if (this.state.allAnswers.length === this.state.questionsPerActivity.length) {
-      button = <button onClick={this.handleSubmission} className='submit-button form-button'>submit</button>
+      button = <Link to='/result'><button onClick={this.handleSubmission} className='submit-button form-button'>submit</button></Link>
     }
     if (this.state.questionsPerActivity && button === undefined) {
       button = <button onClick={this.updateAllAnswers} className='next-button form-button'>next</button>
