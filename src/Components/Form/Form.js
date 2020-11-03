@@ -17,16 +17,14 @@ export class Form extends Component {
     this.setState({prompts: await getAllQuestions()})
   }
 
-  updateCurrentAnswers = (event, allowedResponses) => {
-    if (+allowedResponses.allowedResponses && this.state.currentAnswers.find(answer => allowedResponses.choices.includes(answer))) {
-      let choiceToSwap = this.state.currentAnswers.find(answer => allowedResponses.choices.includes(answer))
+  updateCurrentAnswers = (event, questionData) => {
+    if (+questionData.allowedResponses && this.state.currentAnswers.find(answer => questionData.choices.includes(answer))) {
+      let choiceToSwap = this.state.currentAnswers.find(answer => questionData.choices.includes(answer))
       let indexToReplace = this.state.currentAnswers.indexOf(choiceToSwap)
-      let answerToReplace = this.state.currentAnswers.splice(indexToReplace, 0, event.target.textContent)
-      console.log(answerToReplace)
+      let answerToReplace = this.state.currentAnswers.slice(indexToReplace + 1)
       if (answerToReplace) {
-        return this.setState({currentAnswers: answerToReplace})
+        return this.setState({currentAnswers: [...answerToReplace, event.target.textContent]})
       }
-      return this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]})
     }
     else {
       this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]})
