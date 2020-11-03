@@ -34,21 +34,21 @@ $hex-size: 6em; // Only change size here. Best used with sizes from 5em - 10em.
           margin: 0%;
         background-color: $dark;
         color: $mango;
-        padding: 4%;
+        padding: 1%;
         font-family: $Oswald;
-        font-size: 2.5em;
+        font-size: 5.5em;
       }
   }
 
   .grid-container{
     margin: 0%;
-    padding: 5%;
+    padding: 0%;
     height: 100%;
 
     .inner-grid{
         position: relative;
         width: 100%;
-        margin: 2%;
+        margin-top: 5%;
         padding: 0; 
 
         .hexa{
