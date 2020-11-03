@@ -32,10 +32,7 @@ export const ResultPage = () => {
                 </div>
 
             </div>
-
-            <div className="light-bul-icon">
-                <GoLightBulb/>
-            </div>
+c
           </div>
             
           <div className="activity-controls">
@@ -46,6 +43,7 @@ export const ResultPage = () => {
           <div className="the-rest-container">
             <div className="inner-all-rest">
               <div className="border">
+                <GoLightBulb className="bulb-icon"/>
                 <h3 className="title">activity name</h3>
                 <h3 className="title">more information</h3>
                 <h3 className="title">more information</h3>
@@ -54,6 +52,7 @@ export const ResultPage = () => {
             </div>
             <div className="inner-all-rest">
               <div className="border">
+                <GoLightBulb className="bulb-icon"/>
                 <h3 className="title">activity name</h3>
                 <h3 className="title">more information</h3>
                 <h3 className="title">more information</h3>
@@ -62,6 +61,7 @@ export const ResultPage = () => {
             </div>
             <div className="inner-all-rest">
               <div className="border">
+                <GoLightBulb className="bulb-icon"/>
                 <h3 className="title">activity name</h3>
                 <h3 className="title">more information</h3>
                 <h3 className="title">more information</h3>
@@ -70,6 +70,7 @@ export const ResultPage = () => {
             </div>
             <div className="inner-all-rest">
               <div className="border">
+              <GoLightBulb className="bulb-icon"/>
                 <h3 className="title">activity name</h3>
                 <h3 className="title">more information</h3>
                 <h3 className="title">more information</h3>
@@ -78,6 +79,7 @@ export const ResultPage = () => {
             </div>
             <div className="inner-all-rest">
               <div className="border">
+              <GoLightBulb className="bulb-icon"/>
                 <h3 className="title">activity name</h3>
                 <h3 className="title">more information</h3>
                 <h3 className="title">more information</h3>
@@ -86,6 +88,7 @@ export const ResultPage = () => {
             </div>
             <div className="inner-all-rest">
               <div className="border">
+                <GoLightBulb className="bulb-icon"/>
                 <h3 className="title">activity name</h3>
                 <h3 className="title">more information</h3>
                 <h3 className="title">more information</h3>
