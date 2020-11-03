@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import { Form } from '../Form/Form';
 import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
-import { getAllMovies } from '../../apiCalls.js'
+import { getAllMovies, getAllPodcasts, getAllCardGames, getAllMusic, getAllBoardGames} from '../../apiCalls.js'
 import { BrowsePage } from '../BrowsePage/BrowsePage'
 import { Footer } from '../Footer/Footer'
 class App extends Component {
@@ -20,20 +20,34 @@ class App extends Component {
       movies: [],
       music: [],
       podcasts: [],
-      boradGames: [],
+      boardGames: [],
       cardGames: []
     }
   }
 
-  componentDidMount = async () => {
+  getActivityData = async (event) => {
+    console.log(event.target.id)
+    let promise;
     try{
-      const moviesPromise = await getAllMovies()
-      this.setState({movies : moviesPromise})
-        
-    } catch (error){
-      console.log(error)
-    }
-
+      if(event.target.id === 'movies' ) {
+          promise = await getAllMovies();
+      }
+      if(event.target.id === 'boardGames' ) {
+        promise = await getAllBoardGames();
+      }
+      if(event.target.id === 'cardGames' ) {
+        promise = await getAllCardGames();
+      }
+      if(event.target.id === 'music' ) {
+          promise = await getAllMusic();
+      }
+      if(event.target.id === 'podcasts' ) {
+        promise = await getAllPodcasts();
+      }
+      this.setState({ [event.target.id]: promise})
+      } catch (error){
+        console.log(error)
+      }
   }
 
   updateActivityAnswers = (event) => {
@@ -47,21 +61,25 @@ class App extends Component {
   }
 
   render() {
-    const { movies } = this.state
+
     return (
       <div className="App">
         <Route 
           exact path='/'>
           <Homepage 
-             allMovies={this.state.movies}
+            getActivityData={this.getActivityData}
+            allMovies={this.state.movies}
           />
         </Route>
 
         <Route
-          exact path='/our_movies'>
-            <BrowsePage 
-            movies={ movies }
+          exact path='/:activity'
+          render={({ match }) => {
+            return <BrowsePage 
+            name={match.params.activity}
+            data={ this.state[match.params.activity]}
           />
+          }}>
         </Route>
 
         <Footer />
