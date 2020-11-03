@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {questionSet} from './questions'
 import {getAllQuestions} from '../../apiCalls'
 import './Form.scss';
 
@@ -33,7 +32,7 @@ export class Form extends Component {
     if (this.state.allAnswers.length === 1) {
       this.props.setActivities(this.state.allAnswers[0]);
       let relevantQuestions = this.state.allAnswers[0].reduce((relevantQuestions, activity) => {
-        let filteredQuestions = questionSet.filter(question => {
+        let filteredQuestions = this.state.prompts.filter(question => {
           return question.activity === activity;
         })
         let questionsByActivity = {
