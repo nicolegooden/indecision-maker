@@ -1,3 +1,122 @@
+@import  '../../styles/variables.scss';
+
 .question-form{
-    background-color: burlywood;
+    background-color: $darkPurple;
+    height: 100%;
+    width: 100%;
+
+
+    .bar-menu{
+        background-image: url(https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80);
+        background-size: cover;
+        display: flex;
+        flex-direction: rows;
+        background-color: $dark;
+        justify-content: space-between;
+        margin: 0%;
+        padding: 1%;
+
+        .logo{
+          font-size: 6em;
+          font-weight: 400;
+          color: $mango;
+        }
+    }
+
+    .form-container{
+        margin-top: 2%;
+
+       .question{
+            color: $light;
+            font-size: 3em;
+            font-family: $Balsamiq;
+            font-weight: 700;
+            height: 4vh;
+            margin: 3% 0% 1% 0%;
+        }
+
+        .possible-answers{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            height: 40vh;
+            padding: 5% 3% 5% 3%;
+
+            .choice{
+                align-self: center;
+                color: $mexicanPink ;
+                font-size: 2em;
+                height: 10vh;
+                justify-self: center;
+                text-shadow:
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 40px #f8bd7f,
+                0 0 80px #f8bd7f,
+                0 0 90px #f8bd7f,
+                0 0 100px #f8bd7f,
+            }
+
+            .choice:hover{
+                color: #fff;
+                cursor: pointer;
+                text-align: center;
+            }
+        }
+    }
+
+    .picks-title-container{
+
+        color: $cloud;
+        height: 100%;
+        font-family: $Balsamiq;
+        text-align: center;
+        width: 100%;
+        margin: 0%;
+        padding: 0%;
+
+        .picks-title{
+            margin: 0%;
+            padding: 5% 0% 2% 0%;
+            font-size: 2em;
+        }
+    }
+
+    .user-picks-container{
+        display: inline-flex;
+        background: darken($marineBlue, 15%);
+        color: $cloud;
+        height: 100%;
+        justify-content: center;
+        width: 100%;
+        overflow: auto;
+
+        .current-answer{
+            border: 1px solid $cloud;
+            border-radius:2em;
+            margin: 2%;
+            padding: 1%;
+            align-self: center;
+        }
+    }
+
+    .form-controls{
+        display: inline-flex;
+        align-content: center;
+        height: 10vh;
+        justify-content: space-evenly;
+        width: 100%;
+        
+
+        .back-button,.form-button{
+            margin: 2%;
+            align-self: center;
+            @include buttonStyle();
+            padding: 0%;
+            height: 50%;
+            margin: 4% 0% 4% 0%;
+            width: 20%;
+        }
+    }
 }

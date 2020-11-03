@@ -1,7 +1,9 @@
-import React, {Component} from 'react';
-import {getAllQuestions} from '../../apiCalls'
+import React, { Component } from 'react';
+import { getAllQuestions } from '../../apiCalls'
 import './Form.scss';
-
+import { RiHomeSmileLine } from "react-icons/ri";
+import { Link } from 'react-router-dom';
+import { CgUserlane } from "react-icons/cg";
 export class Form extends Component {
   constructor(props) {
     super(props)
@@ -17,19 +19,17 @@ export class Form extends Component {
     this.setState({prompts: await getAllQuestions()})
   }
 
-  updateCurrentAnswers = (event, questionData) => {
-    if (+questionData.allowedResponses && this.state.currentAnswers.find(answer => questionData.choices.includes(answer))) {
-      let choiceToSwap = this.state.currentAnswers.find(answer => questionData.choices.includes(answer))
-      let indexToReplace = this.state.currentAnswers.indexOf(choiceToSwap)
-      let answerToReplace = this.state.currentAnswers.slice(indexToReplace + 1)
-      if (answerToReplace) {
-        return this.setState({currentAnswers: [...answerToReplace, event.target.textContent]})
-      }
-    }
-    else {
-      this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]})
+  updateCurrentAnswers = (event) => {
+    event.preventDefault();
+    if (this.state.currentAnswers.includes(event.target.textContent)){
+      const answersPerQuestion = [...this.state.currentAnswers]
+      const index = this.state.currentAnswers.indexOf(event.target.textContent)
+      answersPerQuestion.splice(index, 1)
+      this.setState({currentAnswers: answersPerQuestion })
+      return 
     }
     this.props.updateActivityAnswers(event)
+    this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]})
   }
 
   updateAllAnswers = async (event) => {
@@ -68,24 +68,28 @@ export class Form extends Component {
 
   determinePrompt = (index, data) => {
     return (
-      <article className='question-with-choices'>
-        <h2 className='single-question'>{data[index].question}</h2>
-        <div>
-          {data[index].choices.map((choice, i) => {
-            return <h2
-              key={i}
-              id={data[index].answerType}
-              onClick={(e) => {
-                this.updateCurrentAnswers(e, data[index])
-              }
-              }
-              value={choice}
-              className='choice'>{choice}
-            </h2>
-          })}
-        </div>
-      </article>
-    )
+        <article className='form-container'>
+          <h2 className='question'>{data[index].question}</h2>
+          <div className='possible-answers'>
+            {data[index].choices.map((choice, i) => {
+              return (
+                <div className='choice'>
+                  <h3
+                    key={i}
+                    id={data[index].answerType}
+                    onClick={(e) => {
+                      this.updateCurrentAnswers(e, data[index])
+                      }
+                    }
+                    value={choice} 
+                    className='option'>{choice}
+                  </h3>
+                </div>
+                )
+            })}
+          </div>
+        </article>
+      )
   }
 
   showQuestion = () => {
@@ -103,11 +107,15 @@ export class Form extends Component {
   }
 
   showCurrentAnswers = () => {
+    console.log('yeet')
     return this.state.currentAnswers.map((answer, i) => {
-      return <h3
-        key={i}
-        className='current-answer'
-      >{answer}</h3>
+      return (
+         <h3 
+          key={i}
+          className='current-answer'
+          >{answer}
+        </h3>
+      )
     })
   }
 
@@ -132,11 +140,32 @@ export class Form extends Component {
   render() {
     return (
       <form className='question-form'>
-        <h2 className='question'>{this.state.prompts.length && this.showQuestion()}</h2>
-        {this.showCurrentAnswers()}
-        <button className='back-button form-button'>back</button>
-        {this.determineNextOrSubmit()}
-      </form >
+
+        <div className="bar-menu">
+          <CgUserlane className="logo"/>
+          <Link to='/'>
+            <RiHomeSmileLine className="logo"/>
+          </Link>
+        </div>
+
+        <div className="form-container">
+          {this.state.prompts.length && this.showQuestion()}
+
+        </div>
+
+        <div className="picks-title-container">
+          <h4 className="picks-title">Your picks!</h4>
+        </div>
+        <div className="user-picks-container">
+          {this.showCurrentAnswers()}
+        </div>
+
+        <div className="form-controls">
+         <button className='back-button form-button'>back</button>
+         {this.determineNextOrSubmit()}
+        </div>
+        
+      </form>
     )
   }
 }

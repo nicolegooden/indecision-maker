@@ -1,17 +1,22 @@
 import './App.scss';
-import {Homepage} from '../HomePage/Homepage';
-import {Header} from '../Header/Header';
-import {Form} from '../Form/Form';
-import {Movie} from '../Movie/Movie';
-import {Music} from '../Music/Music';
-import {Podcast} from '../Podcast/Podcast';
-import {BoardGame} from '../BoardGame/BoardGame';
-import {CardGame} from '../CardGame/CardGame';
-import React, {Component} from 'react';
-import {Route, Switch} from 'react-router-dom';
-import {getAllMovies, getAllPodcasts, getAllCardGames, getAllMusic, getAllBoardGames} from '../../apiCalls.js'
-import {BrowsePage} from '../BrowsePage/BrowsePage'
-import {Footer} from '../Footer/Footer'
+import { Homepage } from '../HomePage/Homepage';
+import { Header } from '../Header/Header';
+import { Form } from '../Form/Form';
+import { Movie } from '../Movie/Movie';
+import { Music } from '../Music/Music';
+import { Podcast } from '../Podcast/Podcast';
+import { BoardGame } from '../BoardGame/BoardGame';
+import { CardGame } from '../CardGame/CardGame';
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { getAllMovies, 
+  getAllPodcasts, 
+  getAllCardGames, 
+  getAllMusic, 
+  getAllBoardGames} 
+  from '../../apiCalls.js'
+import { BrowsePage } from '../BrowsePage/BrowsePage';
+import { Footer } from '../Footer/Footer';
 class App extends Component {
   constructor() {
     super();
@@ -111,24 +116,25 @@ class App extends Component {
             }}>
           </Route>
 
-          <Footer />
+          
 
-          <Route exact path='/movie'>
-            <Movie />
-          </Route>
-          <Route exact path='/podcast'>
-            <Podcast />
-          </Route>
-          <Route exact path='/music'>
-            <Music />
-          </Route>
-          <Route exact path='/boardgame'>
-            <BoardGame />
-          </Route>
-          <Route exact path='/cardgame'>
-            <CardGame />
-          </Route>
-        </Switch>
+            {/* <Route exact path='/movie'>
+              <Movie />
+            </Route>
+            <Route exact path='/podcast'>
+              <Podcast />
+            </Route>
+            <Route exact path='/music'>
+              <Music />
+            </Route>
+            <Route exact path='/boardgame'>
+              <BoardGame />
+            </Route>
+            <Route exact path='/cardgame'>
+              <CardGame />
+            </Route> */}
+         </Switch>
+        <Footer />
       </div >
     );
   }

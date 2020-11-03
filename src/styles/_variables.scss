@@ -1,10 +1,14 @@
 @import url(https://fonts.googleapis.com/css2?family=Poiret+One&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Oswald:wght@200;300;400;500&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap);
+
 //font families
+
 $poiret-one: 'Poiret One', cursive; 
 $Comfortaa: 'Comfortaa', cursive; 
 $Oswald: 'Oswald', sans-serif;
+$Balsamiq: 'Balsamiq Sans', cursive;
 //colors
 $purple: #794C74;
 $mexicanPink: #C56183;
@@ -38,8 +42,8 @@ $dark: #1a1c20;
 }
 
 @mixin border(){
-    height: 90%;
-    width: 90%;
+    height: 93%;
+    width: 93%;
     background-color: transparent;
     border: 2px solid$cloud;
     position: absolute;
