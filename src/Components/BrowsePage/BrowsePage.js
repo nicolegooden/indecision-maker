@@ -5,7 +5,6 @@ import { RiHomeSmileLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 
 export const BrowsePage = (props) => {
-    console.log(props.data)
     const injectActivityInformation = () => {
         return props.data.map((e, i) => {
             return (

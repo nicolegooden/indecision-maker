@@ -26,7 +26,6 @@ class App extends Component {
   }
 
   getActivityData = async (event) => {
-    console.log(event.target.id)
     let promise;
     try{
       if(event.target.id === 'movies' ) {
