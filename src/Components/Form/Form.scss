@@ -17,7 +17,7 @@
         padding: 1%;
 
         .logo{
-          font-size: 9em;
+          font-size: 6em;
           font-weight: 400;
           color: $mango;
         }
@@ -67,7 +67,7 @@
     }
 
     .picks-title-container{
-        // background: darken($marineBlue, 15%);
+
         color: $cloud;
         height: 100%;
         font-family: $Balsamiq;
@@ -79,7 +79,7 @@
 
         .picks-title{
             margin: 0%;
-            padding: 1%;
+            padding: 5% 0% 2% 0%;
             font-size: 2em;
         }
     }
