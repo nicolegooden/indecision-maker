@@ -68,11 +68,14 @@ export class Form extends Component {
 
   showQuestion = () => {
     if (!this.props.activities.length && !this.state.allAnswers.length) {
-      return this.determinePrompt(0, questionSet);
+      return this.determinePrompt(0, this.state.prompts);
     }
     if (this.state.questionsPerActivity.length) {
       let unansweredSet = this.state.questionsPerActivity.find(set => {
         return this.state.allAnswers[0][this.state.allAnswers.length - 1] === set.activity
+      })
+      return unansweredSet.questions.map((question, i) => {
+        return this.determinePrompt(i, unansweredSet.questions)
       })
     }
   }
@@ -106,7 +109,7 @@ export class Form extends Component {
   render() {
     return (
       <form className='question-form'>
-        <h2 className='question'>{this.showQuestion()}</h2>
+        <h2 className='question'>{this.state.prompts.length && this.showQuestion()}</h2>
         {this.showCurrentAnswers()}
         <button className='back-button form-button'>back</button>
         {this.determineNextOrSubmit()}
