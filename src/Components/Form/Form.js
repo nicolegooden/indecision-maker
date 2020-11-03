@@ -103,9 +103,8 @@ export class Form extends Component {
   }
 
   handleSubmission = (event) => {
-    this.updateAllAnswers({event})
     event.preventDefault()
-    //invoke app's method for showing suggested activity
+    this.props.determineRandomActivity()
   }
 
   determineNextOrSubmit = () => {
