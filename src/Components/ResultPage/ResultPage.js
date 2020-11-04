@@ -4,7 +4,9 @@ import { CgUserlane } from "react-icons/cg";
 import { RiHomeSmileLine } from "react-icons/ri";
 import { GoLightBulb } from "react-icons/go";
 import { Link } from 'react-router-dom';
-export const ResultPage = () => {
+export const ResultPage = (props) => {
+  console.log(props)
+  const noImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"
     return (
         <section className="result-container">
             <Link to="/" className="home-logo">
@@ -20,11 +22,15 @@ export const ResultPage = () => {
             <a className="slide-link" href="#slide-1">1</a>
             <a className="slide-link" href="#slide-2">2</a>
           
-
             <div className="slides">
             
                 <div className="slide" id="slide-1">
-                    <img className="image" src="https://images.unsplash.com/photo-1520156557489-31c63271fcd4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""/>
+                    <img className="image" 
+                        src={props.randomActivity.image_poster 
+                        || props.randomActivity.image_100 
+                        || props.randomActivity.image 
+                        || noImage} 
+                        alt=""/>
                 </div>
 
                 <div className="slide" id="slide-2">
