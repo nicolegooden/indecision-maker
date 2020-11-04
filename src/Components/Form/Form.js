@@ -8,8 +8,8 @@ export class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: '',
-      history:[],
+      error: "",
+      history: [],
       prompts: [],
       allAnswers: [],
       currentAnswers: [],
@@ -21,16 +21,16 @@ export class Form extends Component {
     this.setState({ prompts: await getAllQuestions() });
   };
 
-  setHistory = () =>{
-    this.setState({history:[...this.state.history, this.state]})
-   this.props.setHistory()
-  }
-      
-  goBack = (event) =>{
-    event.preventDefault()
-    this.setState(this.state.history[this.state.history.length - 1])
-    this.props.goBack()
-  }
+  setHistory = () => {
+    this.setState({ history: [...this.state.history, this.state] });
+    this.props.setHistory();
+  };
+
+  goBack = (event) => {
+    event.preventDefault();
+    this.setState(this.state.history[this.state.history.length - 1]);
+    this.props.goBack();
+  };
 
   updateCurrentAnswers = (event, questionData) => {
     event.preventDefault();
@@ -71,15 +71,15 @@ export class Form extends Component {
 
   updateAllAnswers = async (event) => {
     event.preventDefault();
-    this.setHistory()
+    this.setHistory();
     if (this.state.allAnswers.length === 0) {
-      if (this.state.currentAnswers.length === 0){
-        return this.setState({error: "Please select an activity"})
+      if (this.state.currentAnswers.length === 0) {
+        return this.setState({ error: "Please select an activity" });
       }
       await this.setState({
         allAnswers: [...this.state.allAnswers, this.state.currentAnswers],
         currentAnswers: [],
-        error: ''
+        error: "",
       });
       this.props.setActivities(this.state.allAnswers[0]);
       let activitySet = this.handleBothGames();
@@ -87,20 +87,16 @@ export class Form extends Component {
       return this.setState({ questionsPerActivity: [...relevantQuestions] });
     }
     let index = this.state.allAnswers.length - 1;
-    if (
-      this.state.questionsPerActivity[index].questions.every((question) => {
-        return this.state.currentAnswers.some((answer) =>
-          question.choices.includes(answer)
-        );
-      })
-    ) {
+    if (this.checkForAllQuestions()){
       return this.setState({
         allAnswers: [...this.state.allAnswers, this.state.currentAnswers],
         currentAnswers: [],
-        error: ''
+        error: "",
       });
     } else {
-        return this.setState({error: "Please select at least one option for each question"})
+      return this.setState({
+        error: "Please select at least one option for each question",
+      });
     }
   };
 
@@ -175,20 +171,25 @@ export class Form extends Component {
     }
   };
 
-  handleSubmission = (event) => {
-    event.preventDefault()
-
+  checkForAllQuestions = () => {
     let index = this.state.allAnswers.length - 1;
-    if (
-      this.state.questionsPerActivity[index].questions.every((question) => {
+    return this.state.questionsPerActivity[index].questions.every(
+      (question) => {
         return this.state.currentAnswers.some((answer) =>
           question.choices.includes(answer)
         );
-      })
-    ) {
+      }
+    );
+  };
+
+  handleSubmission = (event) => {
+    event.preventDefault();
+    if (this.checkForAllQuestions()) {
       this.props.determineRandomActivity();
     } else {
-        return this.setState({error: "Please select at least one option for each question"})
+      return this.setState({
+        error: "Please select at least one option for each question",
+      });
     }
   };
 
@@ -243,7 +244,7 @@ export class Form extends Component {
       <form className="question-form">
         <div className="bar-menu">
           <CgUserlane className="logo" />
-          <Link to="/" onClick={()=> this.props.resetState()}>
+          <Link to="/" onClick={() => this.props.resetState()}>
             <RiHomeSmileLine className="logo" />
           </Link>
         </div>
@@ -254,9 +255,11 @@ export class Form extends Component {
           <h4 className="picks-title">Your picks!</h4>
         </div>
         <div className="user-picks-container">{this.showCurrentAnswers()}</div>
-          <h3>{this.state.error}</h3>
+        <h3>{this.state.error}</h3>
         <div className="form-controls">
-          <button className="back-button form-button"onClick={this.goBack}>back</button>
+          <button className="back-button form-button" onClick={this.goBack}>
+            back
+          </button>
           {this.determineNextOrSubmit()}
         </div>
       </form>
