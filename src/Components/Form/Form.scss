@@ -108,15 +108,29 @@
         justify-content: space-evenly;
         width: 100%;
         
+ 
 
-        .back-button,.form-button{
-            margin: 2%;
-            align-self: center;
-            @include buttonStyle();
-            padding: 0%;
-            height: 50%;
-            margin: 4% 0% 4% 0%;
-            width: 20%;
-        }
+           .back-button, .form-button, .submit-button{
+               margin: 2%;
+               align-self: center;
+               @include buttonStyle();
+               padding: 0%;
+               height: 50%;
+               margin: 4% 0% 4% 0%;
+               width: 20%;
+               background-color: $bones;
+           }
+
+           .submit{
+            background-color: $bones;
+            padding: 1%;
+           }
+
+        //    .submit-button{
+        //     margin: 2%;
+        //     align-self: center;
+        //     width: 40%;
+        //    }
+       
     }
 }
