@@ -18,6 +18,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      history: [],
       activities: [],
       musicAnswers: [],
       moviesAnswers: [],
@@ -65,6 +66,14 @@ class App extends Component {
 
   resetState = ()=>{
     this.setState(this.baseState)
+  }
+  setHistory = () =>{
+    this.setState({
+      history:[...this.state.history, this.state],
+    })
+  }
+  goBack = ()=>{
+    this.setState(this.state.history[this.state.history.length - 1])
   }
 
   updateActivityAnswers = (event) => {
@@ -192,6 +201,8 @@ class App extends Component {
           </Route>
           <Route exact path="/form">
             <Form
+              goBack={this.goBack}
+              setHistory={this.setHistory}
               resetState={this.resetState}
               activities={this.state.activities}
               setActivities={this.setActivities}
