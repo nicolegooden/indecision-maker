@@ -4,7 +4,9 @@ import { CgUserlane } from "react-icons/cg";
 import { RiHomeSmileLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 
-export const DetailsPage = () => {
+export const DetailsPage = (props) => {
+    
+
     return (
         <div className="details-container">
           <div className="bar-menu">
