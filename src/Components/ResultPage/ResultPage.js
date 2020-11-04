@@ -6,7 +6,6 @@ import { FaLightbulb } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 export const ResultPage = (props) => {
-  console.log(props)
   const noImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"
   const displayActivityGallery = () => {
     return props.data.map((activity, i) => {
@@ -17,6 +16,7 @@ export const ResultPage = (props) => {
           <FaLightbulb className="bulb-icon"/>
           <h3 className="title">{
                activity.song_title 
+            || activity.album_title 
             || activity.title 
             || activity.podcast_title 
             || activity.podcast_name
@@ -27,6 +27,7 @@ export const ResultPage = (props) => {
                activity.podcast_name
             || activity.artist
             || activity.materials
+            || activity.title 
             || "no information available"
             }
           </h3>
@@ -98,12 +99,17 @@ export const ResultPage = (props) => {
           </div>
             
           <div className="activity-controls">
+          <Link to={`/about/${props.randomActivity.song_title
+              || props.randomActivity.title 
+              || props.randomActivity.podcast_title 
+              || props.randomActivity.name}/details`}>
+
             <button className="button pick-activity">Choose me!</button>
-            <button className="button skip-activity">Not sure!</button>
+          </Link>
+            <button className="button skip-activity">Skip!</button>
           </div>
 
           <div className="the-rest-container">
-
            {displayActivityGallery()}
           </div>
 
