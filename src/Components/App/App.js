@@ -88,7 +88,9 @@ class App extends Component {
       filtered.push(filteredActivities)
       return filtered
     }, [])
-    return allFilteredActivities.flat()
+    let final = allFilteredActivities.flat()
+    let randomNumber = Math.floor(Math.random() *final.length)
+    return final[randomNumber]
   }
 
   filterActivity = (activity, answers) => {
@@ -109,9 +111,11 @@ class App extends Component {
       let ageRestriction = answers.find(answer => {
         return answer.includes('\'s')
       })
-      possibleSuggestions = possibleSuggestions.filter(element => {
-        return element.release_date.split('-')[0] > ageRestriction.split('\'s')[0]
-      })
+      if (ageRestriction) {
+        possibleSuggestions = possibleSuggestions.filter(element => {
+          return element.release_date.split('-')[0] > ageRestriction.split('\'s')[0]
+        })
+      }
     }
     if (activity === 'movies') {
         if (answers.includes('too long')) {
