@@ -31,25 +31,31 @@ class App extends Component {
     }
   }
 
-  getActivityData = async (event) => {
+  getActivityData = async (name) => {
+    if (name.target) {
+      name = name.target.id
+    }
+    if (name.includes('games')) {
+      name = name.replace(/ games/gi, 'Games')
+    }
     let promise;
     try {
-      if (event.target.id === 'movies') {
+      if (name === 'movies') {
         promise = await getAllMovies();
       }
-      if (event.target.id === 'boardGames') {
+      if (name === 'boardGames') {
         promise = await getAllBoardGames();
       }
-      if (event.target.id === 'cardGames') {
+      if (name === 'cardGames') {
         promise = await getAllCardGames();
       }
-      if (event.target.id === 'music') {
+      if (name === 'music') {
         promise = await getAllMusic();
       }
-      if (event.target.id === 'podcasts') {
+      if (name === 'podcasts') {
         promise = await getAllPodcasts();
       }
-      this.setState({[event.target.id]: promise})
+      this.setState({[name]: promise})
     } catch (error) {
       console.log(error)
     }
@@ -62,22 +68,74 @@ class App extends Component {
   }
 
   setActivities = (activities) => {
+    activities.forEach(activity => {
+      this.getActivityData(activity)
+    })
     this.setState({activities: [...activities]})
   }
 
   determineRandomActivity = () => {
+    let allFilteredActivities = this.state.activities.reduce((filtered, activity) => {
+      if (activity.includes('games')) {
+        activity = activity.replace(/ games/gi, 'Games')
+      }
+      let filteredActivities = this.filterActivity(activity, this.state[`${activity}Answers`])
+      filtered.push(filteredActivities)
+      return filtered
+    }, [])
+    let final = allFilteredActivities.flat()
+    let randomNumber = Math.floor(Math.random() *final.length)
+    return final[randomNumber]
+  }
 
-    // redirect to temporary loading page while the below logic is run
-    // what activities did the user select?
-    // fetch all activities and place somewhere to be filtered through, here? Result component?
-    // if Result component we will also have to pass the answers of the questions down
-    // filter through All results from fetch with specific conditions based on selected answers
-    // store these further filtered results in somewhere where we can access them more than once, state?
-    // randomly choose one of these further filtered activities, maybe remove this from state at that time? 
-    // render component that will display the previewcard
-    // let user select to see more info or skip
-    // if user selects skip, get another random activity from set which should no longer include the one they skipped if we removed it
-    // Should user be able to skip once they have selected to see more info? If they are no longer interested?
+  filterActivity = (activity, answers) => {
+    //refactor this - break out into helper functions
+    let genreGroup = ['movies', 'podcasts', 'music']
+    let gamesGroup = ['boardGames', 'cardGames']
+    let ageGroup = ['movies', 'music']
+    let possibleSuggestions;
+    if (genreGroup.includes(activity)) {
+      possibleSuggestions = this.state[activity].filter(singleActivity => {
+        if (activity === 'movies') {
+          return singleActivity.genre.some(genre => answers.includes(genre))
+        }
+        return answers.some(genre => genre === singleActivity.genre)
+      })
+    }
+    if (ageGroup.includes(activity)) {
+      let ageRestriction = answers.find(answer => {
+        return answer.includes('\'s')
+      })
+      if (ageRestriction) {
+        possibleSuggestions = possibleSuggestions.filter(element => {
+          return element.release_date.split('-')[0] > ageRestriction.split('\'s')[0]
+        })
+      }
+    }
+    if (activity === 'movies') {
+        if (answers.includes('too long')) {
+          possibleSuggestions = possibleSuggestions.filter(element => {
+            return +element.runtime < 120
+          })
+        }
+        if (answers.includes('that\'s fine')) {
+          return possibleSuggestions
+        }
+    }
+    if (gamesGroup.includes(activity)) {
+      possibleSuggestions = this.state[activity]
+      const choices = ['1', '2', '3', '4', '5', 'more than 5']
+      let numberOfPlayers = choices.find(choice => {
+        return answers.includes(choice)
+      })
+      possibleSuggestions = possibleSuggestions.filter(element => {
+        if (numberOfPlayers === 'more than 5') {
+          return element.max_players >= 5
+        }
+        return element.min_players <= numberOfPlayers && element.max_players >= numberOfPlayers
+      })
+    }
+    return possibleSuggestions
   }
 
   render() {
@@ -91,10 +149,7 @@ class App extends Component {
               allMovies={this.state.movies}
             />
           </Route>
-
-          <Route 
-          exact 
-          path='/form'>
+          <Route exact path='/form'>
             <Form
               activities={this.state.activities}
               setActivities={this.setActivities}
@@ -102,7 +157,9 @@ class App extends Component {
               determineRandomActivity={this.determineRandomActivity}
             />
           </Route>
-
+          {/* <Route exact path='/result'>
+            <Result determineRandomActivity={this.determineRandomActivity}/>
+          </Route> */}
           <Route
             exact 
             path='/:activity'
@@ -113,7 +170,6 @@ class App extends Component {
               />
             }}>
           </Route>
-
           <Route
             exact 
             path='/music/result'
@@ -124,7 +180,6 @@ class App extends Component {
               />
             }}>
           </Route>
-
          </Switch>
         {/* <Footer /> */}
       </div >
