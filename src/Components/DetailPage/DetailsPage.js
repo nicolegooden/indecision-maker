@@ -85,7 +85,8 @@ export const DetailsPage = (props) => {
 
           <div className="info activity-more-info">
             <h1 className="">A little bit about me</h1>
-            {props.randomActivity.movie_plot && <p className="content">{props.randomActivity.movie_plot}</p>}
+            {props.randomActivity.brief_description && <p className="content">{props.randomActivity.brief_description || props.randomActivity.brief_description}</p>}
+
             {props.randomActivity.description && <p className="content">{props.randomActivity.description}</p>}
 
             {props.randomActivity.artist && <h3 className="title">Artis name</h3>}
