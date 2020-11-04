@@ -6,19 +6,19 @@ import { FaLightbulb } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 export const ResultPage = (props) => {
+
   const noImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"
   const displayActivityGallery = () => {
     return props.data.map((activity, i) => {
-
     return (
       <div key={i}className="inner-all-rest">
         <div className="border">
           <FaLightbulb className="bulb-icon"/>
           <h3 className="title">{
-               activity.song_title 
+             activity.podcast_title 
+            || activity.song_title 
             || activity.album_title 
             || activity.title 
-            || activity.podcast_title 
             || activity.podcast_name
             || activity.name
             || "no information"}
@@ -61,14 +61,15 @@ export const ResultPage = (props) => {
             <CgUserlane className="logo" />
           </div>
 
-          <h1 className="message">Finally, here is a suggestion for you!</h1>
+          {!props.error ? <h1 className="message">Finally, here is a suggestion for you!</h1> : 
+          <h1 className="message">{props.error}</h1>}
 
           <div className="slider">
 
             <h1 className="activity-title">{
-                props.randomActivity.song_title
+              props.randomActivity.podcast_title
+              || props.randomActivity.song_title
               || props.randomActivity.title 
-              || props.randomActivity.podcast_title 
               || props.randomActivity.name
               || "no information"
             }
@@ -98,20 +99,31 @@ export const ResultPage = (props) => {
             </div>
           </div>
             
-          <div className="activity-controls">
-          <Link to={`/about/${props.randomActivity.song_title
+           <div className="activity-controls">
+           {!props.error && <Link 
+             to={
+               `/about/${props.randomActivity.song_title
               || props.randomActivity.title 
               || props.randomActivity.podcast_title 
-              || props.randomActivity.name}/details`}>
-
-            <button className="button pick-activity">Choose me!</button>
-          </Link>
-            <button className="button skip-activity">Skip!</button>
+              || props.randomActivity.name
+              }/details`
+              }>
+             <button className="button pick-activity">Choose me!</button>
+          </Link>}
+            <button 
+              onClick={props.determineRandomActivity}
+              className="button skip-activity">{props.error ? "back" : "skip"}</button>
           </div>
 
           <div className="the-rest-container">
            {displayActivityGallery()}
           </div>
+
+          <div className="more-suggestions">
+            <h5 className="simmilar-picks">Simmilar picks</h5>
+          </div>
+
+
 
         </section>
     )
