@@ -1,0 +1,155 @@
+@import  '../../styles/variables.scss';
+
+.result-container{
+    height: 100vh;
+    background-color: black;
+    display:grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    align-content: center;
+
+    .app-logo{
+        grid-area: 1/ 1/ 1 / 1;
+        margin: 2%;
+        font-size: 5em;
+
+        .logo{
+            color: $mango;
+        }
+        
+    }
+
+    .message{
+        align-self: center;
+        grid-area: 2/ 4/ 3 / 6;
+        color: $mango;
+        margin: 2%;
+        font-family: $poiret-one;
+        font-size: 3em;
+    }
+
+    .home-logo{
+        grid-area: 2/ 6/ 1 / 7;
+        margin: 2%;
+        font-size: 5em;
+        color:$mango;
+    }
+
+    .slider {
+        grid-area: 2/ 2 / 5 / 5;
+        color: white;
+        width: 300px;
+        text-align: center;
+        overflow: hidden;
+        height: 100%;
+
+        // background-color: darkgrey;
+
+        .slide-link{
+            color: $vanilla;
+            display: inline-flex;
+            width: 2rem;
+            height: 1.5rem;
+            background:$darkPurple;
+            text-decoration: none;
+            align-items: center;
+            justify-content: center;
+            margin: 1% 1% 0.5rem 0%;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .slides {
+            
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            height: 40vh;
+
+            .slide{
+                scroll-snap-align: start;
+                flex-shrink: 0;
+                width: 300px;
+                height: 300px;
+                margin-right: 50px;
+                margin: 5%;
+                border-radius: 2em;
+                background: #eee;
+                transform-origin: center center;
+                transform: scale(1);
+                transition: transform 0.5s;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 100px;
+                overflow: hidden;
+
+                .inner-slide{
+                    overflow: auto;
+                    background-color: darkmagenta;
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+
+            
+        }
+        
+      }
+
+
+    .activity-controls{
+        grid-area: 3/ 4/ 4 / 6;
+        .button{
+
+            @include buttonStyle();
+            height: 5%;
+            margin: 5%;
+            padding: 5%;
+            width: 50%;
+        }
+
+        .button:hover{
+            background-color: $bones;
+        }
+    }
+
+    .the-rest-container{
+        background-color: $bones;
+        grid-area: 5/ 1/ 7 / 7;
+        padding: 1% 2% 1% 2%;
+        margin: 1%;
+        display: flex;
+        flex-direction: row;
+        overflow: auto;
+
+        .inner-all-rest{
+            background:$darkPurple;
+            // height: 100%;
+            width: 20%;
+            margin: .5%;
+            display: inline-flex;
+            
+
+            .border{
+                background-color: transparent;
+                border: 1px solid gold;
+                height: 90%;
+                width: 90%;
+                align-self: center;
+                margin: 5%;
+
+                .bulb-icon{
+                    @include logo();
+                }
+                .title{
+                    color: $mango;
+                    font-family: $poiret-one;
+                }
+            }
+        }
+    }
+}

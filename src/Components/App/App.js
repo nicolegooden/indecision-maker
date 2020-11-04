@@ -1,13 +1,6 @@
 import './App.scss';
 import { Homepage } from '../HomePage/Homepage';
-import { Header } from '../Header/Header';
 import { Form } from '../Form/Form';
-import { Movie } from '../Movie/Movie';
-import { Music } from '../Music/Music';
-import { Podcast } from '../Podcast/Podcast';
-import { BoardGame } from '../BoardGame/BoardGame';
-import { CardGame } from '../CardGame/CardGame';
-// import { Result } from '../Result/Result';
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { getAllMovies, 
@@ -18,6 +11,8 @@ import { getAllMovies,
   from '../../apiCalls.js'
 import { BrowsePage } from '../BrowsePage/BrowsePage';
 import { Footer } from '../Footer/Footer';
+import { ResultPage } from '../ResultPage/ResultPage';
+
 class App extends Component {
   constructor() {
     super();
@@ -166,7 +161,8 @@ class App extends Component {
             <Result determineRandomActivity={this.determineRandomActivity}/>
           </Route> */}
           <Route
-            exact path='/:activity'
+            exact 
+            path='/:activity'
             render={({match}) => {
               return <BrowsePage
                 name={match.params.activity}
@@ -174,23 +170,18 @@ class App extends Component {
               />
             }}>
           </Route>
-            {/* <Route exact path='/movie'>
-              <Movie />
-            </Route>
-            <Route exact path='/podcast'>
-              <Podcast />
-            </Route>
-            <Route exact path='/music'>
-              <Music />
-            </Route>
-            <Route exact path='/boardgame'>
-              <BoardGame />
-            </Route>
-            <Route exact path='/cardgame'>
-              <CardGame />
-            </Route> */}
+          <Route
+            exact 
+            path='/music/result'
+            render={({match}) => {
+              return <ResultPage 
+                name={match.params}
+                // data={}
+              />
+            }}>
+          </Route>
          </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </div >
     );
   }
