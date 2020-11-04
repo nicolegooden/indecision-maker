@@ -30,6 +30,7 @@ class App extends Component {
       boardGames: [],
       cardGames: [],
     };
+  this.baseState = this.state
   }
 
   getActivityData = async (name) => {
@@ -61,6 +62,10 @@ class App extends Component {
       console.log(error);
     }
   };
+
+  resetState = ()=>{
+    this.setState(this.baseState)
+  }
 
   updateActivityAnswers = (event) => {
     if (event.target.id !== "default") {
@@ -187,6 +192,7 @@ class App extends Component {
           </Route>
           <Route exact path="/form">
             <Form
+              resetState={this.resetState}
               activities={this.state.activities}
               setActivities={this.setActivities}
               updateActivityAnswers={this.updateActivityAnswers}
