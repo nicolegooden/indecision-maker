@@ -112,7 +112,7 @@ class App extends Component {
 
   ageFilter = (possibleSuggestions, answers) => {
     let ageRestriction = answers.find((answer) => {
-      return answer.includes("'s");
+      return answer.includes("0's");
     });
     if (ageRestriction) {
       return possibleSuggestions.filter((element) => {
@@ -121,6 +121,7 @@ class App extends Component {
         );
       });
     }
+    return possibleSuggestions
   };
 
   movieFilter = (possibleSuggestions, answers) => {
