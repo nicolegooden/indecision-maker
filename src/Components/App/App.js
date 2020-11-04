@@ -88,7 +88,7 @@ class App extends Component {
       filtered.push(filteredActivities)
       return filtered
     }, [])
-    // console.log(reduce.flat())
+    console.log('help', reduce.flat())
   }
 
   filterActivity = (activity, answers) => {
@@ -112,20 +112,28 @@ class App extends Component {
         return element.release_date.split('-')[0] > ageRestriction.split('\'s')[0]
       })
     }
+    if (activity === 'movies') {
+        if (answers.includes('too long')) {
+          possibleSuggestions = possibleSuggestions.filter(element => {
+            return +element.runtime < 120
+          })
+        }
+        if (answers.includes('that\'s fine')) {
+          return possibleSuggestions
+        }
+    }
+    if (activity.includes('Games')) {
+      possibleSuggestions = this.state[activity]
+      const choices = ['1', '2', '3', '4', '5', 'more than 5']
+      let numberOfPlayers = choices.find(choice => {
+        return answers.includes(choice)
+      })
+      possibleSuggestions = possibleSuggestions.filter(element => {
+        return element.min_players <= numberOfPlayers && element.max_players >= numberOfPlayers
+      })
+    }
+    console.log(possibleSuggestions)
   }
-
-    // redirect to temporary loading page while the below logic is run
-    // what activities did the user select?
-    // fetch all activities and place somewhere to be filtered through, here? Result component?
-    // if Result component we will also have to pass the answers of the questions down
-    // filter through All results from fetch with specific conditions based on selected answers
-    // store these further filtered results in somewhere where we can access them more than once, state?
-    // randomly choose one of these further filtered activities, maybe remove this from state at that time? 
-    // render component that will display the previewcard
-    // let user select to see more info or skip
-    // if user selects skip, get another random activity from set which should no longer include the one they skipped if we removed it
-    // Should user be able to skip once they have selected to see more info? If they are no longer interested?
-  
 
   render() {
     return (
