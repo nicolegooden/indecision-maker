@@ -38,13 +38,18 @@
         color: $mango;
         font-family: $Comfortaa;
 
+        .content, .title{
+            color: $mango;
+            font-family: $Comfortaa;
+            // font-weight: 100;
+            margin: 1.5%;
+        }
+
+        .content{
+            font-weight: 300;
+        }
     }
 
-    .content{
-        color: $mango;
-        font-family: $Comfortaa;
-        font-weight: 100;
-    }
     .activity-information{
   
         display: flex;
@@ -55,10 +60,11 @@
 
         .image-container{
 
-            background-color: yellowgreen;
+            // background-color: yellowgreen;
             border-radius: 50%;
             width: 300px;
             height: 300px;
+            margin: 2%;
             img{
                 border-radius: 50%;
                 width: 300px;
@@ -68,20 +74,22 @@
     }
 
     .activity-title{
-        
         grid-area: 2/ 3 / 3/ 5;
     }
     
     .activity-more-info{
-    
+
         grid-area: 3/ 4 / 4/ 6;
     }
     .activity-more-more-info{
-
-        grid-area: 4/ 4 / 5/ 6;
+        overflow: auto;
+        grid-area: 4/ 4 / 6/ 6;
     }
 
     .activity-more-more-more-info{
+        text-align: center;
+        justify-content: center;
+        margin: 3%;
         grid-area: 5/ 4 / 6/ 6;
     }
 

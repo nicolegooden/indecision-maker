@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { getAllQuestions } from "../../apiCalls";
 import "./Form.scss";
 import { RiHomeSmileLine } from "react-icons/ri";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory} from "react-router-dom";
 import { CgUserlane } from "react-icons/cg";
+
 export class Form extends Component {
   constructor(props) {
     super(props);
@@ -134,16 +135,15 @@ export class Form extends Component {
         <div className="possible-answers">
           {data[index].choices.map((choice, i) => {
             return (
-              <div className="choice">
+              <div key={i} className="choice">
                 <h3
-                  key={i}
+                  
                   id={data[index].answerType}
                   onClick={(e) => {
                     this.updateCurrentAnswers(e, data[index]);
                   }}
                   value={choice}
-                  className="option"
-                >
+                  className="option">
                   {choice}
                 </h3>
               </div>
@@ -185,7 +185,8 @@ export class Form extends Component {
   handleSubmission = (event) => {
     event.preventDefault();
     if (this.checkForAllQuestions()) {
-      this.props.determineRandomActivity();
+      this.props.determineRandomActivity()
+      return (this.props.route.push("/activity/results"))
     } else {
       return this.setState({
         error: "Please select at least one option for each question",
@@ -199,10 +200,10 @@ export class Form extends Component {
         <h3 key={i} className="current-answer">
           {answer}
         </h3>
-      );
-    });
-  };
-
+      )
+    })
+  }
+  
   determineNextOrSubmit = () => {
     let button;
     if (this.state.allAnswers.length === 0) {
@@ -214,7 +215,9 @@ export class Form extends Component {
           next
         </button>
       );
-    } else if (
+      
+    }
+    if (
       this.state.allAnswers.length === this.state.questionsPerActivity.length
     ) {
       return (
@@ -242,24 +245,34 @@ export class Form extends Component {
   render() {
     return (
       <form className="question-form">
+
         <div className="bar-menu">
           <CgUserlane className="logo" />
-          <Link to="/" onClick={() => this.props.resetState()}>
+          <Link 
+            to="/" 
+            onClick={() => this.props.resetState()}>
             <RiHomeSmileLine className="logo" />
           </Link>
         </div>
+
         <div className="form-container">
           {this.state.prompts.length && this.showQuestion()}
         </div>
+
         <div className="picks-title-container">
           <h4 className="picks-title">Your picks!</h4>
         </div>
+
         <div className="user-picks-container">{this.showCurrentAnswers()}</div>
         <h3>{this.state.error}</h3>
         <div className="form-controls">
-          <button className="back-button form-button" onClick={this.goBack}>
+
+          <button 
+            className="back-button form-button" 
+            onClick={this.goBack}>
             back
           </button>
+
           {this.determineNextOrSubmit()}
         </div>
       </form>

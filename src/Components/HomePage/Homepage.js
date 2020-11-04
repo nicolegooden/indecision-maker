@@ -22,7 +22,7 @@ export const Homepage = (props) => {
             <Link
               id="About"
               className="link"
-              to="/about">
+              to="/">
               <li
                 id="About"
                 name="About"
