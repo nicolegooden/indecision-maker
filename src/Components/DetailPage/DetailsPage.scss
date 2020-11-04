@@ -1,0 +1,91 @@
+@import  '../../styles/variables.scss';
+.details-container{
+    height: 100vh;
+    background-color: black;
+    display:grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    align-content: center;
+    justify-content: center;
+
+    .bar-menu{
+        grid-area: 1/ 1 / 2/ 7;
+        background-image: url(https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80);
+        background-size: cover;
+        display: flex;
+        flex-direction: rows;
+        background-color: $dark;
+        justify-content: space-between;
+        margin: 0%;
+        padding: 1%;
+
+        .details-title{
+            margin: 4%;
+            font-family: $Oswald;
+            font-weight: 700;
+            color: $mango;
+        }
+        .logo{
+          font-size: 5em;
+          font-weight: 400;
+          color: $mango;
+          height: 100%;
+          margin: 3%;
+        }
+    }
+
+    .info{
+        color: $mango;
+        font-family: $Comfortaa;
+
+    }
+
+    .content{
+        color: $mango;
+        font-family: $Comfortaa;
+        font-weight: 100;
+    }
+    .activity-information{
+  
+        display: flex;
+        flex-direction: column;
+        grid-area: 3/ 2 / 6/ 4;
+        justify-content: center;
+        align-items: center;
+
+        .image-container{
+
+            background-color: yellowgreen;
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            img{
+                border-radius: 50%;
+                width: 300px;
+                height: 300px;
+            }
+        }
+    }
+
+    .activity-title{
+        
+        grid-area: 2/ 3 / 3/ 5;
+    }
+    
+    .activity-more-info{
+    
+        grid-area: 3/ 4 / 4/ 6;
+    }
+    .activity-more-more-info{
+
+        grid-area: 4/ 4 / 5/ 6;
+    }
+
+    .activity-more-more-more-info{
+        grid-area: 5/ 4 / 6/ 6;
+    }
+
+    .enjoy-it{
+        grid-area: 6/ 3 / 7/ 5;
+    }
+}

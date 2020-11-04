@@ -97,16 +97,16 @@ export const Homepage = (props) => {
       <ActivityCards />
 
       <section className="team-section">
-        <h1 className="team-title">A passionate team</h1>
+        <h1 className="team-title">What activities interest you?</h1>
         <div className="team-container">
-          <p className="desc description3">Love Harper</p>
+          <p className="desc description3">Music</p>
           <div className=" dev developer-card1">
             <div className="border"></div>
           </div>
-          <p className="desc description2">Your regular Florida man</p>
+          <p className="desc description2">Maybe?</p>
           <div className="dev developer-card2">
             <div className="border"></div></div>
-          <p className="desc description1">Love the outdoors</p>
+          <p className="desc description1">Games</p>
 
           <div className="dev developer-card3">
             <div className="border"></div>
@@ -117,3 +117,4 @@ export const Homepage = (props) => {
     </div>
   )
 }
+
