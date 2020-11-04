@@ -4,6 +4,7 @@ import "./Form.scss";
 import { RiHomeSmileLine } from "react-icons/ri";
 import { Link, Redirect } from "react-router-dom";
 import { CgUserlane } from "react-icons/cg";
+
 export class Form extends Component {
   constructor(props) {
     super(props);
