@@ -10,41 +10,60 @@
   - [Orlando Murcio](https://www.github.com/atos20)
 
 ## Project Directions
-[Title]()
+[Indecision Maker](https://github.com/nicolegooden/indecision-maker)
 
 ## Context
 
 #### Technologies used:
-  * 
+
+  * PostgreSQL
+  * Knex
+  * React
+  * SCSS
+  * GIT
+  * GitHub
+
 ## Challenges
 
-  *
+  * 
 
 ## Wins
+  * Knex - postgreSQL workflow, Migrating and seeding tables
   * 
 
 ## Future Goals
 
+  * Filter activitites by audience, e.g. familiy friendly
+  * Create a log in functionality usig user authentication software
   * 
 
 ## In Action
 
 #### Take 1
 
-- 
+- When the user first opens the application it is welcome with  the homepage that renders an welcoming message that introduces the to the user with an existential question that makes us wonder about our own decisions. 
+
+ - The Viwer can interact with the navigation bar that allows the user see the application's content such as music, movies, podcasts, card games and board games.
   <img src="" height=auto width=75%/>
 
 #### Take 2
-- 
+- When the user clicks on the `find activity button`, the applications view changes to present the viewer witht the `find activity form`. 
+
+- When the user answers the questionnaire the script collects the user informations and passes it to the parent compoentn `<App/>`, this way the algorithm handled by the parent will filter and randomize an actvity.
+
   <img src="" alt="" height=100% width=80%/>
 #### Take 3
 
-- 
+**The `<ResultPage>` component.**
+
+- This component display to the user an activity selected by the script. At this point the user has two options:
+    - The first `option` is to select the activity suggested by the application.
+    - The second `option` is to skip the suggested activity and choose another one that randmoizes the next suggested activity
 
 <img src="" height=auto width=75%/>
 
 #### Take 4
-- 
+- This is 
 
   <img src="" height=auto width=75%/>
 
@@ -67,8 +86,8 @@
 
 
 ### Project Managers
-- [Leta]()
-- [Khalid]()
+- [Leta](https://github.com/letakeane)
+- [Khalid](https://github.com/khalidwilliams)
 
 
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
