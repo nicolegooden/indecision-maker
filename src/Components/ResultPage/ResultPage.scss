@@ -42,7 +42,11 @@
         text-align: center;
         overflow: hidden;
         height: 100%;
+        // background-color: yellowgreen;
 
+        .activity-title{
+            color: white;
+        }
         // background-color: darkgrey;
 
         .slide-link{
@@ -85,7 +89,7 @@
                 justify-content: center;
                 align-items: center;
                 font-size: 100px;
-                overflow: hidden;
+                // overflow: hidden;
 
                 .inner-slide{
                     overflow: auto;
@@ -93,6 +97,10 @@
                     display: flex;
                     flex-direction: column;
                 }
+            }
+            .image{
+                border-radius: 50%;
+                height: 90%;
             }
 
             
@@ -122,14 +130,14 @@
         grid-area: 5/ 1/ 7 / 7;
         padding: 1% 2% 1% 2%;
         margin: 1%;
-        display: flex;
-        flex-direction: row;
+  
         overflow: auto;
+        // overflow: hidden;
 
         .inner-all-rest{
             background:$darkPurple;
-            // height: 100%;
-            width: 20%;
+            height: 100%;
+            width: 20vw;
             margin: .5%;
             display: inline-flex;
             
