@@ -78,12 +78,12 @@
     }
     
     .activity-more-info{
-    
+
         grid-area: 3/ 4 / 4/ 6;
     }
     .activity-more-more-info{
-
-        grid-area: 4/ 4 / 5/ 6;
+        overflow: auto;
+        grid-area: 4/ 4 / 6/ 6;
     }
 
     .activity-more-more-more-info{
