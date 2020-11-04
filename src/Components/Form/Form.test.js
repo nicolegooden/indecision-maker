@@ -28,10 +28,12 @@ describe('Form', () => {
 
   it('should render expected elements', async () => {
 
-      const mockActivities = [];
-      const mockSetActivities = jest.fn();
-      const mockUpdateActivityAnswers = jest.fn();
-      const mockSetHistory = jest.fn();
+    const mockActivities = [];
+    const mockSetActivities = jest.fn();
+    const mockUpdateActivityAnswers = jest.fn();
+    const mockSetHistory = jest.fn();
+    const mockGoBack = jest.fn();
+    const mockResetState = jest.fn();
     
     render(
       <MemoryRouter>
@@ -40,6 +42,8 @@ describe('Form', () => {
          setActivities={mockSetActivities}
          updateActivityAnswers={mockUpdateActivityAnswers}
          setHistory={mockSetHistory}
+         goBack={mockGoBack}
+         resetState={mockResetState}
         />
       </MemoryRouter>
     )
@@ -54,11 +58,13 @@ describe('Form', () => {
 
   it('should show the next set of questions based on activities chosen', async () => {
 
-      const mockActivities = [];
-      const mockSetActivities = jest.fn();
-      const mockUpdateActivityAnswers = jest.fn();
-      const mockSetHistory = jest.fn();
-
+    const mockActivities = [];
+    const mockSetActivities = jest.fn();
+    const mockUpdateActivityAnswers = jest.fn();
+    const mockSetHistory = jest.fn();
+    const mockGoBack = jest.fn();
+    const mockResetState = jest.fn();
+    
     render(
       <MemoryRouter>
         <Form 
@@ -66,6 +72,8 @@ describe('Form', () => {
          setActivities={mockSetActivities}
          updateActivityAnswers={mockUpdateActivityAnswers}
          setHistory={mockSetHistory}
+         goBack={mockGoBack}
+         resetState={mockResetState}
         />
       </MemoryRouter>
     )
@@ -81,9 +89,11 @@ describe('Form', () => {
     userEvent.click(screen.getByText('Pop'));
     userEvent.click(screen.getByText('Country'));
     userEvent.click(screen.getByText('1990\'s'));
+    expect(mockUpdateActivityAnswers).toHaveBeenCalledTimes(5);
     userEvent.click(screen.getByRole('button', {name: 'next'}));
     const gameQuestion = await waitFor(() => screen.getByText('How many people are playing?'));
     expect(gameQuestion).toBeInTheDocument();
+    expect(mockSetHistory).toHaveBeenCalledTimes(2);
     expect(screen.getByRole('button', {name: 'submit'})).toBeInTheDocument();
   })
 
@@ -92,6 +102,8 @@ describe('Form', () => {
     const mockSetActivities = jest.fn();
     const mockUpdateActivityAnswers = jest.fn();
     const mockSetHistory = jest.fn();
+    const mockGoBack = jest.fn();
+    const mockResetState = jest.fn();
     
     render(
       <MemoryRouter>
@@ -100,6 +112,8 @@ describe('Form', () => {
          setActivities={mockSetActivities}
          updateActivityAnswers={mockUpdateActivityAnswers}
          setHistory={mockSetHistory}
+         goBack={mockGoBack}
+         resetState={mockResetState}
         />
       </MemoryRouter>
     )
@@ -110,6 +124,7 @@ describe('Form', () => {
     userEvent.click(screen.getByRole('button', {name: 'next'}));
     const nextQuestion = await waitFor(() => screen.getByText('Which music genre(s)?'))
     expect(nextQuestion).toBeInTheDocument();
+    expect(mockSetActivities).toHaveBeenCalledTimes(1);
     userEvent.click(screen.getByText('Country'));
     userEvent.click(screen.getByRole('button', {name: 'next'}))
     expect(screen.getByText('Please select at least one option for each question')).toBeInTheDocument();
@@ -117,5 +132,39 @@ describe('Form', () => {
     userEvent.click(screen.getByRole('button', {name: 'next'}));
     const gameQuestion = await waitFor(() => screen.getByText('How many people are playing?'));
     expect(gameQuestion).toBeInTheDocument();
+  })
+
+  it('should show the user the previous set of questions if back button is clicked', async () => {
+    const mockActivities = [];
+    const mockSetActivities = jest.fn();
+    const mockUpdateActivityAnswers = jest.fn();
+    const mockSetHistory = jest.fn();
+    const mockGoBack = jest.fn();
+    const mockResetState = jest.fn();
+    
+    render(
+      <MemoryRouter>
+        <Form 
+         activities={mockActivities}
+         setActivities={mockSetActivities}
+         updateActivityAnswers={mockUpdateActivityAnswers}
+         setHistory={mockSetHistory}
+         goBack={mockGoBack}
+         resetState={mockResetState}
+        />
+      </MemoryRouter>
+    )
+
+    await waitFor(() => screen.getByText('Which activities excite you right now?'))
+    userEvent.click(screen.getByText('music'));
+    userEvent.click(screen.getByText('card games'));
+    userEvent.click(screen.getByRole('button', {name: 'next'}));
+    const nextQuestion = await waitFor(() => screen.getByText('Which music genre(s)?'))
+    expect(nextQuestion).toBeInTheDocument();
+    expect(mockSetHistory).toHaveBeenCalledTimes(1);
+    userEvent.click(screen.getByRole('button', {name: 'back'}));
+    const prevQuestion = await waitFor(() => screen.getByText('Which activities excite you right now?'));
+    expect(prevQuestion).toBeInTheDocument();
+    expect(mockGoBack).toHaveBeenCalledTimes(1);
   })
 })
