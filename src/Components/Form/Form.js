@@ -223,7 +223,7 @@ export class Form extends Component {
       <form className="question-form">
         <div className="bar-menu">
           <CgUserlane className="logo" />
-          <Link to="/">
+          <Link to="/" onClick={()=> this.props.resetState()}>
             <RiHomeSmileLine className="logo" />
           </Link>
         </div>
