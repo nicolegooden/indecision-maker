@@ -5,6 +5,8 @@
 ## Project Title __*group project*_
 
 ## Contributors
+  - [Nicole Gooden](https://github.com/nicolegooden)
+  - [Blake Donnelly](https://github.com/BlakeDonn)
   - [Orlando Murcio](https://www.github.com/atos20)
 
 ## Project Directions
