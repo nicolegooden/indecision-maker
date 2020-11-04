@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { getAllQuestions } from '../../apiCalls'
+import React, {Component} from 'react';
+import {getAllQuestions} from '../../apiCalls'
 import './Form.scss';
-import { RiHomeSmileLine } from "react-icons/ri";
-import { Link } from 'react-router-dom';
-import { CgUserlane } from "react-icons/cg";
+import {RiHomeSmileLine} from "react-icons/ri";
+import {Link} from 'react-router-dom';
+import {CgUserlane} from "react-icons/cg";
 export class Form extends Component {
   constructor(props) {
     super(props)
@@ -40,19 +40,25 @@ export class Form extends Component {
     }
     this.props.updateActivityAnswers(event)
     this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]})
-    }
+  }
 
   updateAllAnswers = async (event) => {
     event.preventDefault();
-    await this.setState({allAnswers: [...this.state.allAnswers, this.state.currentAnswers], currentAnswers: []})
-    if (this.state.allAnswers.length === 1) {
+    if (this.state.allAnswers.length === 0) {
+      await this.setState({allAnswers: [...this.state.allAnswers, this.state.currentAnswers], currentAnswers: []})
       this.props.setActivities(this.state.allAnswers[0]);
-
       let activitySet = this.handleBothGames()
       let relevantQuestions = this.determineRelevantQuestions(activitySet)
-      this.setState({questionsPerActivity: [...relevantQuestions]})
+     return this.setState({questionsPerActivity: [...relevantQuestions]})
     }
-  }
+    let index = this.state.allAnswers.length - 1 
+    if (this.state.questionsPerActivity[index].questions.every(question =>{
+      return this.state.currentAnswers.some(answer => question.choices.includes(answer))
+    })){
+      return this.setState({allAnswers: [...this.state.allAnswers, this.state.currentAnswers], currentAnswers: []})
+    }
+    else {alert('Please fill out all answers')}
+    }
   determineRelevantQuestions = (activitySet) => {
     return activitySet.reduce((relevantQuestions, activity) => {
       let filteredQuestions = this.state.prompts.filter(question => {
@@ -79,28 +85,28 @@ export class Form extends Component {
 
   determinePrompt = (index, data) => {
     return (
-        <article className='form-container'>
-          <h2 className='question'>{data[index].question}</h2>
-          <div className='possible-answers'>
-            {data[index].choices.map((choice, i) => {
-              return (
-                <div className='choice'>
-                  <h3
-                    key={i}
-                    id={data[index].answerType}
-                    onClick={(e) => {
-                      this.updateCurrentAnswers(e, data[index])
-                      }
-                    }
-                    value={choice} 
-                    className='option'>{choice}
-                  </h3>
-                </div>
-                )
-            })}
-          </div>
-        </article>
-      )
+      <article className='form-container'>
+        <h2 className='question'>{data[index].question}</h2>
+        <div className='possible-answers'>
+          {data[index].choices.map((choice, i) => {
+            return (
+              <div className='choice'>
+                <h3
+                  key={i}
+                  id={data[index].answerType}
+                  onClick={(e) => {
+                    this.updateCurrentAnswers(e, data[index])
+                  }
+                  }
+                  value={choice}
+                  className='option'>{choice}
+                </h3>
+              </div>
+            )
+          })}
+        </div>
+      </article>
+    )
   }
 
   showQuestion = () => {
@@ -117,13 +123,18 @@ export class Form extends Component {
     }
   }
 
+  handleSubmission = () => {
+
+    this.props.determineRandomActivity()
+  }
+
   showCurrentAnswers = () => {
     return this.state.currentAnswers.map((answer, i) => {
       return (
-         <h3 
+        <h3
           key={i}
           className='current-answer'
-          >{answer}
+        >{answer}
         </h3>
       )
     })
@@ -146,9 +157,9 @@ export class Form extends Component {
     return (
       <form className='question-form'>
         <div className="bar-menu">
-          <CgUserlane className="logo"/>
+          <CgUserlane className="logo" />
           <Link to='/'>
-            <RiHomeSmileLine className="logo"/>
+            <RiHomeSmileLine className="logo" />
           </Link>
         </div>
         <div className="form-container">
@@ -161,8 +172,8 @@ export class Form extends Component {
           {this.showCurrentAnswers()}
         </div>
         <div className="form-controls">
-         <button className='back-button form-button'>back</button>
-         {this.determineNextOrSubmit()}
+          <button className='back-button form-button'>back</button>
+          {this.determineNextOrSubmit()}
         </div>
       </form>
     )
