@@ -139,6 +139,7 @@ export class Form extends Component {
       return <button onClick={this.updateAllAnswers} className='next-button form-button'>next</button>
     } else if (this.state.allAnswers.length === this.state.questionsPerActivity.length) {
       button = <Link 
+                  
                   to='/activity/result'
                     onClick={this.handleSubmission}
                     className='submit-button submit'>
