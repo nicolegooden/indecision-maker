@@ -12,6 +12,7 @@ import { getAllMovies,
 import { BrowsePage } from '../BrowsePage/BrowsePage';
 import { Footer } from '../Footer/Footer';
 import { ResultPage } from '../ResultPage/ResultPage';
+import { DetailsPage } from '../DetailPage/DetailsPage';
 
 class App extends Component {
   constructor() {
@@ -180,11 +181,22 @@ class App extends Component {
           </Route>
           <Route
             exact 
-            path='/:acitivty/:result'
+            path='/:activity/:result'
             render={({match}) => {
               return <ResultPage 
                 name={match.params}
                 data={this.state.possibleSuggestions}
+                randomActivity={this.state.randomActivity}
+              />
+            }}>
+          </Route>
+          <Route
+            exact 
+            path='/about/:activity/:details'
+            render={({match}) => {
+              console.log(match)
+              return <DetailsPage
+                name={match.params}
                 randomActivity={this.state.randomActivity}
               />
             }}>
