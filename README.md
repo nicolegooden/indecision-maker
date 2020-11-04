@@ -1,3 +1,90 @@
+[![Contributors][contributors-shield]]()
+[![Forks][forks-shield]]()
+[![Issues][issues-shield]]()
+
+## Project Title __*group project*_
+
+## Contributors
+  - [Orlando Murcio](https://www.github.com/atos20)
+
+## Project Directions
+[Title]()
+
+## Context
+
+#### Technologies used:
+  * 
+## Challenges
+
+  *
+
+## Wins
+  * 
+
+## Future Goals
+
+  * 
+
+## In Action
+
+#### Take 1
+
+- 
+  <img src="" height=auto width=75%/>
+
+#### Take 2
+- 
+  <img src="" alt="" height=100% width=80%/>
+#### Take 3
+
+- 
+
+<img src="" height=auto width=75%/>
+
+#### Take 4
+- 
+
+  <img src="" height=auto width=75%/>
+
+### Set up
+* On the top right corner of this page, click the **Fork** button.
+- Clone the repository to your computer `git clone <URL>`
+  - When you run git clone - git clone [remote-address] [what you want to name the repo]
+  replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
+- `cd` into the repository with the following command `cd <repo-name>`
+- Run `npm install`
+- Run `open src/index.html`
+
+### Contribute
+
+- Create a new branch with `git checkout -b <new branch name>`
+- Open your text editor and add or remove functionalities to the site.
+- `git add` and `git commit -m "<your commit meessage>"` to save the changes to your local repository
+- `git push` your changes
+- Create a new pull request!
+
+
+### Project Managers
+- [Leta]()
+- [Khalid]()
+
+
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
+[contributors-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
+[forks-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/network/members
+[stars-shield]: https://img.shields.io/github/stars/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
+[stars-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/stargazers
+[issues-shield]: https://img.shields.io/github/issues/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
+[issues-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/issues
+[license-shield]: https://img.shields.io/github/license/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
+[license-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/othneildrew
+[product-screenshot]: images/screenshot.png
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -19,52 +106,7 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
