@@ -4,10 +4,10 @@ import { CgUserlane } from "react-icons/cg";
 import { RiHomeSmileLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player'
+import moment from 'moment';
 
 export const DetailsPage = (props) => {
   const noImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"
-  console.log(props)
     return (
         <div className="details-container">
           <div className="bar-menu">
@@ -26,18 +26,23 @@ export const DetailsPage = (props) => {
             || props.randomActivity.podcast_title 
             || props.randomActivity.podcast_name
             || props.randomActivity.name
-            || "no information"}</h1>
+            || "more info soon..."}</h1>
           </div>
 
           <div className="info activity-information">
             <div className="image-container">
-              {props.randomActivity.image_poster || props.randomActivity.image_100 || props.randomActivity.image ? <img 
+              {props.randomActivity.image_poster 
+              || props.randomActivity.image_100 || 
+              props.randomActivity.image ? 
+              <img 
               src={props.randomActivity.image_poster 
                   || props.randomActivity.image_100 
                   || props.randomActivity.image 
                   || noImage
-                  } alt=""/> :
-            <div className="image-container" alt="movie trailer" >
+                  } alt={
+                    props.randomActivity.description
+                  }/> :
+            <div className="image-container" >
               <ReactPlayer
                 alt="movie trailer"
                 controls={true}
@@ -45,14 +50,14 @@ export const DetailsPage = (props) => {
                 height={250}
                 url={props.randomActivity.video}
               />
+            </div>}
             </div>
-              }
-            </div>
+
             <p className="content">{
                props.randomActivity.podcast_name
             || props.randomActivity.artist
             || props.randomActivity.title 
-            || "no information available"
+            || "more information comming up soon"
             }</p>
 
             
@@ -60,6 +65,9 @@ export const DetailsPage = (props) => {
             
             {props.randomActivity.average_time && <h4 className="title">Average play time</h4>}
             {props.randomActivity.average_time && <p className="content">{props.randomActivity.average_time}</p>}
+            
+            {props.randomActivity.materials && <h4 className="title">Materials</h4>}
+            {props.randomActivity.materials && <p className="content">{props.randomActivity.materials}</p>}
 
             {props.randomActivity.imdb_rating && <h4 className="title">Imdb Raiting</h4>}
             {props.randomActivity.imdb_rating && <p className="content">{props.randomActivity.imdb_rating || 0}</p>}
@@ -68,7 +76,7 @@ export const DetailsPage = (props) => {
             {props.randomActivity.content_rating && <p className="content">{props.randomActivity.content_rating|| 0}</p>}
 
             {props.randomActivity.album_url && <h4 className="title">Listen here</h4>}
-            {props.randomActivity.album_url && <a className="content" href="props.randomActivity.album_url "> Click Here</a>}
+            {props.randomActivity.album_url && <a className="content" href={props.randomActivity.album_url}> Click Here</a>}
 
             {props.randomActivity.author && <h4 className="title">Author</h4>}
             {props.randomActivity.author && <p >{props.randomActivity.author}</p>}
@@ -79,19 +87,36 @@ export const DetailsPage = (props) => {
             <h1 className="">A little bit about me</h1>
             {props.randomActivity.movie_plot && <p className="content">{props.randomActivity.movie_plot}</p>}
             {props.randomActivity.description && <p className="content">{props.randomActivity.description}</p>}
+
+            {props.randomActivity.artist && <h3 className="title">Artis name</h3>}
+            {props.randomActivity.artist  && <p className="content">{props.randomActivity.artist}</p>}
+
+            {props.randomActivity.podcast_name && <h3 className="title">Podcast name</h3>}
+            {props.randomActivity.podcast_name  && <p className="content">{props.randomActivity.podcast_name}</p>}
+
           </div>
 
           <div className="info activity-more-more-info">
             {props.randomActivity.instructions &&<h1 className="">intructions</h1>}
-            {props.randomActivity.instructions && <p className="content">{props.randomActivity.instructions}</p>}
+            {props.randomActivity.instructions && <p className="content">{props.randomActivity.instructions }</p>}
+
+            {props.randomActivity.type && <h3 className="title">Type</h3>}
+            {props.randomActivity.type && <p className="content">{props.randomActivity.type}</p>}
+
+            {props.randomActivity.album_title && <h3 className="title">Album title</h3>}
+            {props.randomActivity.album_title  && <p className="content">{props.randomActivity.album_title}</p>}
           </div>
 
           
 
-          {/* <div className="info activity-more-more-more-info">
-            <h1 className="">information goes here</h1>
-            <p className="content">Here is a lot of the content, just in case you were wondering</p>
-          </div> */}
+          <div className="info activity-more-more-more-info">
+
+            {props.randomActivity.genre && <h3 className="title">Genre</h3>}
+            {props.randomActivity.genre  && <p className="content">{props.randomActivity.genre}</p>}
+
+            {props.randomActivity.release_date && <h3 className="title">Release date</h3>}
+            {props.randomActivity.release_date  && <p className="content">{moment(props.randomActivity.release_date).format('LL')}</p>}
+          </div>
 
           <div className="info enjoy-it">
             <h1 className="">Enjoy it!</h1>
