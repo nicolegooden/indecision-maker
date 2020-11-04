@@ -80,6 +80,7 @@ class App extends Component {
   }
 
   determineRandomActivity = () => {
+    
     let allFilteredActivities = this.state.activities.reduce((filtered, activity) => {
       if (activity.includes('games')) {
         activity = activity.replace(/ games/gi, 'Games')
@@ -88,10 +89,12 @@ class App extends Component {
       filtered.push(filteredActivities)
       return filtered
     }, [])
+   
     let final = allFilteredActivities.flat()
     let randomNumber = Math.floor(Math.random() *final.length)
     this.setState({randomActivity:  final[randomNumber]})
     return final[randomNumber]
+    
   }
 
   filterActivity = (activity, answers) => {
@@ -187,6 +190,8 @@ class App extends Component {
                 name={match.params}
                 data={this.state.possibleSuggestions}
                 randomActivity={this.state.randomActivity}
+                determineRandomActivity={this.determineRandomActivity}
+                error={this.state.error}
               />
             }}>
           </Route>
@@ -201,7 +206,15 @@ class App extends Component {
               />
             }}>
           </Route>
+
+          <Route
+            exact 
+            path='/*'>
+            <h1 className="error">Oops something went wrong...</h1>
+          </Route>
+
          </Switch>
+
         <Footer />
       </div >
     );
