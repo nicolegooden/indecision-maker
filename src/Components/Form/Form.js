@@ -8,6 +8,7 @@ export class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      error: '',
       history:[],
       prompts: [],
       allAnswers: [],
@@ -72,9 +73,13 @@ export class Form extends Component {
     event.preventDefault();
     this.setHistory()
     if (this.state.allAnswers.length === 0) {
+      if (this.state.currentAnswers.length === 0){
+        return this.setState({error: "Please select an activity"})
+      }
       await this.setState({
         allAnswers: [...this.state.allAnswers, this.state.currentAnswers],
         currentAnswers: [],
+        error: ''
       });
       this.props.setActivities(this.state.allAnswers[0]);
       let activitySet = this.handleBothGames();
@@ -92,9 +97,10 @@ export class Form extends Component {
       return this.setState({
         allAnswers: [...this.state.allAnswers, this.state.currentAnswers],
         currentAnswers: [],
+        error: ''
       });
     } else {
-      alert("Please fill out all answers");
+        return this.setState({error: "Please select at least one option for each question"})
     }
   };
 
@@ -171,6 +177,7 @@ export class Form extends Component {
 
   handleSubmission = (event) => {
     event.preventDefault()
+
     let index = this.state.allAnswers.length - 1;
     if (
       this.state.questionsPerActivity[index].questions.every((question) => {
@@ -181,7 +188,7 @@ export class Form extends Component {
     ) {
       this.props.determineRandomActivity();
     } else {
-      alert("Please answer all questions");
+        return this.setState({error: "Please select at least one option for each question"})
     }
   };
 
@@ -247,6 +254,7 @@ export class Form extends Component {
           <h4 className="picks-title">Your picks!</h4>
         </div>
         <div className="user-picks-container">{this.showCurrentAnswers()}</div>
+          <h3>{this.state.error}</h3>
         <div className="form-controls">
           <button className="back-button form-button"onClick={this.goBack}>back</button>
           {this.determineNextOrSubmit()}
