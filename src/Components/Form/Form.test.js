@@ -78,5 +78,12 @@ describe('Form', () => {
     const nextQuestion = await waitFor(() => screen.getByText('Which music genre(s)?'))
     expect(nextQuestion).toBeInTheDocument();
     expect(screen.getByText('How old is too old?')).toBeInTheDocument();
+    userEvent.click(screen.getByText('Pop'));
+    userEvent.click(screen.getByText('Country'));
+    userEvent.click(screen.getByText('1990\'s'));
+    userEvent.click(screen.getByRole('button', {name: 'next'}));
+    const gameQuestion = await waitFor(() => screen.getByText('How many people are playing?'));
+    expect(gameQuestion).toBeInTheDocument();
+    expect(screen.getByRole('button', {name: 'submit'})).toBeInTheDocument();
   })
 })
