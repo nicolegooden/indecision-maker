@@ -23,11 +23,14 @@ class App extends Component {
       podcastsAnswers: [],
       boardGamesAnswers: [],
       cardGamesAnswers: [],
+      possibleSuggestions: [],
+      randomActivity: {},
       movies: [],
       music: [],
       podcasts: [],
       boardGames: [],
-      cardGames: []
+      cardGames: [],
+      error: ''
     }
   }
 
@@ -58,6 +61,7 @@ class App extends Component {
       this.setState({[name]: promise})
     } catch (error) {
       console.log(error)
+      this.setState({error})
     }
   }
 
@@ -85,6 +89,7 @@ class App extends Component {
     }, [])
     let final = allFilteredActivities.flat()
     let randomNumber = Math.floor(Math.random() *final.length)
+    this.setState({randomActivity:  final[randomNumber]})
     return final[randomNumber]
   }
 
@@ -94,6 +99,7 @@ class App extends Component {
     let gamesGroup = ['boardGames', 'cardGames']
     let ageGroup = ['movies', 'music']
     let possibleSuggestions;
+
     if (genreGroup.includes(activity)) {
       possibleSuggestions = this.state[activity].filter(singleActivity => {
         if (activity === 'movies') {
@@ -135,6 +141,7 @@ class App extends Component {
         return element.min_players <= numberOfPlayers && element.max_players >= numberOfPlayers
       })
     }
+    this.setState({possibleSuggestions: possibleSuggestions})
     return possibleSuggestions
   }
 
@@ -143,23 +150,24 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route
-            exact path='/'>
+            exact 
+            path='/'>
             <Homepage
               getActivityData={this.getActivityData}
               allMovies={this.state.movies}
             />
           </Route>
-          <Route exact path='/form'>
+          <Route 
+            exact 
+            path='/form'>
             <Form
               activities={this.state.activities}
               setActivities={this.setActivities}
               updateActivityAnswers={this.updateActivityAnswers}
               determineRandomActivity={this.determineRandomActivity}
+              
             />
           </Route>
-          {/* <Route exact path='/result'>
-            <Result determineRandomActivity={this.determineRandomActivity}/>
-          </Route> */}
           <Route
             exact 
             path='/:activity'
@@ -172,16 +180,17 @@ class App extends Component {
           </Route>
           <Route
             exact 
-            path='/music/result'
+            path='/:acitivty/:result'
             render={({match}) => {
               return <ResultPage 
                 name={match.params}
-                // data={}
+                data={this.state.possibleSuggestions}
+                randomActivity={this.state.randomActivity}
               />
             }}>
           </Route>
          </Switch>
-        {/* <Footer /> */}
+        <Footer />
       </div >
     );
   }
