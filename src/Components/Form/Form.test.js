@@ -48,5 +48,7 @@ describe('Form', () => {
     expect(question).toBeInTheDocument();
     expect(screen.getByText('music')).toBeInTheDocument();
     expect(screen.getByText('card games')).toBeInTheDocument();
+    expect(screen.getByRole('button', {name: 'next'})).toBeInTheDocument();
+    expect(screen.getByRole('button', {name: 'back'})).toBeInTheDocument();
   })
 })
