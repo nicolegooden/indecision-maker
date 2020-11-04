@@ -134,10 +134,18 @@ export class Form extends Component {
     if (this.state.allAnswers.length === 0) {
       return <button onClick={this.updateAllAnswers} className='next-button form-button'>next</button>
     } else if (this.state.allAnswers.length === this.state.questionsPerActivity.length) {
-      button = <Link to='/result' className='submit-button form-button'><button onClick={this.handleSubmission}>submit</button></Link>
+      button = <Link 
+                  to='/result'
+                    onClick={this.handleSubmission}
+                    className='submit-button submit'>
+                    submit
+                </Link>
     }
     if (this.state.questionsPerActivity && button === undefined) {
-      button = <button onClick={this.updateAllAnswers} className='next-button form-button'>next</button>
+      button = <button 
+                  onClick={this.updateAllAnswers} 
+                  className='next-button form-button'>
+                  next</button>
     }
     return button;
   }
