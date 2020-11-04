@@ -3,6 +3,7 @@ import './DetailsPage.scss'
 import { CgUserlane } from "react-icons/cg";
 import { RiHomeSmileLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
+import ReactPlayer from 'react-player'
 
 export const DetailsPage = (props) => {
   const noImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"
@@ -30,14 +31,23 @@ export const DetailsPage = (props) => {
 
           <div className="info activity-information">
             <div className="image-container">
-              <img 
+              {props.randomActivity.image_poster || props.randomActivity.image_100 || props.randomActivity.image ? <img 
               src={props.randomActivity.image_poster 
                   || props.randomActivity.image_100 
                   || props.randomActivity.image 
                   || noImage
-                  } alt=""/>
+                  } alt=""/> :
+            <div className="image-container" alt="movie trailer" >
+              <ReactPlayer
+                alt="movie trailer"
+                controls={true}
+                width={350}
+                height={250}
+                url={props.randomActivity.video}
+              />
             </div>
-
+              }
+            </div>
             <p className="content">{
                props.randomActivity.podcast_name
             || props.randomActivity.artist
@@ -66,19 +76,22 @@ export const DetailsPage = (props) => {
       
 
           <div className="info activity-more-info">
-            <h1 className="">information goes here</h1>
-            <p className="content">Here is a lot of the content, just in case you were wondering</p>
+            <h1 className="">A little bit about me</h1>
+            {props.randomActivity.movie_plot && <p className="content">{props.randomActivity.movie_plot}</p>}
+            {props.randomActivity.description && <p className="content">{props.randomActivity.description}</p>}
           </div>
 
           <div className="info activity-more-more-info">
-            <h1 className="">information goes here</h1>
-            <p className="content">Here is a lot of the content, just in case you were wondering</p>
+            {props.randomActivity.instructions &&<h1 className="">intructions</h1>}
+            {props.randomActivity.instructions && <p className="content">{props.randomActivity.instructions}</p>}
           </div>
 
-          <div className="info activity-more-more-more-info">
+          
+
+          {/* <div className="info activity-more-more-more-info">
             <h1 className="">information goes here</h1>
             <p className="content">Here is a lot of the content, just in case you were wondering</p>
-          </div>
+          </div> */}
 
           <div className="info enjoy-it">
             <h1 className="">Enjoy it!</h1>
