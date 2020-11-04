@@ -128,6 +128,10 @@ export class Form extends Component {
       )
     })
   }
+  
+  handleSubmission = () => {
+    this.props.determineRandomActivity()
+  }
 
   determineNextOrSubmit = () => {
     let button;
@@ -135,7 +139,7 @@ export class Form extends Component {
       return <button onClick={this.updateAllAnswers} className='next-button form-button'>next</button>
     } else if (this.state.allAnswers.length === this.state.questionsPerActivity.length) {
       button = <Link 
-                  to='/result'
+                  to='/activity/result'
                     onClick={this.handleSubmission}
                     className='submit-button submit'>
                     submit
@@ -147,6 +151,8 @@ export class Form extends Component {
                   className='next-button form-button'>
                   next</button>
     }
+
+
     return button;
   }
 
