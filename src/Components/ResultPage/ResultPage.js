@@ -7,6 +7,29 @@ import { Link } from 'react-router-dom';
 export const ResultPage = (props) => {
   console.log(props)
   const noImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"
+  const displayActivityGallery = () => {
+    return props.data.map(activity => {
+    console.log()
+    return (
+      <div className="inner-all-rest">
+        <div className="border">
+          <GoLightBulb className="bulb-icon"/>
+          <h3 className="title">{
+               activity.song_title 
+            || activity.title 
+            || activity.podcast_title 
+            || activity.name
+            || "no information"}
+          </h3>
+          <h3 className="title">more information</h3>
+          <h3 className="title">more information</h3>
+          <h3 className="title">more information</h3>
+        </div>
+      </div>
+    )
+  })
+}
+
     return (
         <section className="result-container">
             <Link to="/" className="home-logo">
@@ -19,9 +42,15 @@ export const ResultPage = (props) => {
           <h1 className="message">Finally, here is a suggestion for you!</h1>
 
           <div className="slider">
-            <a className="slide-link" href="#slide-1">1</a>
-            <a className="slide-link" href="#slide-2">2</a>
-          
+
+            <h1 className="activity-title">{
+                   props.randomActivity.song_title 
+                || props.randomActivity.title 
+                || props.randomActivity.podcast_title 
+                || props.randomActivity.name
+                || "no information"}
+
+              </h1>
             <div className="slides">
             
                 <div className="slide" id="slide-1">
@@ -32,11 +61,6 @@ export const ResultPage = (props) => {
                         || noImage} 
                         alt=""/>
                 </div>
-
-                <div className="slide" id="slide-2">
-                    <img className="image" src="https://images.unsplash.com/photo-1520156557489-31c63271fcd4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""/>
-                </div>
-
             </div>
 
           </div>
@@ -47,60 +71,7 @@ export const ResultPage = (props) => {
           </div>
 
           <div className="the-rest-container">
-            <div className="inner-all-rest">
-              <div className="border">
-                <GoLightBulb className="bulb-icon"/>
-                <h3 className="title">activity name</h3>
-                <h3 className="title">more information</h3>
-                <h3 className="title">more information</h3>
-                <h3 className="title">more information</h3>
-              </div>
-            </div>
-            <div className="inner-all-rest">
-              <div className="border">
-                <GoLightBulb className="bulb-icon"/>
-                <h3 className="title">activity name</h3>
-                <h3 className="title">more information</h3>
-                <h3 className="title">more information</h3>
-                <h3 className="title">more information</h3>
-              </div>
-            </div>
-            <div className="inner-all-rest">
-              <div className="border">
-                <GoLightBulb className="bulb-icon"/>
-                <h3 className="title">activity name</h3>
-                <h3 className="title">more information</h3>
-                <h3 className="title">more information</h3>
-                <h3 className="title">more information</h3>
-              </div>
-            </div>
-            <div className="inner-all-rest">
-              <div className="border">
-              <GoLightBulb className="bulb-icon"/>
-                <h3 className="title">activity name</h3>
-                <h3 className="title">more information</h3>
-                <h3 className="title">more information</h3>
-                <h3 className="title">more information</h3>
-              </div>
-            </div>
-            <div className="inner-all-rest">
-              <div className="border">
-              <GoLightBulb className="bulb-icon"/>
-                <h3 className="title">activity name</h3>
-                <h3 className="title">more information</h3>
-                <h3 className="title">more information</h3>
-                <h3 className="title">more information</h3>
-              </div>
-            </div>
-            <div className="inner-all-rest">
-              <div className="border">
-                <GoLightBulb className="bulb-icon"/>
-                <h3 className="title">activity name</h3>
-                <h3 className="title">more information</h3>
-                <h3 className="title">more information</h3>
-                <h3 className="title">more information</h3>
-              </div>
-            </div>
+           {displayActivityGallery()}
           </div>
 
         </section>

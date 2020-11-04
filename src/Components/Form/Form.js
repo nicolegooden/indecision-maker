@@ -151,8 +151,6 @@ export class Form extends Component {
                   className='next-button form-button'>
                   next</button>
     }
-
-
     return button;
   }
 
