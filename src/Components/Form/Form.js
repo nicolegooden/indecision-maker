@@ -8,6 +8,7 @@ export class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      history:[],
       prompts: [],
       allAnswers: [],
       currentAnswers: [],
@@ -18,6 +19,17 @@ export class Form extends Component {
   componentDidMount = async () => {
     this.setState({ prompts: await getAllQuestions() });
   };
+
+  setHistory = () =>{
+    this.setState({history:[...this.state.history, this.state]})
+   this.props.setHistory()
+  }
+      
+  goBack = (event) =>{
+    event.preventDefault()
+    this.setState(this.state.history[this.state.history.length - 1])
+    this.props.goBack()
+  }
 
   updateCurrentAnswers = (event, questionData) => {
     event.preventDefault();
@@ -58,6 +70,7 @@ export class Form extends Component {
 
   updateAllAnswers = async (event) => {
     event.preventDefault();
+    this.setHistory()
     if (this.state.allAnswers.length === 0) {
       await this.setState({
         allAnswers: [...this.state.allAnswers, this.state.currentAnswers],
@@ -235,7 +248,7 @@ export class Form extends Component {
         </div>
         <div className="user-picks-container">{this.showCurrentAnswers()}</div>
         <div className="form-controls">
-          <button className="back-button form-button">back</button>
+          <button className="back-button form-button"onClick={this.goBack}>back</button>
           {this.determineNextOrSubmit()}
         </div>
       </form>
