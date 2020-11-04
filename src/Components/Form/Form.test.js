@@ -77,5 +77,6 @@ describe('Form', () => {
     userEvent.click(screen.getByRole('button', {name: 'next'}));
     const nextQuestion = await waitFor(() => screen.getByText('Which music genre(s)?'))
     expect(nextQuestion).toBeInTheDocument();
+    expect(screen.getByText('How old is too old?')).toBeInTheDocument();
   })
 })
