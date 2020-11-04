@@ -135,16 +135,15 @@ export class Form extends Component {
         <div className="possible-answers">
           {data[index].choices.map((choice, i) => {
             return (
-              <div className="choice">
+              <div key={i} className="choice">
                 <h3
-                  key={i}
+                  
                   id={data[index].answerType}
                   onClick={(e) => {
                     this.updateCurrentAnswers(e, data[index]);
                   }}
                   value={choice}
-                  className="option"
-                >
+                  className="option">
                   {choice}
                 </h3>
               </div>
