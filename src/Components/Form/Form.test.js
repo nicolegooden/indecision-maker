@@ -27,12 +27,12 @@ describe('Form', () => {
   })
 
   it('should render expected elements', async () => {
-    
-    const mockActivities = [];
-    const mockSetActivities = jest.fn();
-    const mockUpdateActivityAnswers = jest.fn();
-    const mockSetHistory = jest.fn();
 
+      const mockActivities = [];
+      const mockSetActivities = jest.fn();
+      const mockUpdateActivityAnswers = jest.fn();
+      const mockSetHistory = jest.fn();
+    
     render(
       <MemoryRouter>
         <Form 
@@ -50,5 +50,32 @@ describe('Form', () => {
     expect(screen.getByText('card games')).toBeInTheDocument();
     expect(screen.getByRole('button', {name: 'next'})).toBeInTheDocument();
     expect(screen.getByRole('button', {name: 'back'})).toBeInTheDocument();
+  })
+
+  it('should show the next set of questions based on activities chosen', async () => {
+
+      const mockActivities = [];
+      const mockSetActivities = jest.fn();
+      const mockUpdateActivityAnswers = jest.fn();
+      const mockSetHistory = jest.fn();
+
+    render(
+      <MemoryRouter>
+        <Form 
+         activities={mockActivities}
+         setActivities={mockSetActivities}
+         updateActivityAnswers={mockUpdateActivityAnswers}
+         setHistory={mockSetHistory}
+        />
+      </MemoryRouter>
+    )
+
+    await waitFor(() => screen.getByText('Which activities excite you right now?'))
+    userEvent.click(screen.getByText('music'));
+    userEvent.click(screen.getByText('card games'));
+    // test that this text shows up twice after clicking music
+    userEvent.click(screen.getByRole('button', {name: 'next'}));
+    const nextQuestion = await waitFor(() => screen.getByText('Which music genre(s)?'))
+    expect(nextQuestion).toBeInTheDocument();
   })
 })
