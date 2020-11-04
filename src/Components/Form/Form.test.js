@@ -86,4 +86,36 @@ describe('Form', () => {
     expect(gameQuestion).toBeInTheDocument();
     expect(screen.getByRole('button', {name: 'submit'})).toBeInTheDocument();
   })
+
+  it('should inform the user when questions are left unanswered', async () => {
+    const mockActivities = [];
+    const mockSetActivities = jest.fn();
+    const mockUpdateActivityAnswers = jest.fn();
+    const mockSetHistory = jest.fn();
+    
+    render(
+      <MemoryRouter>
+        <Form 
+         activities={mockActivities}
+         setActivities={mockSetActivities}
+         updateActivityAnswers={mockUpdateActivityAnswers}
+         setHistory={mockSetHistory}
+        />
+      </MemoryRouter>
+    )
+
+    await waitFor(() => screen.getByText('Which activities excite you right now?'))
+    userEvent.click(screen.getByText('music'));
+    userEvent.click(screen.getByText('card games'));
+    userEvent.click(screen.getByRole('button', {name: 'next'}));
+    const nextQuestion = await waitFor(() => screen.getByText('Which music genre(s)?'))
+    expect(nextQuestion).toBeInTheDocument();
+    userEvent.click(screen.getByText('Country'));
+    userEvent.click(screen.getByRole('button', {name: 'next'}))
+    expect(screen.getByText('Please select at least one option for each question')).toBeInTheDocument();
+    userEvent.click(screen.getByText('2000\'s'));
+    userEvent.click(screen.getByRole('button', {name: 'next'}));
+    const gameQuestion = await waitFor(() => screen.getByText('How many people are playing?'));
+    expect(gameQuestion).toBeInTheDocument();
+  })
 })
