@@ -80,7 +80,7 @@ class App extends Component {
   }
 
   determineRandomActivity = () => {
-    let reduce = this.state.activities.reduce((filtered, activity) => {
+    let allFilteredActivities = this.state.activities.reduce((filtered, activity) => {
       if (activity.includes('games')) {
         activity = activity.replace(/ games/gi, 'Games')
       }
@@ -88,10 +88,11 @@ class App extends Component {
       filtered.push(filteredActivities)
       return filtered
     }, [])
-    console.log('help', reduce.flat())
+    return allFilteredActivities.flat()
   }
 
   filterActivity = (activity, answers) => {
+    //refactor this - break out into helper functions
     let genreGroup = ['movies', 'podcasts', 'music']
     let gamesGroup = ['boardGames', 'cardGames']
     let ageGroup = ['movies', 'music']
@@ -122,17 +123,20 @@ class App extends Component {
           return possibleSuggestions
         }
     }
-    if (activity.includes('Games')) {
+    if (gamesGroup.includes(activity)) {
       possibleSuggestions = this.state[activity]
       const choices = ['1', '2', '3', '4', '5', 'more than 5']
       let numberOfPlayers = choices.find(choice => {
         return answers.includes(choice)
       })
       possibleSuggestions = possibleSuggestions.filter(element => {
+        if (numberOfPlayers === 'more than 5') {
+          return element.max_players >= 5
+        }
         return element.min_players <= numberOfPlayers && element.max_players >= numberOfPlayers
       })
     }
-    console.log(possibleSuggestions)
+    return possibleSuggestions
   }
 
   render() {
