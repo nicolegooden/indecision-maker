@@ -4,8 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import userEvent from  '@testing-library/user-event';
 import { ResultPage } from './ResultPage';
 import '@testing-library/jest-dom';
-import { } from '../../apiCalls'
-jest.mock('../../apiCalls');
+
 
 describe('ResultPage', () => {
 
