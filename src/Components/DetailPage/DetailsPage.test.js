@@ -1,7 +1,6 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import userEvent from  '@testing-library/user-event';
 import { DetailsPage } from './DetailsPage';
 import '@testing-library/jest-dom';
 
@@ -41,6 +40,7 @@ describe('DetailsPage', () => {
       });
 
     it('It should display a random activity', () => {
+        
         render(
             <MemoryRouter>
                 <DetailsPage
@@ -55,7 +55,7 @@ describe('DetailsPage', () => {
         const moviePublic = screen.getByText('PG');
         const informationTitle = screen.getByRole('heading', { name: /a little bit about me/i });
         const raitingTitle = screen.getByRole('heading', { name: /imdb raiting/i });
-        const movieReleaseDateTitle = screen.getByRole('heading', { name: /release date/i })
+        const movieReleaseDateTitle = screen.getByRole('heading', { name: /similar picks/i });
         const movieReleaseDate = screen.getByText(/december 14, 2018/i);
         const raitingValue = screen.getByText(/8.4/i);
         const genreTitle = screen.getByRole('heading', { name: /genre/i });

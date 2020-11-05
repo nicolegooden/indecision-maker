@@ -93,7 +93,7 @@ describe('ResultPage', () => {
         const movieTitle = screen.getByText('Harry Potter and the Prisoner of Azkaban');
         const moviePublic = screen.getByText('PG');
         const randomImg = screen.getByRole('img');
-        const simmilarPicksTitle = screen.getByRole('heading', { name: /simmilar picks/i });
+        const simmilarPicksTitle = screen.getByRole('heading', { name: /similar picks/i });
         const choosemeButton = screen.getByRole('button', { name: /choose me!/i });
         const skipButton = screen.getByRole('button', { name: /skip/i });
 
@@ -190,7 +190,7 @@ describe('ResultPage', () => {
         const movieTitle = screen.getByText('Harry Potter and the Prisoner of Azkaban');
         const moviePublic = screen.getByText('PG');
         const randomImg = screen.getByRole('img');
-        const simmilarPicksTitle = screen.getByRole('heading', { name: /simmilar picks/i });
+        const simmilarPicksTitle = screen.getByRole('heading', { name: /similar picks/i })
         const choosemeButton = screen.getByRole('button', { name: /choose me!/i });
         const skipButton = screen.getByRole('button', { name: /skip/i });
 
@@ -209,7 +209,7 @@ describe('ResultPage', () => {
         const movieTitle2  =  await waitFor(() => screen.getByText('Corpse Bride'))
         const moviePublic2  =  await waitFor(() => screen.getByText('PG'))
         const randomImg2 = await waitFor(() => screen.getByRole('img'));
-        const simmilarPicksTitle2 = screen.getByRole('heading', { name: /simmilar picks/i });
+        const simmilarPicksTitle2 = screen.getByRole('heading', { name: /similar picks/i })
         const choosemeButton2 = screen.getByRole('button', { name: /choose me!/i });
         const skipButton2 = screen.getByRole('button', { name: /skip/i });
 
