@@ -10,7 +10,7 @@ export const BrowsePage = (props) => {
             return (
                 <li key ={i}className="hexa">
                     <div className="inner-hexagon">
-                        <img className="hexa-image" 
+                        <img className="hexa-image" data-testid='image-test' 
                         src={e.image_poster || e.image_100 || e.image} 
                         alt={e.song_title || e.instructions || e.podcast_title || e.name}
                         />
