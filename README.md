@@ -3,8 +3,6 @@
 [![Issues][issues-shield]](https://github.com/issues)
 [![Starred][stars-shield]](https://github.com/issues)
 
-## Project Title __*group project*_
-
 ## Contributors
   - [Nicole Gooden](https://github.com/nicolegooden)
   - [Blake Donnelly](https://github.com/BlakeDonn)
