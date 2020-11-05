@@ -77,14 +77,20 @@ $hex-size: 6em; // Only change size here. Best used with sizes from 5em - 10em.
                     width: 55%;
                     margin: 20%;
                     height: 40%;
-                
                 }
 
                 .title{
                     font-size: 1.3em;
                     font-family: 'Comfortaa', cursive; 
                     color: $darkPurple;
-                    margin: -10%
+                    margin: -10%;
+                }
+
+                .title-copy {
+                  font-size: 1.3em;
+                  font-family: 'Comfortaa', cursive; 
+                  color: $darkPurple;
+                  margin-top: 50%;
                 }
 
                 .large-title{

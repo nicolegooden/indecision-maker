@@ -3,16 +3,16 @@ import { Homepage } from '../HomePage/Homepage';
 import { Form } from '../Form/Form';
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { BrowsePage } from '../BrowsePage/BrowsePage';
+import { Footer } from '../Footer/Footer';
+import { ResultPage } from '../ResultPage/ResultPage';
+import { DetailsPage } from '../DetailPage/DetailsPage';
 import { getAllMovies, 
   getAllPodcasts, 
   getAllCardGames, 
   getAllMusic, 
   getAllBoardGames} 
-  from '../../apiCalls.js'
-import { BrowsePage } from '../BrowsePage/BrowsePage';
-import { Footer } from '../Footer/Footer';
-import { ResultPage } from '../ResultPage/ResultPage';
-import { DetailsPage } from '../DetailPage/DetailsPage';
+  from '../../apiCalls.js';
 
 class App extends Component {
   constructor() {
@@ -256,14 +256,11 @@ class App extends Component {
               />
             }}>
           </Route>
-
           <Route
             path='/*'>
-            <h1 className="error">Oops something went wrong...</h1>
+            <h1 className="error">Oops, something went wrong...</h1>
           </Route>
-
          </Switch>
-
         <Footer />
       </div >
     );
