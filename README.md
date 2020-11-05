@@ -1,6 +1,7 @@
-[![Contributors][contributors-shield]]()
-[![Forks][forks-shield]]()
-[![Issues][issues-shield]]()
+[![Contributors][contributors-shield]](https://github.com/nicolegooden/indecision-maker/graphs/contributors)
+[![Forks][forks-shield]](https://github.com/nicolegooden/indecision-maker/network/members)
+[![Issues][issues-shield]](https://github.com/issues)
+[![Starred][stars-shield]](https://github.com/issues)
 
 ## Project Title __*group project*_
 
@@ -14,6 +15,8 @@
 
 ## Context
 
+`Indecions Maker` is a project built in eigth days. As a team we had the opportunity to choose any technology to learn and implement in conjunction with `React`. The technology of our choosing was `PostgreSql`, and `Knex`. We decided to create a back end serve that would popula the data dynamically using other API's. A big win in our learning was to learn about the `PostgreSQL` workflow to `migrate` tables and `seed` data. it
+
 #### Technologies used:
 
   * PostgreSQL
@@ -25,20 +28,30 @@
 
 ## Challenges
 
+  * Manipulating state
+  * Organizing components
+  * Data-flow within components
   * Architect consistent data
   * Working with new technologies
-  * Testing
-  * 
+  * Back-end server testing
+  * Back-end server deployment 
 
 ## Wins
   * Knex - postgreSQL workflow, Migrating and seeding tables
   * Displaying proper data on the DOM
+  * Styling using SCSS
+  * Technical workflow
+  * 
 
 ## Future Goals
 
   * Filter activitites by audience, e.g. familiy friendly
   * Create a log in functionality usig user authentication software
-  * 
+  * Add functionality to `<BrowsePage>`so the user can learn more about other activities
+  * Add users selection to prompts to localstorage
+  * Comment functionality
+  * Create new activitties
+
 
 ## In Action
 
@@ -104,19 +117,26 @@ The user's choices are saved in `state` and then used to filter the activities.
 
 
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
-[contributors-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
-[forks-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/network/members
-[stars-shield]: https://img.shields.io/github/stars/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
-[stars-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/stargazers
-[issues-shield]: https://img.shields.io/github/issues/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
-[issues-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/issues
-[license-shield]: https://img.shields.io/github/license/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
+
+[contributors-shield]: https://img.shields.io/github/contributors/nicolegooden/indecision-maker.svg?style=flat-square
+[contributors-url]: https://github.com/nicolegooden/indecision-maker/graphs/contributors
+
+[forks-shield]: https://img.shields.io/github/forks/nicolegooden/indecision-maker.svg?style=flat-square
+[forks-url]: https://github.com/nicolegooden/indecision-maker/network/members
+
+[stars-shield]: https://img.shields.io/github/stars/nicolegooden/indecision-maker.svg?style=flat-square
+[stars-url]: https://github.com/nicolegooden/indecision-maker/stargazers
+
+[issues-shield]: https://img.shields.io/github/issues/nicolegooden/indecision-maker.svg?style=flat-square
+[issues-url]: https://github.com/nicolegooden/indecision-maker/issues
+
+<!-- [license-shield]: https://img.shields.io/github/license/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
 [license-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/blob/master/LICENSE.txt
+
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+
 [linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: images/screenshot.png -->
 
 
 # Getting Started with Create React App
