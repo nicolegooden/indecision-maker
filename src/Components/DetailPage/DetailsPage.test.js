@@ -10,7 +10,7 @@ describe('DetailsPage', () => {
     let name, randomActivity;
 
     beforeEach(() => {
-        name = 'mockName'
+        name = {activity: 'mockName'}
         randomActivity = 
             {                       
                 brief_description: "Teen Miles Morales becomes the Spider-Man of his universe, and must join with five spider-powered individuals from other dimensions to stop a threat for all realities.",
