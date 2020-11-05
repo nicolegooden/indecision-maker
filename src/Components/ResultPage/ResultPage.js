@@ -120,7 +120,7 @@ export const ResultPage = (props) => {
           </div>
 
           <div className="more-suggestions">
-            <h5 className="simmilar-picks">Simmilar picks</h5>
+            <h5 className="simmilar-picks">Similar picks</h5>
           </div>
 
 
