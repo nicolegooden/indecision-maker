@@ -241,6 +241,7 @@ export class Form extends Component {
   }
 }
 
+<<<<<<< HEAD
 Form.propTypes = {
   route: PropTypes.object,
   goBack: PropTypes.func.isRequired,
@@ -251,3 +252,5 @@ Form.propTypes = {
   updateActivityAnswers: PropTypes.func.isRequired,
   determineRandomActivity: PropTypes.func.isRequired
 }
+=======
+>>>>>>> 759c8b6f2f799983cf03aa106a71843f6bfe3929

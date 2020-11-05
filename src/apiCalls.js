@@ -1,5 +1,5 @@
 export const getAllMovies = async () => {
-  const response = await fetch('http://localhost:3000/api/v1/movies')
+  const response = await fetch('https://indecision-maker.herokuapp.com/api/v1/movies')
   if (response.ok) {
     return await response.json()
   } else {
@@ -8,7 +8,7 @@ export const getAllMovies = async () => {
 }
 
 export const getMoviesByGenre = async (genre) => {
-  const response = await fetch(`http://localhost:3000/api/v1/movies/${genre}`)
+  const response = await fetch(`https://indecision-maker.herokuapp.com/api/v1/movies/${genre}`)
   if (response.ok) {
     return await response.json()
   } else {
@@ -17,7 +17,7 @@ export const getMoviesByGenre = async (genre) => {
 }
 
 export const getAllBoardGames = async () => {
-  const response = await fetch('http://localhost:3000/api/v1/boardgames')
+  const response = await fetch('https://indecision-maker.herokuapp.com/api/v1/boardgames')
   if (response.ok) {
     return await response.json()
   } else {
@@ -26,7 +26,7 @@ export const getAllBoardGames = async () => {
 }
 
 export const getAllCardGames = async () => {
-  const response = await fetch('http://localhost:3000/api/v1/cardgames')
+  const response = await fetch('https://indecision-maker.herokuapp.com/api/v1/cardgames')
   if (response.ok) {
     return await response.json()
   } else {
@@ -35,7 +35,7 @@ export const getAllCardGames = async () => {
 }
 
 export const getAllMusic = async () => {
-  const response = await fetch('http://localhost:3000/api/v1/music')
+  const response = await fetch('https://indecision-maker.herokuapp.com/api/v1/music')
   if (response.ok) {
     return await response.json()
   } else {
@@ -44,7 +44,7 @@ export const getAllMusic = async () => {
 }
 
 export const getMusicByGenre = async (genre) => {
-  const response = await fetch(`http://localhost:3000/api/v1/music/${genre}`)
+  const response = await fetch(`https://indecision-maker.herokuapp.com/api/v1/music/${genre}`)
   if (response.ok) {
     return await response.json()
   } else {
@@ -53,7 +53,7 @@ export const getMusicByGenre = async (genre) => {
 }
 
 export const getAllPodcasts = async () => {
-  const response = await fetch('http://localhost:3000/api/v1/podcasts')
+  const response = await fetch('https://indecision-maker.herokuapp.com/api/v1/podcasts')
   if (response.ok) {
     return await response.json()
   } else {
@@ -62,7 +62,7 @@ export const getAllPodcasts = async () => {
 }
 
 export const getPodcastsByGenre = async (genre) => {
-  const response = await fetch(`http://localhost:3000/api/v1/podcasts/${genre}`)
+  const response = await fetch(`https://indecision-maker.herokuapp.com/api/v1/podcasts/${genre}`)
   if (response.ok) {
     return await response.json()
   } else {
@@ -71,7 +71,7 @@ export const getPodcastsByGenre = async (genre) => {
 }
 
 export const getAllQuestions = async () => {
-  const response = await fetch('http://localhost:3000/api/v1/questions')
+  const response = await fetch('https://indecision-maker.herokuapp.com/api/v1/questions')
   if (response.ok) {
     return await response.json()
   } else {

@@ -91,7 +91,7 @@ export const DetailsPage = (props) => {
             {props.randomActivity.genre && <h3 className="title">Genre</h3>}
             {props.randomActivity.genre  && <p className="content">{props.randomActivity.genre}</p>}
             {props.randomActivity.release_date && <h3 className="title">Release date</h3>}
-            {props.randomActivity.release_date  && <p className="content">{moment(props.randomActivity.release_date).format('LL')}</p>}
+            {props.randomActivity.release_date  && <p className="content">{moment(props.randomActivity.release_date).format('LL')}</p>}   
           </div>
           <div className="info enjoy-it">
             <h1 className="">Enjoy it!</h1>

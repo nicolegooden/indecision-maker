@@ -19,7 +19,6 @@ export const ResultPage = (props) => {
             || activity.song_title 
             || activity.album_title 
             || activity.title 
-            || activity.podcast_name
             || activity.name
             || "no information"}
           </h3>
@@ -27,7 +26,6 @@ export const ResultPage = (props) => {
                activity.podcast_name
             || activity.artist
             || activity.materials
-            || activity.title 
             || "no information available"
             }
           </h3>
@@ -105,7 +103,7 @@ export const ResultPage = (props) => {
           </Link>}
             <button 
               onClick={props.determineRandomActivity}
-              className="button skip-activity">{props.error ? "back" : "skip"}</button>
+              className="button skip-activity">{!props.error ? "skip" : "back"}</button>
           </div>
           <div className="the-rest-container">
            {activityGallery}
