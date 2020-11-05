@@ -76,7 +76,11 @@ describe('ResultPage', () => {
         )
       });
 
-    it('It should display a random activity', () => {
+<<<<<<< HEAD
+    it('It should display a random activity',() => {
+=======
+    it('should display a random activity', () => {
+>>>>>>> fc33f1c4bfa9d5a0313ac9f9ad99401696173059
         render(
             <MemoryRouter>
                 <ResultPage
@@ -108,7 +112,11 @@ describe('ResultPage', () => {
         
       });
 
-    it('It should display a "back button" when an error is found', () => {
+<<<<<<< HEAD
+    it('Should display a "back button" when an error is found',() => {
+=======
+    it('should display a "back button" when an error is found', () => {
+>>>>>>> fc33f1c4bfa9d5a0313ac9f9ad99401696173059
         render(
             <MemoryRouter>
                 <ResultPage
@@ -126,7 +134,11 @@ describe('ResultPage', () => {
         expect(backButton).toBeInTheDocument();
         
       });
-    it('It should display information about other activities', () => {
+<<<<<<< HEAD
+    it('Should display information about other activities',() => {
+=======
+    it('should display information about other activities', () => {
+>>>>>>> fc33f1c4bfa9d5a0313ac9f9ad99401696173059
         render(
             <MemoryRouter>
                 <ResultPage
@@ -140,7 +152,7 @@ describe('ResultPage', () => {
         )
 
         const cardTitle = screen.getByText('The Witches');
-        const cardDate = screen.getByRole('heading', { name: /2020\-10\-22/i })
+        const cardDate = screen.getByRole('heading', { name: /2020-10-22/i })
         const cardDetails = screen.getByText( 'AdventureComedyFamilyFantasyHorror' )
 
         expect(cardTitle).toBeInTheDocument()
@@ -150,7 +162,7 @@ describe('ResultPage', () => {
         
       });
 
-      it('It should display information about multiple activities', () => {
+      it('Should display information about multiple activities', () => {
         render(
             <MemoryRouter>
                 <ResultPage
@@ -164,7 +176,7 @@ describe('ResultPage', () => {
         )
 
         const cardTitle = screen.getByText('The Witches');
-        const cardDate = screen.getByRole('heading', { name: /2020\-10\-22/i })
+        const cardDate = screen.getByRole('heading', { name: /2020-10-22/i })
         const cardDetails = screen.getByText( 'AdventureComedyFamilyFantasyHorror' )
 
         expect(cardTitle).toBeInTheDocument()

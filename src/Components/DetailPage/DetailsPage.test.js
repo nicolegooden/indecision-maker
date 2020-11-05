@@ -39,7 +39,7 @@ describe('DetailsPage', () => {
         )
       });
 
-    it('It should display a random activity', () => {
+    it('should display a random activity', () => {
         
         render(
             <MemoryRouter>
@@ -51,7 +51,7 @@ describe('DetailsPage', () => {
         )
 
         const banner = screen.getByRole('heading', { name: /all you need to know\./i });
-        const movieTitle = screen.getByRole('heading', { name: /spider\-man: into the spider\-verse/i });
+        const movieTitle = screen.getByRole('heading', { name: /spider-man: into the spider-verse/i });
         const moviePublic = screen.getByText('PG');
         const informationTitle = screen.getByRole('heading', { name: /a little bit about me/i });
         const raitingTitle = screen.getByRole('heading', { name: /imdb raiting/i });
