@@ -76,7 +76,7 @@ describe('ResultPage', () => {
         )
       });
 
-    it('It should display a random activity', () => {
+    it('should display a random activity', () => {
         render(
             <MemoryRouter>
                 <ResultPage
@@ -108,7 +108,7 @@ describe('ResultPage', () => {
         
       });
 
-    it('It should display a "back button" when an error is found', () => {
+    it('should display a "back button" when an error is found', () => {
         render(
             <MemoryRouter>
                 <ResultPage
@@ -126,7 +126,7 @@ describe('ResultPage', () => {
         expect(backButton).toBeInTheDocument();
         
       });
-    it('It should display information about other activities', () => {
+    it('should display information about other activities', () => {
         render(
             <MemoryRouter>
                 <ResultPage
@@ -140,7 +140,7 @@ describe('ResultPage', () => {
         )
 
         const cardTitle = screen.getByText('The Witches');
-        const cardDate = screen.getByRole('heading', { name: /2020\-10\-22/i })
+        const cardDate = screen.getByRole('heading', { name: /2020-10-22/i })
         const cardDetails = screen.getByText( 'AdventureComedyFamilyFantasyHorror' )
 
         expect(cardTitle).toBeInTheDocument()
@@ -150,7 +150,7 @@ describe('ResultPage', () => {
         
       });
 
-      it('It should display information about multiple activities', () => {
+      it('should display information about multiple activities', () => {
         render(
             <MemoryRouter>
                 <ResultPage
@@ -164,7 +164,7 @@ describe('ResultPage', () => {
         )
 
         const cardTitle = screen.getByText('The Witches');
-        const cardDate = screen.getByRole('heading', { name: /2020\-10\-22/i })
+        const cardDate = screen.getByRole('heading', { name: /2020-10-22/i })
         const cardDetails = screen.getByText( 'AdventureComedyFamilyFantasyHorror' )
 
         expect(cardTitle).toBeInTheDocument()

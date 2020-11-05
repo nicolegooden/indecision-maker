@@ -7,7 +7,7 @@ import {getAllMovies, getAllBoardGames, getAllCardGames, getAllMusic, getAllPodc
 jest.mock("../../apiCalls.js");
 
 describe("BrowsePage", () => {
-    it("Podcasts should load with podcast art and title ", async () => {
+    it("Podcasts should load with podcast art and title", async () => {
         let testResults;
         let podcastResults = getAllPodcasts.mockResolvedValue([{
           podcast_title: "The Joe Rogan Experience",
