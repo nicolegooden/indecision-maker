@@ -58,17 +58,10 @@ export class Form extends Component {
         return this.setState({ currentAnswers: answerToReplace });
       }
     } else {
-      this.setState({
-        currentAnswers: [
-          ...this.state.currentAnswers,
-          event.target.textContent,
-        ],
-      });
+      this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]});
     }
     this.props.updateActivityAnswers(event);
-    this.setState({
-      currentAnswers: [...this.state.currentAnswers, event.target.textContent],
-    });
+    this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]});
   };
 
   updateAllAnswers = async (event) => {
@@ -81,7 +74,7 @@ export class Form extends Component {
       await this.setState({
         allAnswers: [...this.state.allAnswers, this.state.currentAnswers],
         currentAnswers: [],
-        error: "",
+        error: ""
       });
       this.props.setActivities(this.state.allAnswers[0]);
       let activitySet = this.handleBothGames();
@@ -95,9 +88,7 @@ export class Form extends Component {
         error: "",
       });
     } else {
-      return this.setState({
-        error: "Please select at least one option for each question",
-      });
+      return this.setState({error: "Please select at least one option for each question"});
     }
   };
 
@@ -136,8 +127,7 @@ export class Form extends Component {
           {data[index].choices.map((choice, i) => {
             return (
               <div key={i} className="choice">
-                <h3
-                  
+                <h3    
                   id={data[index].answerType}
                   onClick={(e) => {
                     this.updateCurrentAnswers(e, data[index]);
@@ -161,8 +151,7 @@ export class Form extends Component {
     if (this.state.questionsPerActivity.length) {
       let unansweredSet = this.state.questionsPerActivity.find((set) => {
         return (
-          this.state.allAnswers[0][this.state.allAnswers.length - 1] ===
-          set.activity
+          this.state.allAnswers[0][this.state.allAnswers.length - 1] === set.activity
         );
       });
       return unansweredSet.questions.map((question, i) => {
@@ -188,18 +177,14 @@ export class Form extends Component {
       this.props.determineRandomActivity()
       return (this.props.route.push("/activity/results"))
     } else {
-      return this.setState({
-        error: "Please select at least one option for each question",
-      });
+      return this.setState({error: "Please select at least one option for each question"});
     }
   };
 
   showCurrentAnswers = () => {
     return this.state.currentAnswers.map((answer, i) => {
       return (
-        <h3 key={i} className="current-answer">
-          {answer}
-        </h3>
+        <h3 key={i} className="current-answer">{answer}</h3>
       )
     })
   }
@@ -208,35 +193,17 @@ export class Form extends Component {
     let button;
     if (this.state.allAnswers.length === 0) {
       return (
-        <button
-          onClick={this.updateAllAnswers}
-          className="next-button form-button"
-        >
-          next
-        </button>
+        <button onClick={this.updateAllAnswers} className="next-button form-button">next</button>
       );
-      
     }
-    if (
-      this.state.allAnswers.length === this.state.questionsPerActivity.length
-    ) {
+    if (this.state.allAnswers.length === this.state.questionsPerActivity.length) {
       return (
-        <button
-          onClick={this.handleSubmission}
-          className="submit-button form-button"
-        >
-          submit
-        </button>
+        <button onClick={this.handleSubmission} className="submit-button form-button">submit</button>
       );
     }
     if (this.state.questionsPerActivity && button === undefined) {
       button = (
-        <button
-          onClick={this.updateAllAnswers}
-          className="next-button form-button"
-        >
-          next
-        </button>
+        <button onClick={this.updateAllAnswers} className="next-button form-button">next</button>
       );
     }
     return button;
@@ -245,7 +212,6 @@ export class Form extends Component {
   render() {
     return (
       <form className="question-form">
-
         <div className="bar-menu">
           <CgUserlane className="logo" />
           <Link 
@@ -254,25 +220,20 @@ export class Form extends Component {
             <RiHomeSmileLine className="logo" />
           </Link>
         </div>
-
         <div className="form-container">
           {this.state.prompts.length && this.showQuestion()}
         </div>
-
         <div className="picks-title-container">
           <h4 className="picks-title">Your picks!</h4>
         </div>
-
         <div className="user-picks-container">{this.showCurrentAnswers()}</div>
         <h3>{this.state.error}</h3>
         <div className="form-controls">
-
           <button 
             className="back-button form-button" 
             onClick={this.goBack}>
             back
           </button>
-
           {this.determineNextOrSubmit()}
         </div>
       </form>
