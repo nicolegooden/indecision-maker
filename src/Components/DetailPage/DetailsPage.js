@@ -19,7 +19,6 @@ export const DetailsPage = (props) => {
           </div>
 
           <div className="info activity-title">
-            <h1 className="title">Activity Title</h1>
             <h1 className="">{
                props.randomActivity.song_title 
             || props.randomActivity.title 
