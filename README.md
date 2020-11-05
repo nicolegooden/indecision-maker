@@ -15,7 +15,13 @@
 
 ## Context
 
-`Indecions Maker` is a project built in eigth days. As a team we had the opportunity to choose any technology to learn and implement in conjunction with `React`. The technology of our choosing was `PostgreSql`, and `Knex`. We decided to create a back end serve that would popula the data dynamically using other API's. A big win in our learning was to learn about the `PostgreSQL` workflow to `migrate` tables and `seed` data. it
+`Indecions Maker` is a project built in eigth days. As a team we had the opportunity to choose any technology to learn and implement in conjunction with `React`. The technology of our choosing was `PostgreSql`, and `Knex`. We decided to create a back end serve that would popula the data dynamically using other API's. A big win in our learning was to learn about the `PostgreSQL` workflow to `migrate` tables and `seed` data.
+
+#### Indecision Maker Server
+
+  * Do you want to know more about our process with `PostgreSQL`, visit the following link.
+
+    [Indecision Server](https://github.com/Atos20/indecision-maker-server)
 
 #### Technologies used:
 
