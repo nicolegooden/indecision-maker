@@ -1,70 +1,146 @@
-# Getting Started with Create React App
+[![Contributors][contributors-shield]](https://github.com/nicolegooden/indecision-maker/graphs/contributors)
+[![Forks][forks-shield]](https://github.com/nicolegooden/indecision-maker/network/members)
+[![Issues][issues-shield]](https://github.com/issues)
+[![Starred][stars-shield]](https://github.com/issues)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Title __*group project*_
 
-## Available Scripts
+## Contributors
+  - [Nicole Gooden](https://github.com/nicolegooden)
+  - [Blake Donnelly](https://github.com/BlakeDonn)
+  - [Orlando Murcio](https://www.github.com/atos20)
 
-In the project directory, you can run:
+## Project Directions
+[Indecision Maker](https://github.com/nicolegooden/indecision-maker)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+`Indecision Maker` takes the responsibility of choosing at-home activities away from the user.  The user can choose to find an activity via filling out a form, through which the user is prompted to select activities of interest and to answer all relevant questions about the activities.  When the form is submitted, the user will be redirected to a view that displays the suggested activity and its details.  The user can choose to participate in the activity or skip to see a different suggestion based on the filtered results.  Furthermore, the user can browse all of our available content from the homepage. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Context
 
-### `npm test`
+`Indecions Maker` is a project built in eight days. As a team we had the opportunity to choose any technology to learn and implement in conjunction with `React`. The technology of our choosing was `PostgreSQL`, and `Knex`. We decided to create a backend server that would populate the data dynamically using other API's. A big win in our learning was to experiment with the `PostgreSQL` workflow to `migrate` tables and `seed` data.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Indecision Maker Server
 
-### `npm run build`
+  * To learn more about our process with `PostgreSQL`, visit the following link:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    [Indecision Server](https://github.com/Atos20/indecision-maker-server)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Technologies used:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  * PostgreSQL
+  * Knex
+  * React
+  * Express
+  * SCSS
+  * Git
+  * GitHub
 
-### `npm run eject`
+## Challenges
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  * Manipulating state
+  * Organizing components
+  * Data-flow within components
+  * Architect consistent data
+  * Working with new technologies
+  * Back-end server testing
+  * Back-end server deployment 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Wins
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  * Knex - postgreSQL workflow, migrating and seeding tables
+  * Displaying proper data on the DOM
+  * Styling using SCSS
+  * Technical workflow
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Future Goals
 
-## Learn More
+  * Filter activitites by audience, e.g. family friendly
+  * Create log in functionality using user authentication software
+  * Add functionality to `<BrowsePage>` so the user can learn more about other activities without filling out the form
+  * Add users' selections to prompts to local storage
+  * Comment functionality
+  * Create new activitties and add more data to existing activities
+  * Feedback form for user experience - features POST request to our database
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## In Action
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Take 1
 
-### Code Splitting
+- When the user first interacts with the application, the app renders a welcome message that introduces the user to an existential question that makes us wonder about our own decisions. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+ - The user can interact with the navigation bar and browse the applcation's content such as music, movies, podcasts, card games and board games.
 
-### Analyzing the Bundle Size
+ <img src="https://media.giphy.com/media/8hg3zdbyxZStJMchtR/giphy.gif" alt="" height=100% width=80%/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Take 2
 
-### Making a Progressive Web App
+- When the user clicks on the `find activity button`, the application's view changes to present the viewer with the `find activity form`. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- When the user answers the questionnaire, the script collects the user's information and updates state in the parent component: `<App/>`, this way the algorithm handled by the parent will filter and randomize an actvity.
 
-### Advanced Configuration
+  <img src="https://media.giphy.com/media/cfc797PcomQaZdAfMo/giphy.gif" height=auto width=75%/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### Take 3
 
-### Deployment
+- `<Form>` component
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+The user's choices are saved in `state` and then used to filter the activities.
 
-### `npm run build` fails to minify
+  <img src="https://media.giphy.com/media/x6zztuZgQp1m4tse2X/giphy.gif" height=auto width=75%/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Take 4
+
+**The `<ResultPage>` & `<DetailsPage>` component.**
+
+- This component display to the user an activity selected by the script. At this point the user has two options:
+
+    - The first `option` is to select the activity suggested by the application.
+
+    - The second `option` is to skip the suggested activity and choose another one that randmoizes the next suggested activity.
+
+<img src="https://media.giphy.com/media/Az8Rc9zwIFxFx5mXv6/giphy.gif" height=auto width=75%/>
+
+### Set up
+
+* On the top right corner of this page, click the **Fork** button.
+- Clone the repository to your computer `git clone <URL>`
+  - When you run git clone - git clone [remote-address] [what you want to name the repo]
+  replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
+- `cd` into the repository with the following command `cd <repo-name>`
+- Run `npm install`
+- Run `open src/index.html`
+
+### Contribute
+
+- Create a new branch with `git checkout -b <new branch name>`
+- Open your text editor and add or remove functionalities to the site.
+- `git add` and `git commit -m "<your commit meessage>"` to save the changes to your local repository
+- `git push` your changes
+- Create a new pull request!
+
+### Project Managers
+- [Leta](https://github.com/letakeane)
+- [Khalid](https://github.com/khalidwilliams)
+
+
+[contributors-shield]: https://img.shields.io/github/contributors/nicolegooden/indecision-maker.svg?style=flat-square
+[contributors-url]: https://github.com/nicolegooden/indecision-maker/graphs/contributors
+
+[forks-shield]: https://img.shields.io/github/forks/nicolegooden/indecision-maker.svg?style=flat-square
+[forks-url]: https://github.com/nicolegooden/indecision-maker/network/members
+
+[stars-shield]: https://img.shields.io/github/stars/nicolegooden/indecision-maker.svg?style=flat-square
+[stars-url]: https://github.com/nicolegooden/indecision-maker/stargazers
+
+[issues-shield]: https://img.shields.io/github/issues/nicolegooden/indecision-maker.svg?style=flat-square
+[issues-url]: https://github.com/nicolegooden/indecision-maker/issues
+
+
+
+
+
+
+
+
