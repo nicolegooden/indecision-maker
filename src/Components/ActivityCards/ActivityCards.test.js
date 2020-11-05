@@ -15,7 +15,7 @@ describe('ActivityCards', () => {
         )
       });
 
-    it('It should display all activity cards', () => {
+    it('should display all activity cards', () => {
         render(
             <MemoryRouter>
                 <ActivityCards/>
