@@ -13,13 +13,17 @@
 ## Project Directions
 [Indecision Maker](https://github.com/nicolegooden/indecision-maker)
 
+## Overview
+
+`Indecision Maker` takes the responsibility of choosing at-home activities away from the user.  The user can choose to find an activity via filling out a form, through which the user is prompted to select activities of interest and to answer all relevant questions about the activities.  When the form is submitted, the user will be redirected to a view that displays the suggested activity and its details.  The user can choose to participate in the activity or skip to see a different suggestion based on the filtered results.  Furthermore, the user can browse all of our available content from the homepage. 
+
 ## Context
 
-`Indecions Maker` is a project built in eigth days. As a team we had the opportunity to choose any technology to learn and implement in conjunction with `React`. The technology of our choosing was `PostgreSql`, and `Knex`. We decided to create a back end serve that would popula the data dynamically using other API's. A big win in our learning was to learn about the `PostgreSQL` workflow to `migrate` tables and `seed` data.
+`Indecions Maker` is a project built in eight days. As a team we had the opportunity to choose any technology to learn and implement in conjunction with `React`. The technology of our choosing was `PostgreSQL`, and `Knex`. We decided to create a backend server that would populate the data dynamically using other API's. A big win in our learning was to experiment with the `PostgreSQL` workflow to `migrate` tables and `seed` data.
 
 #### Indecision Maker Server
 
-  * Do you want to know more about our process with `PostgreSQL`, visit the following link.
+  * To learn more about our process with `PostgreSQL`, visit the following link:
 
     [Indecision Server](https://github.com/Atos20/indecision-maker-server)
 
@@ -28,8 +32,9 @@
   * PostgreSQL
   * Knex
   * React
+  * Express
   * SCSS
-  * GIT
+  * Git
   * GitHub
 
 ## Challenges
@@ -43,27 +48,27 @@
   * Back-end server deployment 
 
 ## Wins
-  * Knex - postgreSQL workflow, Migrating and seeding tables
+
+  * Knex - postgreSQL workflow, migrating and seeding tables
   * Displaying proper data on the DOM
   * Styling using SCSS
   * Technical workflow
-  * 
 
 ## Future Goals
 
-  * Filter activitites by audience, e.g. familiy friendly
-  * Create a log in functionality usig user authentication software
-  * Add functionality to `<BrowsePage>`so the user can learn more about other activities
-  * Add users selection to prompts to localstorage
+  * Filter activitites by audience, e.g. family friendly
+  * Create log in functionality using user authentication software
+  * Add functionality to `<BrowsePage>` so the user can learn more about other activities without filling out the form
+  * Add users' selections to prompts to local storage
   * Comment functionality
-  * Create new activitties
-
+  * Create new activitties and add more data to existing activities
+  * Feedback form for user experience - features POST request to our database
 
 ## In Action
 
 #### Take 1
 
-- When the user first interacts with the application, the app renders a welcoming message that introduces the user with an existential question that makes us wonder about our own decisions. 
+- When the user first interacts with the application, the app renders a welcome message that introduces the user to an existential question that makes us wonder about our own decisions. 
 
  - The user can interact with the navigation bar and browse the applcation's content such as music, movies, podcasts, card games and board games.
 
@@ -71,9 +76,9 @@
 
 #### Take 2
 
-- When the user clicks on the `find activity button`, the applications view changes to present the viewer witht the `find activity form`. 
+- When the user clicks on the `find activity button`, the application's view changes to present the viewer with the `find activity form`. 
 
-- When the user answers the questionnaire the script collects the user informations and passes it to the parent compoentn `<App/>`, this way the algorithm handled by the parent will filter and randomize an actvity.
+- When the user answers the questionnaire, the script collects the user's information and updates state in the parent component: `<App/>`, this way the algorithm handled by the parent will filter and randomize an actvity.
 
   <img src="https://media.giphy.com/media/cfc797PcomQaZdAfMo/giphy.gif" height=auto width=75%/>
 
@@ -93,10 +98,9 @@ The user's choices are saved in `state` and then used to filter the activities.
 
     - The first `option` is to select the activity suggested by the application.
 
-    - The second `option` is to skip the suggested activity and choose another one that randmoizes the next suggested activity
+    - The second `option` is to skip the suggested activity and choose another one that randmoizes the next suggested activity.
 
 <img src="https://media.giphy.com/media/Az8Rc9zwIFxFx5mXv6/giphy.gif" height=auto width=75%/>
-
 
 ### Set up
 
@@ -116,13 +120,10 @@ The user's choices are saved in `state` and then used to filter the activities.
 - `git push` your changes
 - Create a new pull request!
 
-
 ### Project Managers
 - [Leta](https://github.com/letakeane)
 - [Khalid](https://github.com/khalidwilliams)
 
-
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [contributors-shield]: https://img.shields.io/github/contributors/nicolegooden/indecision-maker.svg?style=flat-square
 [contributors-url]: https://github.com/nicolegooden/indecision-maker/graphs/contributors
@@ -136,35 +137,8 @@ The user's choices are saved in `state` and then used to filter the activities.
 [issues-shield]: https://img.shields.io/github/issues/nicolegooden/indecision-maker.svg?style=flat-square
 [issues-url]: https://github.com/nicolegooden/indecision-maker/issues
 
-<!-- [license-shield]: https://img.shields.io/github/license/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
-[license-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/blob/master/LICENSE.txt
-
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png -->
 
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 
 
