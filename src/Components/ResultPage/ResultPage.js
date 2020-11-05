@@ -61,20 +61,18 @@ export const ResultPage = (props) => {
           <h1 className="message">{props.error}</h1>}
           <div className="slider">
             <h1 className="activity-title">{
+              !props.randomActivity ?  "no information":
               props.randomActivity.podcast_title
               || props.randomActivity.song_title
               || props.randomActivity.title 
-              || props.randomActivity.name
-              || "no information"
-            }
+              || props.randomActivity.name}
             </h1>
             <h2 className="activity-title">{
+              !props.randomActivity ? "no information available" :
                 props.randomActivity.podcast_name
               || props.randomActivity.artist
               || props.randomActivity.materials
-              || props.randomActivity.content_rating
-              || "no information available"
-            }
+              || props.randomActivity.content_rating}
             </h2>
            <h2 className="activity-title">{
                 props.randomActivity.imdb_raiting

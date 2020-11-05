@@ -108,7 +108,7 @@ describe('ResultPage', () => {
         
       });
 
-    it('It sshould display a "back button" when an error is found', () => {
+    it('It should display a "back button" when an error is found', () => {
         render(
             <MemoryRouter>
                 <ResultPage
@@ -150,7 +150,7 @@ describe('ResultPage', () => {
         
       });
 
-      it('It should display information about other activities', () => {
+      it('It should display information about multiple activities', () => {
         render(
             <MemoryRouter>
                 <ResultPage
