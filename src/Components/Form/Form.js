@@ -66,6 +66,7 @@ export class Form extends Component {
 
   updateAllAnswers = async (event) => {
     event.preventDefault();
+    window.scrollTo(0,0);
     this.setHistory();
     if (this.state.allAnswers.length === 0) {
       if (this.state.currentAnswers.length === 0) {
