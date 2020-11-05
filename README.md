@@ -108,7 +108,7 @@ The user's choices are saved in `state` and then used to filter the activities.
   replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
 - `cd` into the repository with the following command `cd <repo-name>`
 - Run `npm install`
-- Run `open src/index.html`
+- Run `npm start` to run localhost:5000
 
 ### Contribute
 
