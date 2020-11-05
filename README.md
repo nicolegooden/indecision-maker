@@ -9,7 +9,7 @@
   - [Orlando Murcio](https://www.github.com/atos20)
 
 ## Project Directions
-[Indecision Maker](https://github.com/nicolegooden/indecision-maker)
+[Indecision Maker](http://nicolegooden.github.io/indecision-maker)
 
 ## Overview
 
