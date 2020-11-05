@@ -18,4 +18,12 @@ describe("BrowsePage", () => {
       render(<MemoryRouter><Homepage /></MemoryRouter>);
       expect(screen.getByRole('button', {name: 'find activity'})).toBeInTheDocument()
     });
+
+    it("User should see the footer ", () => {
+      render(<MemoryRouter><Homepage /></MemoryRouter>);
+      expect(screen.getByText('What activities interest you?')).toBeInTheDocument()
+      expect(screen.getByText('Games')).toBeInTheDocument()
+      expect(screen.getByText('Maybe?')).toBeInTheDocument()
+    });
+
 });
