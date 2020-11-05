@@ -2,6 +2,7 @@ import React from 'react'
 import './BrowsePage.scss'
 import { CgUserlane } from "react-icons/cg";
 import { RiHomeSmileLine } from "react-icons/ri";
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 export const BrowsePage = (props) => {
@@ -28,23 +29,23 @@ export const BrowsePage = (props) => {
     <section className="movies-section">
         <div className="bar-menu">
           <CgUserlane className="logo"/>
-
           <Link to='/'>
             <RiHomeSmileLine className="logo"/>
           </Link>
         </div>
-        
         <div className="title-container">
             <h1 className="title">{props.name}</h1>
         </div>
-        
         <article className="grid-container">
             <ul className="inner-grid">
                 {activityInformation}
             </ul>
         </article>
-
     </section>
-
   )
+}
+
+BrowsePage.propTypes = {
+  name: PropTypes.string.isRequired,
+  data: PropTypes.array.isRequired
 }
