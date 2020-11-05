@@ -4,8 +4,6 @@ import {ActivityCards} from '../ActivityCards/ActivityCards'
 import {CgUserlane} from "react-icons/cg";
 import {Link} from 'react-router-dom';
 
-
-
 export const Homepage = (props) => {
 
   return (
