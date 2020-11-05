@@ -101,6 +101,6 @@ export const DetailsPage = (props) => {
 }
 
 DetailsPage.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.object.isRequired,
   randomActivity: PropTypes.object.isRequired
 }
