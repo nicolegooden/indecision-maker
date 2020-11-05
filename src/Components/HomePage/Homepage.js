@@ -20,15 +20,6 @@ export const Homepage = (props) => {
         <nav className="nav-bar">
           <ul className="nav-links">
             <Link
-              id="About"
-              className="link"
-              to="/">
-              <li
-                id="About"
-                name="About"
-              >About</li>
-            </Link>
-            <Link
               id="movies"
               name="movies"
               className="link"
