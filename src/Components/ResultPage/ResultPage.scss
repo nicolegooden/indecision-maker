@@ -42,7 +42,12 @@
         text-align: center;
         overflow: hidden;
         height: 100%;
+        // background-color: yellowgreen;
 
+        .activity-title{
+            margin: 0%;
+            color: white;
+        }
         // background-color: darkgrey;
 
         .slide-link{
@@ -85,7 +90,7 @@
                 justify-content: center;
                 align-items: center;
                 font-size: 100px;
-                overflow: hidden;
+                // overflow: hidden;
 
                 .inner-slide{
                     overflow: auto;
@@ -93,6 +98,10 @@
                     display: flex;
                     flex-direction: column;
                 }
+            }
+            .image{
+                border-radius: 50%;
+                height: 90%;
             }
 
             
@@ -120,16 +129,16 @@
     .the-rest-container{
         background-color: $bones;
         grid-area: 5/ 1/ 7 / 7;
-        padding: 1% 2% 1% 2%;
-        margin: 1%;
-        display: flex;
-        flex-direction: row;
+        padding: 1% 2% 0% 2%;
+  
         overflow: auto;
+        // overflow: hidden;
 
+    
         .inner-all-rest{
             background:$darkPurple;
-            // height: 100%;
-            width: 20%;
+            height: 120%;
+            width: 20vw;
             margin: .5%;
             display: inline-flex;
             
@@ -139,8 +148,8 @@
                 border: 1px solid gold;
                 height: 90%;
                 width: 90%;
-                align-self: center;
-                margin: 5%;
+                align-self: end;
+                 margin: 4%;
 
                 .bulb-icon{
                     @include logo();
@@ -150,6 +159,18 @@
                     font-family: $poiret-one;
                 }
             }
+        }
+    }
+    .more-suggestions{
+        font-family: $poiret-one;
+        background-color: $bones;
+        grid-area: 4/ 1/ 5 / 7;
+        align-self: end;
+        margin: 0%;
+        .simmilar-picks{
+            font-size: 1.5em;
+            text-align: left;
+            margin: 0%;
         }
     }
 }

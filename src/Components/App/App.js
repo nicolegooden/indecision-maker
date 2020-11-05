@@ -1,18 +1,18 @@
-import "./App.scss";
-import { Homepage } from "../HomePage/Homepage";
-import { Form } from "../Form/Form";
-import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
-import {
-  getAllMovies,
-  getAllPodcasts,
-  getAllCardGames,
-  getAllMusic,
-  getAllBoardGames,
-} from "../../apiCalls.js";
-import { BrowsePage } from "../BrowsePage/BrowsePage";
-import { Footer } from "../Footer/Footer";
-import { ResultPage } from "../ResultPage/ResultPage";
+import './App.scss';
+import { Homepage } from '../HomePage/Homepage';
+import { Form } from '../Form/Form';
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { BrowsePage } from '../BrowsePage/BrowsePage';
+import { Footer } from '../Footer/Footer';
+import { ResultPage } from '../ResultPage/ResultPage';
+import { DetailsPage } from '../DetailPage/DetailsPage';
+import { getAllMovies, 
+  getAllPodcasts, 
+  getAllCardGames, 
+  getAllMusic, 
+  getAllBoardGames} 
+  from '../../apiCalls.js';
 
 class App extends Component {
   constructor() {
@@ -25,11 +25,14 @@ class App extends Component {
       podcastsAnswers: [],
       boardGamesAnswers: [],
       cardGamesAnswers: [],
+      possibleSuggestions: [],
+      randomActivity: {},
       movies: [],
       music: [],
       podcasts: [],
       boardGames: [],
       cardGames: [],
+      error: ''
     };
   this.baseState = this.state
   }
@@ -60,7 +63,8 @@ class App extends Component {
       }
       this.setState({ [name]: promise });
     } catch (error) {
-      console.log(error);
+      console.log(error)
+      this.setState({error})
     }
   };
 
@@ -110,9 +114,9 @@ class App extends Component {
       []
     );
     let final = allFilteredActivities.flat();
-    console.log(final);
     let randomNumber = Math.floor(Math.random() * final.length);
-    return final[randomNumber];
+    this.setState({randomActivity:  final[randomNumber]})
+    return final[randomNumber]
   };
 
   genreFilter = (activity, answers) => {
@@ -171,6 +175,7 @@ class App extends Component {
     let gamesGroup = ["boardGames", "cardGames"];
     let ageGroup = ["movies", "music"];
     let possibleSuggestions;
+
     if (genreGroup.includes(activity)) {
       possibleSuggestions = this.genreFilter(activity, answers);
     }
@@ -186,35 +191,38 @@ class App extends Component {
       }
       possibleSuggestions = this.gameFilter(activity, answers);
     }
-    return possibleSuggestions;
-  };
+    this.setState({possibleSuggestions: possibleSuggestions})
+    return possibleSuggestions
+  }
 
   render() {
     return (
       <div className="App">
         <Switch>
-          <Route exact path="/">
+          <Route exact path='/'>
             <Homepage
               getActivityData={this.getActivityData}
               allMovies={this.state.movies}
             />
           </Route>
-          <Route exact path="/form">
-            <Form
-              goBack={this.goBack}
-              setHistory={this.setHistory}
-              resetState={this.resetState}
-              activities={this.state.activities}
-              setActivities={this.setActivities}
-              updateActivityAnswers={this.updateActivityAnswers}
-              determineRandomActivity={this.determineRandomActivity}
-            />
-          </Route>
-          {/* <Route exact path='/result'>
-            <Result determineRandomActivity={this.determineRandomActivity}/>
-          </Route> */}
-          <Route
-            exact
+          <Route exact path="/form"
+            render={( {history} ) => {
+              return (
+                <Form
+                  route={history}
+                  goBack={this.goBack}
+                  setHistory={this.setHistory}
+                  resetState={this.resetState}
+                  activities={this.state.activities}
+                  setActivities={this.setActivities}
+                  updateActivityAnswers={this.updateActivityAnswers}
+                  determineRandomActivity={this.determineRandomActivity}
+                />
+              );
+            }}
+          ></Route>
+
+          <Route exact
             path="/:activity"
             render={({ match }) => {
               return (
@@ -226,20 +234,35 @@ class App extends Component {
             }}
           ></Route>
           <Route
-            exact
-            path="/music/result"
-            render={({ match }) => {
-              return (
-                <ResultPage
-                  name={match.params}
-                  // data={}
-                />
-              );
-            }}
-          ></Route>
-        </Switch>
-        {/* <Footer /> */}
-      </div>
+            exact 
+            path='/:activity/:results'
+            render={({match}) => {
+              return <ResultPage 
+                name={match.params}
+                data={this.state.possibleSuggestions}
+                randomActivity={this.state.randomActivity}
+                determineRandomActivity={this.determineRandomActivity}
+                error={this.state.error}
+              />
+            }}>
+          </Route>
+          <Route
+            exact 
+            path='/about/:activity/:details'
+            render={({match}) => {
+              return <DetailsPage
+                name={match.params}
+                randomActivity={this.state.randomActivity}
+              />
+            }}>
+          </Route>
+          <Route
+            path='/*'>
+            <h1 className="error">Oops, something went wrong...</h1>
+          </Route>
+         </Switch>
+        <Footer />
+      </div >
     );
   }
 }

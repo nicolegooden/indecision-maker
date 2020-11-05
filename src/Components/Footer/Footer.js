@@ -2,12 +2,8 @@ import React from 'react'
 import './Footer.scss'
 import { FaServer, FaGithub} from "react-icons/fa";
 
-
-
 export const Footer = () => {
-
-    return (
-        
+    return ( 
           <footer className="social-section">
             <ul className="footer-links">
               <li className="foot-link">
@@ -22,7 +18,6 @@ export const Footer = () => {
               </li>
             </ul>
             <p className="copy-rights">Ⓒ Indecision Maker is a product of Nicole, Blake and Orlando's Inc.</p>
-          </footer>
-        
+          </footer>    
     )
 }

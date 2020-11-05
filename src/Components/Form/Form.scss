@@ -53,13 +53,10 @@
                 0 0 10px #fff,
                 0 0 20px #fff,
                 0 0 40px #f8bd7f,
-                0 0 80px #f8bd7f,
-                0 0 90px #f8bd7f,
-                0 0 100px #f8bd7f,
             }
 
             .choice:hover{
-                color: #fff;
+                font-size: 2.2em;
                 cursor: pointer;
                 text-align: center;
             }
@@ -108,15 +105,29 @@
         justify-content: space-evenly;
         width: 100%;
         
+ 
 
-        .back-button,.form-button{
-            margin: 2%;
-            align-self: center;
-            @include buttonStyle();
-            padding: 0%;
-            height: 50%;
-            margin: 4% 0% 4% 0%;
-            width: 20%;
-        }
+           .back-button, .form-button, .submit-button{
+               margin: 2%;
+               align-self: center;
+               @include buttonStyle();
+               padding: 0%;
+               height: 50%;
+               margin: 4% 0% 4% 0%;
+               width: 20%;
+               background-color: $bones;
+           }
+
+           .submit{
+            background-color: $bones;
+            padding: 1%;
+           }
+
+        //    .submit-button{
+        //     margin: 2%;
+        //     align-self: center;
+        //     width: 40%;
+        //    }
+       
     }
 }

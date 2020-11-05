@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { getAllQuestions } from "../../apiCalls";
 import "./Form.scss";
 import { RiHomeSmileLine } from "react-icons/ri";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 import { CgUserlane } from "react-icons/cg";
 
 export class Form extends Component {
@@ -57,17 +58,10 @@ export class Form extends Component {
         return this.setState({ currentAnswers: answerToReplace });
       }
     } else {
-      this.setState({
-        currentAnswers: [
-          ...this.state.currentAnswers,
-          event.target.textContent,
-        ],
-      });
+      this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]});
     }
     this.props.updateActivityAnswers(event);
-    this.setState({
-      currentAnswers: [...this.state.currentAnswers, event.target.textContent],
-    });
+    this.setState({currentAnswers: [...this.state.currentAnswers, event.target.textContent]});
   };
 
   updateAllAnswers = async (event) => {
@@ -81,14 +75,13 @@ export class Form extends Component {
       await this.setState({
         allAnswers: [...this.state.allAnswers, this.state.currentAnswers],
         currentAnswers: [],
-        error: "",
+        error: ""
       });
       this.props.setActivities(this.state.allAnswers[0]);
       let activitySet = this.handleBothGames();
       let relevantQuestions = this.determineRelevantQuestions(activitySet);
       return this.setState({ questionsPerActivity: [...relevantQuestions] });
     }
-    let index = this.state.allAnswers.length - 1;
     if (this.checkForAllQuestions()){
       return this.setState({
         allAnswers: [...this.state.allAnswers, this.state.currentAnswers],
@@ -96,9 +89,7 @@ export class Form extends Component {
         error: "",
       });
     } else {
-      return this.setState({
-        error: "Please select at least one option for each question",
-      });
+      return this.setState({error: "Please select at least one option for each question"});
     }
   };
 
@@ -136,16 +127,14 @@ export class Form extends Component {
         <div className="possible-answers">
           {data[index].choices.map((choice, i) => {
             return (
-              <div className="choice">
-                <h3
-                  key={i}
+              <div key={i} className="choice">
+                <h3    
                   id={data[index].answerType}
                   onClick={(e) => {
                     this.updateCurrentAnswers(e, data[index]);
                   }}
                   value={choice}
-                  className="option"
-                >
+                  className="option">
                   {choice}
                 </h3>
               </div>
@@ -163,8 +152,7 @@ export class Form extends Component {
     if (this.state.questionsPerActivity.length) {
       let unansweredSet = this.state.questionsPerActivity.find((set) => {
         return (
-          this.state.allAnswers[0][this.state.allAnswers.length - 1] ===
-          set.activity
+          this.state.allAnswers[0][this.state.allAnswers.length - 1] === set.activity
         );
       });
       return unansweredSet.questions.map((question, i) => {
@@ -187,55 +175,36 @@ export class Form extends Component {
   handleSubmission = (event) => {
     event.preventDefault();
     if (this.checkForAllQuestions()) {
-      this.props.determineRandomActivity();
+      this.props.determineRandomActivity()
+      return (this.props.route.push("/activity/results"))
     } else {
-      return this.setState({
-        error: "Please select at least one option for each question",
-      });
+      return this.setState({error: "Please select at least one option for each question"});
     }
   };
 
   showCurrentAnswers = () => {
     return this.state.currentAnswers.map((answer, i) => {
       return (
-        <h3 key={i} className="current-answer">
-          {answer}
-        </h3>
-      );
-    });
-  };
-
+        <h3 key={i} className="current-answer">{answer}</h3>
+      )
+    })
+  }
+  
   determineNextOrSubmit = () => {
     let button;
     if (this.state.allAnswers.length === 0) {
       return (
-        <button
-          onClick={this.updateAllAnswers}
-          className="next-button form-button"
-        >
-          next
-        </button>
+        <button onClick={this.updateAllAnswers} className="next-button form-button">next</button>
       );
-    } else if (
-      this.state.allAnswers.length === this.state.questionsPerActivity.length
-    ) {
+    }
+    if (this.state.allAnswers.length === this.state.questionsPerActivity.length) {
       return (
-        <button
-          onClick={this.handleSubmission}
-          className="submit-button form-button"
-        >
-          submit
-        </button>
+        <button onClick={this.handleSubmission} className="submit-button form-button">submit</button>
       );
     }
     if (this.state.questionsPerActivity && button === undefined) {
       button = (
-        <button
-          onClick={this.updateAllAnswers}
-          className="next-button form-button"
-        >
-          next
-        </button>
+        <button onClick={this.updateAllAnswers} className="next-button form-button">next</button>
       );
     }
     return button;
@@ -246,7 +215,9 @@ export class Form extends Component {
       <form className="question-form">
         <div className="bar-menu">
           <CgUserlane className="logo" />
-          <Link to="/" onClick={() => this.props.resetState()}>
+          <Link 
+            to="/" 
+            onClick={() => this.props.resetState()}>
             <RiHomeSmileLine className="logo" />
           </Link>
         </div>
@@ -259,7 +230,9 @@ export class Form extends Component {
         <div className="user-picks-container">{this.showCurrentAnswers()}</div>
         <h3>{this.state.error}</h3>
         <div className="form-controls">
-          <button className="back-button form-button" onClick={this.goBack}>
+          <button 
+            className="back-button form-button" 
+            onClick={this.goBack}>
             back
           </button>
           {this.determineNextOrSubmit()}
@@ -269,4 +242,13 @@ export class Form extends Component {
   }
 }
 
-//add prop types
+Form.propTypes = {
+  route: PropTypes.object,
+  goBack: PropTypes.func.isRequired,
+  setHistory: PropTypes.func.isRequired,
+  resetState: PropTypes.func.isRequired,
+  activities: PropTypes.array.isRequired,
+  setActivities: PropTypes.func.isRequired,
+  updateActivityAnswers: PropTypes.func.isRequired,
+  determineRandomActivity: PropTypes.func.isRequired
+}
