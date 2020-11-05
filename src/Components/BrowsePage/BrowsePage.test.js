@@ -6,23 +6,29 @@ import "@testing-library/jest-dom";
 import {getAllMovies, getAllBoardGames, getAllCardGames, getAllMusic, getAllPodcasts} from "../../apiCalls.js";
 jest.mock("../../apiCalls.js");
 
-
 describe("BrowsePage", () => {
-    it.only("Should load with activities", async () => {
+    it("Board Games should load with title and image", async () => {
+        let testResults;
         let podcastResults = getAllPodcasts.mockResolvedValue([{
           podcast_title: "The Joe Rogan Experience",
           image_100: "podcastURL"
         }]);
-        let testResults;
         await waitFor(async () => testResults = await podcastResults())
         render(<MemoryRouter><BrowsePage name={"boardGames"} data={testResults}/></MemoryRouter>);
         expect(screen.getByText('The Joe Rogan Experience')).toBeInTheDocument();
+        expect(screen.getByAltText('The Joe Rogan Experience')).toBeInTheDocument();
     });
 
-    it("Bord Games should load with game images", () => {
-        render(<MemoryRouter><BrowsePage name={"boardGames"} data={[{name: 'Test Game', image: 'boardTestURL'}]}/></MemoryRouter>);
-        expect(screen.getByText('Test Game')).toBeInTheDocument();
-        expect(screen.getByTestId('image-test')).toHaveProperty('src', 'http://localhost/boardTestURL');
+    it.only("Music should load with Album cover and title", async () => {
+        let testResults;
+        let musicResults = getAllMovies.mockResolvedValue([{
+          song_title: "Poker Face",
+          image_100: "musicURL"
+        }]);
+        await waitFor(async () => testResults = await musicResults())
+        render(<MemoryRouter><BrowsePage name={"music"} data={testResults}/></MemoryRouter>);
+        expect(screen.getByText('Poker Face')).toBeInTheDocument();
+        expect(screen.getByAltText('Poker Face')).toBeInTheDocument();
     });
 
     it("Movies should load with poster images", () => {
