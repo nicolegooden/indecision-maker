@@ -5,6 +5,7 @@ import { RiHomeSmileLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player'
 import moment from 'moment';
+import PropTypes from 'prop-types';
 
 export const DetailsPage = (props) => {
   const noImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"
@@ -125,4 +126,9 @@ export const DetailsPage = (props) => {
 
         </div>
     )
+}
+
+DetailsPage.propTypes = {
+  name: PropTypes.string.isRequired,
+  randomActivity: PropTypes.object.isRequired
 }
