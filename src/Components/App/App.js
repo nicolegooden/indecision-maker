@@ -235,7 +235,7 @@ class App extends Component {
           ></Route>
           <Route
             exact 
-            path='/:activity/:results'
+            path={this.state.randomActivity ? '/:activity/:results': '/form'}
             render={({match}) => {
               return <ResultPage 
                 name={match.params}
