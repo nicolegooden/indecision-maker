@@ -7,7 +7,7 @@ export const getAllMovies = async () => {
   }
 }
 export const getMoviesByGenre = async (genre) => {
-  const response = await fetch(`https://indecision-maker.herokuapp.com/api/v1/podcasts/${genre}`)
+  const response = await fetch(`https://indecision-maker.herokuapp.com/api/v1/movies/${genre}`)
   if (response.ok) {
     return await response.json()
   } else {
@@ -61,7 +61,6 @@ export const getPodcastsByGenre = async (genre) => {
   } else {
     return response.error
   }
-
 }
 
 export const getAllQuestions = async () => {
