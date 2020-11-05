@@ -13,7 +13,6 @@ describe("App", () => {
       </MemoryRouter>
     );
     expect(screen.getByText("Indecision")).toBeInTheDocument();
-    screen.debug();
   });
 
   it("User should be presented with first set of questions when clicking find activity", async () => {
@@ -35,8 +34,8 @@ describe("App", () => {
     );
     userEvent.click(screen.getByRole("button", {name: "find activity"}));
     await waitFor(()=> expect(screen.getByText('movies')).toBeInTheDocument());
-    userEvent.click(screen.getByRole("button", {name: "podcasts"}));
-    await waitFor(()=> expect(screen.getByText('genre')).toBeInTheDocument());
+    userEvent.click(screen.getByText("podcasts", {name: "podcasts"}));
+    userEvent.click(screen.getByRole("button", {name: "next"}));
+    await waitFor(()=> expect(screen.getByText('True Crime')).toBeInTheDocument());
   });
-
 });
