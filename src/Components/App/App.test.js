@@ -55,4 +55,23 @@ describe("App", () => {
     expect(screen.getByTest('suggestion')).toBeInTheDocument();
   });
 
+  it("If use selects the activity they should see more info", async () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+    userEvent.click(screen.getByRole("button", {name: "find activity"}));
+    await waitFor(()=> expect(screen.getByText('movies')).toBeInTheDocument());
+    userEvent.click(screen.getByText("podcasts", {name: "podcasts"}));
+    userEvent.click(screen.getByRole("button", {name: "next"}));
+    await waitFor(()=> expect(screen.getByText('True Crime')).toBeInTheDocument());
+    userEvent.click(screen.getByText("True Crime", {name: "True Crime"}));
+    userEvent.click(screen.getByRole("Button", {name: "submit"}));
+    await waitFor(()=> expect(screen.getByText('suggestion')).toBeInTheDocument());
+    userEvent.click(screen.getByRole("suggestion", {name: "submit"}));
+    await waitFor(()=> expect(screen.getByText('Enjoy it!')).toBeInTheDocument());
+    expect(screen.getByText('Enjoy it!')).toBeInTheDocument();
+  });
+
 });
