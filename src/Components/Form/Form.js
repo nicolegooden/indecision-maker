@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { getAllQuestions } from "../../apiCalls";
 import "./Form.scss";
 import { RiHomeSmileLine } from "react-icons/ri";
-import { Link, Redirect, useHistory} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CgUserlane } from "react-icons/cg";
 
 export class Form extends Component {
@@ -87,7 +87,6 @@ export class Form extends Component {
       let relevantQuestions = this.determineRelevantQuestions(activitySet);
       return this.setState({ questionsPerActivity: [...relevantQuestions] });
     }
-    let index = this.state.allAnswers.length - 1;
     if (this.checkForAllQuestions()){
       return this.setState({
         allAnswers: [...this.state.allAnswers, this.state.currentAnswers],
