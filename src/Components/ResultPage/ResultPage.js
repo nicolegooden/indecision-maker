@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 export const ResultPage = (props) => {
 
   const noImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"
-  const displayActivityGallery = () => {
-    return props.data.map((activity, i) => {
+  const activityGallery = 
+    props.data.map((activity, i) => {
     return (
       <div key={i}className="inner-all-rest">
         <div className="border">
@@ -50,7 +50,6 @@ export const ResultPage = (props) => {
       </div>
     )
   })
-}
 
     return (
         <section className="result-container">
@@ -60,12 +59,9 @@ export const ResultPage = (props) => {
           <div className="app-logo">
             <CgUserlane className="logo" />
           </div>
-
           {!props.error ? <h1 className="message">Finally, here is a suggestion for you!</h1> : 
           <h1 className="message">{props.error}</h1>}
-
           <div className="slider">
-
             <h1 className="activity-title">{
               props.randomActivity.podcast_title
               || props.randomActivity.song_title
@@ -82,11 +78,9 @@ export const ResultPage = (props) => {
               || "no information available"
             }
             </h2>
-
            <h2 className="activity-title">{
                 props.randomActivity.imdb_raiting
             }</h2>
-
             <div className="slides">
                 <div className="slide" id="slide-1">
                     <img className="image" 
@@ -98,7 +92,6 @@ export const ResultPage = (props) => {
                 </div>
             </div>
           </div>
-            
            <div className="activity-controls">
            {!props.error && <Link 
              to={
@@ -114,17 +107,12 @@ export const ResultPage = (props) => {
               onClick={props.determineRandomActivity}
               className="button skip-activity">{props.error ? "back" : "skip"}</button>
           </div>
-
           <div className="the-rest-container">
-           {displayActivityGallery()}
+           {activityGallery}
           </div>
-
           <div className="more-suggestions">
             <h5 className="simmilar-picks">Similar picks</h5>
           </div>
-
-
-
         </section>
     )
 }
