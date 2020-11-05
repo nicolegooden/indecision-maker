@@ -4,6 +4,7 @@ import { CgUserlane } from "react-icons/cg";
 import { RiHomeSmileLine } from "react-icons/ri";
 import { FaLightbulb } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const ResultPage = (props) => {
 
@@ -115,4 +116,12 @@ export const ResultPage = (props) => {
           </div>
         </section>
     )
+}
+
+ResultPage.propTypes = {
+  name: PropTypes.string.isRequired,
+  data: PropTypes.array.isRequired,
+  randomActivity: PropTypes.object,
+  determineRandomActivity: PropTypes.func.isRequired,
+  error: PropTypes.string
 }
