@@ -186,7 +186,7 @@ class App extends Component {
       possibleSuggestions = this.movieFilter(possibleSuggestions, answers);
     }
     if (gamesGroup.includes(activity)) {
-      if (this.state.cardGames && this.state.boardGames && activity === "boardGames"){
+      if (this.state.cardGames.length && this.state.boardGames.length && activity === "boardGames"){
         answers = this.state.cardGamesAnswers
       }
       possibleSuggestions = this.gameFilter(activity, answers);
