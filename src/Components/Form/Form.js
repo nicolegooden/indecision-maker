@@ -3,6 +3,7 @@ import { getAllQuestions } from "../../apiCalls";
 import "./Form.scss";
 import { RiHomeSmileLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 import { CgUserlane } from "react-icons/cg";
 
 export class Form extends Component {
@@ -279,4 +280,13 @@ export class Form extends Component {
   }
 }
 
-//add prop types
+Form.propTypes = {
+  route: PropTypes.object,
+  goBack: PropTypes.func.isRequired,
+  setHistory: PropTypes.func.isRequired,
+  resetState: PropTypes.func.isRequired,
+  activities: PropTypes.array.isRequired,
+  setActivities: PropTypes.func.isRequired,
+  updateActivityAnswers: PropTypes.func.isRequired,
+  determineRandomActivity: PropTypes.func.isRequired
+}
