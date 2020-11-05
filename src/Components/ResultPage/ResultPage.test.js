@@ -76,11 +76,7 @@ describe('ResultPage', () => {
         )
       });
 
-<<<<<<< HEAD
-    it('It should display a random activity',() => {
-=======
     it('should display a random activity', () => {
->>>>>>> fc33f1c4bfa9d5a0313ac9f9ad99401696173059
         render(
             <MemoryRouter>
                 <ResultPage
@@ -112,11 +108,7 @@ describe('ResultPage', () => {
         
       });
 
-<<<<<<< HEAD
-    it('Should display a "back button" when an error is found',() => {
-=======
     it('should display a "back button" when an error is found', () => {
->>>>>>> fc33f1c4bfa9d5a0313ac9f9ad99401696173059
         render(
             <MemoryRouter>
                 <ResultPage
@@ -134,11 +126,7 @@ describe('ResultPage', () => {
         expect(backButton).toBeInTheDocument();
         
       });
-<<<<<<< HEAD
-    it('Should display information about other activities',() => {
-=======
     it('should display information about other activities', () => {
->>>>>>> fc33f1c4bfa9d5a0313ac9f9ad99401696173059
         render(
             <MemoryRouter>
                 <ResultPage
