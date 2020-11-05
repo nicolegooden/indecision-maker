@@ -38,11 +38,11 @@ export const BrowsePage = (props) => {
             <h1 className="title">{props.name}</h1>
         </div>
         
-        <body className="grid-container">
+        <article className="grid-container">
             <ul className="inner-grid">
                 {activityInformation}
             </ul>
-        </body>
+        </article>
 
     </section>
 
