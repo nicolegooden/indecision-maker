@@ -76,7 +76,7 @@ describe('ResultPage', () => {
         )
       });
 
-    it('It should display a random activity', () => {
+    it('It should display a random activity',() => {
         render(
             <MemoryRouter>
                 <ResultPage
@@ -108,7 +108,7 @@ describe('ResultPage', () => {
         
       });
 
-    it('It should display a "back button" when an error is found', () => {
+    it('Should display a "back button" when an error is found',() => {
         render(
             <MemoryRouter>
                 <ResultPage
@@ -126,7 +126,7 @@ describe('ResultPage', () => {
         expect(backButton).toBeInTheDocument();
         
       });
-    it('It should display information about other activities', () => {
+    it('Should display information about other activities',() => {
         render(
             <MemoryRouter>
                 <ResultPage
@@ -150,7 +150,7 @@ describe('ResultPage', () => {
         
       });
 
-      it('It should display information about multiple activities', () => {
+      it('Should display information about multiple activities', () => {
         render(
             <MemoryRouter>
                 <ResultPage
