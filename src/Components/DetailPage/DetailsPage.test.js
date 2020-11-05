@@ -73,7 +73,6 @@ describe('DetailsPage', () => {
         expect(genreTitle).toBeInTheDocument();
         expect(movieDescription).toBeInTheDocument();
         expect(enjoyItBanner).toBeInTheDocument();
-        
-      });
 
+      });
 });

@@ -108,8 +108,6 @@ export const DetailsPage = (props) => {
             {props.randomActivity.album_title  && <p className="content">{props.randomActivity.album_title}</p>}
           </div>
 
-          
-
           <div className="info activity-more-more-more-info">
 
             {props.randomActivity.genre && <h3 className="title">Genre</h3>}
@@ -117,6 +115,7 @@ export const DetailsPage = (props) => {
 
             {props.randomActivity.release_date && <h3 className="title">Release date</h3>}
             {props.randomActivity.release_date  && <p className="content">{moment(props.randomActivity.release_date).format('LL')}</p>}
+            
           </div>
 
           <div className="info enjoy-it">

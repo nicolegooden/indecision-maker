@@ -12,8 +12,7 @@ describe('ResultPage', () => {
     data, 
     randomActivity, 
     determineRandomActivity, 
-    error, 
-    secondRandomMovie;
+    error;
 
     beforeEach(() => {
         name = { name:'page' }
@@ -43,7 +42,6 @@ describe('ResultPage', () => {
                 runtime:"77",
                 title:"Corpse Bride",
                 where_to_watch: null
-    
             }
         ]
         
@@ -124,7 +122,7 @@ describe('ResultPage', () => {
         )
 
         const backButton = screen.getByText('back');
-        
+
         expect(backButton).toBeInTheDocument();
         
       });
@@ -144,7 +142,6 @@ describe('ResultPage', () => {
         const cardTitle = screen.getByText('The Witches');
         const cardDate = screen.getByRole('heading', { name: /2020\-10\-22/i })
         const cardDetails = screen.getByText( 'AdventureComedyFamilyFantasyHorror' )
-
 
         expect(cardTitle).toBeInTheDocument()
         expect(cardDate).toBeInTheDocument()
@@ -223,6 +220,5 @@ describe('ResultPage', () => {
         expect(choosemeButton2).toBeInTheDocument();
         expect(skipButton2).toBeInTheDocument();
         expect(choosemeButton2).toBeInTheDocument();
-
     });
 });

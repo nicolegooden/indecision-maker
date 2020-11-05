@@ -280,4 +280,3 @@ export class Form extends Component {
   }
 }
 
-//add prop types
