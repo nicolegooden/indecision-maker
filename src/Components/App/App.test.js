@@ -15,7 +15,7 @@ describe("App", () => {
     expect(screen.getByText("Indecision")).toBeInTheDocument();
   });
 
-  it("User should be presented with first set of questions when clicking find activity", async () => {
+  it("First question should ask about interested activities", async () => {
     render(
       <MemoryRouter>
         <App />
@@ -23,10 +23,10 @@ describe("App", () => {
     );
     userEvent.click(screen.getByRole("button", {name: "find activity"}));
     await waitFor(()=> expect(screen.getByText('movies')).toBeInTheDocument());
-    expect(screen.getByText('podcasts').toBeInTheDocument)
+    expect(screen.getByText('podcasts')).toBeInTheDocument()
   });
 
-  it("User should answer specific questions for their selected genre", async () => {
+  it("Second question should ask activity specific questions", async () => {
     render(
       <MemoryRouter>
         <App />
@@ -38,4 +38,21 @@ describe("App", () => {
     userEvent.click(screen.getByRole("button", {name: "next"}));
     await waitFor(()=> expect(screen.getByText('True Crime')).toBeInTheDocument());
   });
+
+  it("Upon submit a user should see a suggested activity", async () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+    userEvent.click(screen.getByRole("button", {name: "find activity"}));
+    await waitFor(()=> expect(screen.getByText('movies')).toBeInTheDocument());
+    userEvent.click(screen.getByText("podcasts", {name: "podcasts"}));
+    userEvent.click(screen.getByRole("button", {name: "next"}));
+    await waitFor(()=> expect(screen.getByText('True Crime')).toBeInTheDocument());
+    userEvent.click(screen.getByText("True Crime", {name: "True Crime"}));
+    userEvent.click(screen.getByRole("Button", {name: "submit"}));
+    expect(screen.getByTest('suggestion')).toBeInTheDocument();
+  });
+
 });
