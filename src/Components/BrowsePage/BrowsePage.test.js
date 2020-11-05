@@ -35,24 +35,24 @@ describe("BrowsePage", () => {
         let testResults;
         let movieResults = getAllMovies.mockResolvedValue([{
           song_title: "Harry Potter",
-          image_100: "Harry Potter"
+          image_100: "movieURL"
         }]);
         await waitFor(async () => testResults = await movieResults())
         render(<MemoryRouter><BrowsePage name={"movies"} data={testResults}/></MemoryRouter>);
-        expect(screen.getByText('Test Movie')).toBeInTheDocument();
         expect(screen.getByText('Harry Potter')).toBeInTheDocument();
+        expect(screen.getByAltText('Harry Potter')).toBeInTheDocument();
     });
 
     it("Board Games should load with game image and title", async () => {
         let testResults;
         let boardResults = getAllBoardGames.mockResolvedValue([{
-          song_title: "",
-          image_100: "Harry Potter"
+          name: "Jenga",
+          image: "boardURL"
         }]);
         await waitFor(async () => testResults = await boardResults())
         render(<MemoryRouter><BrowsePage name={"movies"} data={testResults}/></MemoryRouter>);
-        expect(screen.getByText('Test Movie')).toBeInTheDocument();
-        expect(screen.getByText('Harry Potter')).toBeInTheDocument();
+        expect(screen.getByText('Jenga')).toBeInTheDocument();
+        expect(screen.getByAltText('Jenga')).toBeInTheDocument();
     });
 
     it("Card Games should load with a name and min / max players", async () => {
