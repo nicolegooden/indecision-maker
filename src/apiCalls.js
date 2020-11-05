@@ -6,6 +6,7 @@ export const getAllMovies = async () => {
     return response.error
   }
 }
+
 export const getMoviesByGenre = async (genre) => {
   const response = await fetch(`http://localhost:3000/api/v1/movies/${genre}`)
   if (response.ok) {
@@ -14,6 +15,7 @@ export const getMoviesByGenre = async (genre) => {
     return response.error
   }
 }
+
 export const getAllBoardGames = async () => {
   const response = await fetch('http://localhost:3000/api/v1/boardgames')
   if (response.ok) {
@@ -22,6 +24,7 @@ export const getAllBoardGames = async () => {
     return response.error
   }
 }
+
 export const getAllCardGames = async () => {
   const response = await fetch('http://localhost:3000/api/v1/cardgames')
   if (response.ok) {
@@ -30,6 +33,7 @@ export const getAllCardGames = async () => {
     return response.error
   }
 }
+
 export const getAllMusic = async () => {
   const response = await fetch('http://localhost:3000/api/v1/music')
   if (response.ok) {
@@ -38,6 +42,7 @@ export const getAllMusic = async () => {
     return response.error
   }
 }
+
 export const getMusicByGenre = async (genre) => {
   const response = await fetch(`http://localhost:3000/api/v1/music/${genre}`)
   if (response.ok) {
@@ -46,6 +51,7 @@ export const getMusicByGenre = async (genre) => {
     return response.error
   }
 }
+
 export const getAllPodcasts = async () => {
   const response = await fetch('http://localhost:3000/api/v1/podcasts')
   if (response.ok) {
@@ -54,6 +60,7 @@ export const getAllPodcasts = async () => {
     return response.error
   }
 }
+
 export const getPodcastsByGenre = async (genre) => {
   const response = await fetch(`http://localhost:3000/api/v1/podcasts/${genre}`)
   if (response.ok) {
@@ -61,7 +68,6 @@ export const getPodcastsByGenre = async (genre) => {
   } else {
     return response.error
   }
-
 }
 
 export const getAllQuestions = async () => {
