@@ -1,8 +1,42 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import React from "react";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { MemoryRouter } from "react-router-dom";
+import "@testing-library/jest-dom";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("App", () => {
+  it("User should see home page by default", () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+    expect(screen.getByText("Indecision")).toBeInTheDocument();
+    screen.debug();
+  });
+
+  it("User should be presented with first set of questions when clicking find activity", async () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+    userEvent.click(screen.getByRole("button", {name: "find activity"}));
+    await waitFor(()=> expect(screen.getByText('movies')).toBeInTheDocument());
+    expect(screen.getByText('podcasts').toBeInTheDocument)
+  });
+
+  it("User should answer specific questions for their selected genre", async () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+    userEvent.click(screen.getByRole("button", {name: "find activity"}));
+    await waitFor(()=> expect(screen.getByText('movies')).toBeInTheDocument());
+    userEvent.click(screen.getByRole("button", {name: "podcasts"}));
+    await waitFor(()=> expect(screen.getByText('genre')).toBeInTheDocument());
+  });
+
 });
