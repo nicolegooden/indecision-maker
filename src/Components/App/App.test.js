@@ -37,9 +37,10 @@ describe("App", () => {
     userEvent.click(screen.getByText("podcasts", {name: "podcasts"}));
     userEvent.click(screen.getByRole("button", {name: "next"}));
     await waitFor(()=> expect(screen.getByText('True Crime')).toBeInTheDocument());
+    expect(screen.getByText('True Crime')).toBeInTheDocument();
   });
 
-  it("Upon submit a user should see a suggested activity", async () => {
+  it("Upon submit of final answer user should see suggested activity", async () => {
     render(
       <MemoryRouter>
         <App />
