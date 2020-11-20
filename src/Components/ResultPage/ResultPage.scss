@@ -121,16 +121,16 @@
         background-color: $bones;
         grid-area: 5/ 1/ 7 / 7;
         padding: 1% 2% 0% 2%;
+        height: 40em;
         overflow: auto;
     
         .inner-all-rest{
             background:$darkPurple;
-            height: 120%;
+            height: 20em;;
             width: 20vw;
             margin: .5%;
             display: inline-flex;
             
-
             .border{
                 background-color: transparent;
                 border: 1px solid gold;
@@ -138,7 +138,8 @@
                 width: 90%;
                 overflow: auto;
                 align-self: end;
-                 margin: 4%;
+                margin: 4%;
+                padding: 1em;
 
                 .bulb-icon{
                     @include logo();
