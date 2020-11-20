@@ -5,6 +5,7 @@ import { RiHomeSmileLine } from "react-icons/ri";
 import { FaLightbulb } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 export const ResultPage = (props) => {
   const noImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"
@@ -20,28 +21,23 @@ export const ResultPage = (props) => {
             || activity.album_title 
             || activity.title 
             || activity.name
-            || "no information"}
+            || "unknown"}
           </h3>
           <h3 className="title">{
                activity.podcast_name
             || activity.artist
-            || activity.materials
-            || "no information available"
             }
           </h3>
-          <h3 className="title">{
-               activity.release_date
-            || activity.author
-            || activity.materials
-            || "no information available"
-            }
+          <h3 className="title">
+            {activity.author || activity.materials}
           </h3>
+          {activity.release_date && 
+          <h3 className="title">{moment(activity.release_date).format('LL')}</h3>}
           <h3 className="title">{
                activity.genre
-            || activity.average_time
-            || activity.number_of_players
+            || `Play Time: ${activity.average_time} mins`
+            || `Players: ${activity.number_of_players}`
             || activity.type
-            || "no information available"
             }
           </h3>
         </div>
