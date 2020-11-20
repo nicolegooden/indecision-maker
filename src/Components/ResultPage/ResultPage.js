@@ -11,7 +11,7 @@ export const ResultPage = (props) => {
   const activityGallery = 
     props.data.map((activity, i) => {
     return (
-      <div key={i}className="inner-all-rest">
+      <div key={i} className="inner-all-rest">
         <div className="border">
           <FaLightbulb className="bulb-icon"/>
           <h3 className="title">{

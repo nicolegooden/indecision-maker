@@ -114,6 +114,7 @@ class App extends Component {
       []
     );
     let final = allFilteredActivities.flat();
+    this.setState({possibleSuggestions: final})
     let randomNumber = Math.floor(Math.random() * final.length);
     this.setState({randomActivity:  final[randomNumber]})
     return final[randomNumber]
@@ -189,9 +190,8 @@ class App extends Component {
       if (this.state.cardGames.length && this.state.boardGames.length && activity === "boardGames"){
         answers = this.state.cardGamesAnswers
       }
-      possibleSuggestions = this.gameFilter(activity, answers);
+      possibleSuggestions = this.gameFilter(activity, answers); 
     }
-    this.setState({possibleSuggestions: possibleSuggestions})
     return possibleSuggestions
   }
 
