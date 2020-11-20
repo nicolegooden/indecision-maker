@@ -65,8 +65,7 @@ export const DetailsPage = (props) => {
             {props.randomActivity.imdb_rating && <p className="content">{props.randomActivity.imdb_rating || 0}</p>}
             {props.randomActivity.content_rating&& <h4 className="title">Content</h4>}
             {props.randomActivity.content_rating && <p className="content">{props.randomActivity.content_rating|| 0}</p>}
-            {props.randomActivity.album_url && <h4 className="title">Listen here</h4>}
-            {props.randomActivity.album_url && <a className="content" href={props.randomActivity.album_url}> Click Here</a>}
+            {props.randomActivity.album_url && <a className="content" href={props.randomActivity.album_url}>Listen Here!</a>}
             {props.randomActivity.author && <h4 className="title">Author</h4>}
             {props.randomActivity.author && <p >{props.randomActivity.author}</p>}
           </div>
@@ -76,21 +75,21 @@ export const DetailsPage = (props) => {
             {props.randomActivity.description && <p className="content">{props.randomActivity.description}</p>}
             {props.randomActivity.artist && <h3 className="title">Artist</h3>}
             {props.randomActivity.artist  && <p className="content">{props.randomActivity.artist}</p>}
-            {props.randomActivity.podcast_name && <h3 className="title">Podcast name</h3>}
+            {props.randomActivity.podcast_name && <h3 className="title">Podcast</h3>}
             {props.randomActivity.podcast_name  && <p className="content">{props.randomActivity.podcast_name}</p>}
           </div>
           <div className="info activity-more-more-info">
-            {props.randomActivity.instructions &&<h1 className="">instructions</h1>}
+            {props.randomActivity.instructions &&<h1 className="">Instructions</h1>}
             {props.randomActivity.instructions && <p className="content">{props.randomActivity.instructions }</p>}
             {props.randomActivity.type && <h3 className="title">Type</h3>}
-            {props.randomActivity.type && <p className="content">{props.randomActivity.type}</p>}
-            {props.randomActivity.album_title && <h3 className="title">Album title</h3>}
+            {props.randomActivity.type && <p className="content">{props.randomActivity.type === 'notExplicit' ? 'clean' : 'explicit'}</p>}
+            {props.randomActivity.album_title && <h3 className="title">Album</h3>}
             {props.randomActivity.album_title  && <p className="content">{props.randomActivity.album_title}</p>}
           </div>
           <div className="info activity-more-more-more-info">
             {props.randomActivity.genre && <h3 className="title">Genre</h3>}
             {props.randomActivity.genre  && <p className="content">{props.randomActivity.genre}</p>}
-            {props.randomActivity.release_date && <h3 className="title">Release date</h3>}
+            {props.randomActivity.release_date && <h3 className="title">Release Date</h3>}
             {props.randomActivity.release_date  && <p className="content">{moment(props.randomActivity.release_date).format('LL')}</p>}   
           </div>
           <div className="info enjoy-it">
