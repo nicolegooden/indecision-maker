@@ -4,7 +4,6 @@ import { Form } from '../Form/Form';
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { BrowsePage } from '../BrowsePage/BrowsePage';
-import { Footer } from '../Footer/Footer';
 import { ResultPage } from '../ResultPage/ResultPage';
 import { DetailsPage } from '../DetailPage/DetailsPage';
 import { getAllMovies, 
@@ -114,6 +113,7 @@ class App extends Component {
       []
     );
     let final = allFilteredActivities.flat();
+    this.setState({possibleSuggestions: final})
     let randomNumber = Math.floor(Math.random() * final.length);
     this.setState({randomActivity:  final[randomNumber]})
     return final[randomNumber]
@@ -189,9 +189,8 @@ class App extends Component {
       if (this.state.cardGames.length && this.state.boardGames.length && activity === "boardGames"){
         answers = this.state.cardGamesAnswers
       }
-      possibleSuggestions = this.gameFilter(activity, answers);
+      possibleSuggestions = this.gameFilter(activity, answers); 
     }
-    this.setState({possibleSuggestions: possibleSuggestions})
     return possibleSuggestions
   }
 
@@ -261,7 +260,6 @@ class App extends Component {
             <h1 className="error">Oops, something went wrong...</h1>
           </Route>
          </Switch>
-        <Footer />
       </div >
     );
   }

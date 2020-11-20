@@ -38,17 +38,16 @@
     .slider {
         grid-area: 2/ 2 / 5 / 5;
         color: white;
-        width: 300px;
+        width: 500px;
         text-align: center;
         overflow: hidden;
         height: 100%;
-        // background-color: yellowgreen;
 
         .activity-title{
             margin: 0%;
+            margin-right: 8em; 
             color: white;
         }
-        // background-color: darkgrey;
 
         .slide-link{
             color: $vanilla;
@@ -68,16 +67,12 @@
         .slides {
             
             display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
             height: 40vh;
 
             .slide{
-                scroll-snap-align: start;
                 flex-shrink: 0;
-                width: 300px;
-                height: 300px;
+                width: 250px;
+                height: 250px;
                 margin-right: 50px;
                 margin: 5%;
                 border-radius: 2em;
@@ -90,7 +85,6 @@
                 justify-content: center;
                 align-items: center;
                 font-size: 100px;
-                // overflow: hidden;
 
                 .inner-slide{
                     overflow: auto;
@@ -102,11 +96,8 @@
             .image{
                 border-radius: 50%;
                 height: 90%;
-            }
-
-            
+            } 
         }
-        
       }
 
 
@@ -130,26 +121,25 @@
         background-color: $bones;
         grid-area: 5/ 1/ 7 / 7;
         padding: 1% 2% 0% 2%;
-  
+        height: 40em;
         overflow: auto;
-        // overflow: hidden;
-
     
         .inner-all-rest{
             background:$darkPurple;
-            height: 120%;
+            height: 20em;;
             width: 20vw;
             margin: .5%;
             display: inline-flex;
             
-
             .border{
                 background-color: transparent;
                 border: 1px solid gold;
                 height: 90%;
                 width: 90%;
+                overflow: auto;
                 align-self: end;
-                 margin: 4%;
+                margin: 4%;
+                padding: 1em;
 
                 .bulb-icon{
                     @include logo();
@@ -169,7 +159,7 @@
         margin: 0%;
         .simmilar-picks{
             font-size: 1.5em;
-            text-align: left;
+            text-align: center;
             margin: 0%;
         }
     }
