@@ -216,7 +216,7 @@ export class Form extends Component {
         <div className="bar-menu">
           <CgUserlane className="logo" />
           <Link 
-            to="/" 
+            to="/indecision-maker" 
             onClick={() => this.props.resetState()}>
             <RiHomeSmileLine className="logo" />
           </Link>
