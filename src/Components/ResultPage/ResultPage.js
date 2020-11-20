@@ -33,7 +33,8 @@ export const ResultPage = (props) => {
           </h3>
           {activity.release_date && 
           <h3 className="title">{moment(activity.release_date).format('LL')}</h3>}
-          <h3 className="title">{activity.genre|| activity.type}</h3>
+          {props.showGenres(activity)}
+          <h3 className="title">{activity.type}</h3>
           {activity.average_time &&
            <h3 className="title">{`Play Time: ${activity.average_time} mins`}</h3>}
           {activity.min_players  &&
