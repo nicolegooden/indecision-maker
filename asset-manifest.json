@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/indecision-maker/static/css/main.c5d32913.chunk.css",
-    "main.js": "/indecision-maker/static/js/main.1a14cba8.chunk.js",
-    "main.js.map": "/indecision-maker/static/js/main.1a14cba8.chunk.js.map",
+    "main.js": "/indecision-maker/static/js/main.dd416c53.chunk.js",
+    "main.js.map": "/indecision-maker/static/js/main.dd416c53.chunk.js.map",
     "runtime-main.js": "/indecision-maker/static/js/runtime-main.80c74805.js",
     "runtime-main.js.map": "/indecision-maker/static/js/runtime-main.80c74805.js.map",
     "static/js/2.ab7c6480.chunk.js": "/indecision-maker/static/js/2.ab7c6480.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.80c74805.js",
     "static/js/2.ab7c6480.chunk.js",
     "static/css/main.c5d32913.chunk.css",
-    "static/js/main.1a14cba8.chunk.js"
+    "static/js/main.dd416c53.chunk.js"
   ]
 }
