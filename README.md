@@ -9,7 +9,7 @@
   - [Orlando Murcio](https://www.github.com/atos20)
 
 ## Project Directions
-[Indecision Maker](http://nicolegooden.github.io/indecision-maker)
+[Indecision Maker deployed](http://nicolegooden.github.io/indecision-maker) 
 
 ## Overview
 
@@ -21,9 +21,9 @@
 
 #### Indecision Maker Server
 
-  * To learn more about our process with `PostgreSQL`, visit the following link:
+  * To learn more about our process with `Knex` and `PostgreSQL`, visit the following link:
 
-    [Indecision Server](https://github.com/Atos20/indecision-maker-server)
+    [Indecision Maker Server](https://github.com/Atos20/indecision-maker-server)
 
 #### Technologies used:
 
@@ -68,15 +68,15 @@
 
 - When the user first interacts with the application, the app renders a welcome message that introduces the user to an existential question that makes us wonder about our own decisions. 
 
- - The user can interact with the navigation bar and browse the applcation's content such as music, movies, podcasts, card games and board games.
+ - The user can interact with the navigation bar and browse the application's content such as music, movies, podcasts, card games, and board games.
 
  <img src="https://media.giphy.com/media/8hg3zdbyxZStJMchtR/giphy.gif" alt="" height=100% width=80%/>
 
 #### Take 2
 
-- When the user clicks on the `find activity button`, the application's view changes to present the viewer with the `find activity form`. 
+- When the user clicks on the `find activity button`, the application's view changes to present the user with the `form`. 
 
-- When the user answers the questionnaire, the script collects the user's information and updates state in the parent component: `<App/>`, this way the algorithm handled by the parent will filter and randomize an actvity.
+- When the user answers the questionnaire, the script collects the user's information and updates state in the parent component, `<App/>`, this way the algorithm handled by the parent will filter and randomize an actvity.
 
   <img src="https://media.giphy.com/media/cfc797PcomQaZdAfMo/giphy.gif" height=auto width=75%/>
 
@@ -90,38 +90,35 @@ The user's choices are saved in `state` and then used to filter the activities.
 
 #### Take 4
 
-**The `<ResultPage>` & `<DetailsPage>` component.**
+**The `<ResultPage>` & `<DetailsPage>`**
 
 - This component display to the user an activity selected by the script. At this point the user has two options:
 
-    - The first `option` is to select the activity suggested by the application.
+    - The first option is to select the activity suggested by the application.
 
-    - The second `option` is to skip the suggested activity and choose another one that randmoizes the next suggested activity.
+    - The second option is to skip the suggested activity and choose another one that originates from the array of possible activities.
 
 <img src="https://media.giphy.com/media/Az8Rc9zwIFxFx5mXv6/giphy.gif" height=auto width=75%/>
 
 ### Set up
 
-* On the top right corner of this page, click the **Fork** button.
-- Clone the repository to your computer `git clone <URL>`
-  - When you run git clone - git clone [remote-address] [what you want to name the repo]
-  replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-- `cd` into the repository with the following command `cd <repo-name>`
-- Run `npm install`
-- Run `open src/index.html`
+- Clone the repository to your computer using `git clone git@github.com:nicolegooden/indecision-maker.git`
+  - To rename the repository locally, run `git clone git@github.com:nicolegooden/indecision-maker.git [what you want to name the repo]`
+- Transition into the repository using `cd indecision-maker`
+- Run `npm install` or `npm i` to install all dependencies
+- Run `npm start` to view and interact with the application at `localhost:5000/`
 
 ### Contribute
 
 - Create a new branch with `git checkout -b <new branch name>`
-- Open your text editor and add or remove functionalities to the site.
-- `git add` and `git commit -m "<your commit meessage>"` to save the changes to your local repository
-- `git push` your changes
-- Create a new pull request!
+- Make any desired changes to the code, saving as you go
+- Run `git add <file>` and `git commit -m "<your commit meessage>"` to save the changes to your local repository
+- Run `git push` to push local changes to GitHub's remote repository
+- Create a new pull request and await feedback from the owners to merge!
 
 ### Project Managers
 - [Leta](https://github.com/letakeane)
 - [Khalid](https://github.com/khalidwilliams)
-
 
 [contributors-shield]: https://img.shields.io/github/contributors/nicolegooden/indecision-maker.svg?style=flat-square
 [contributors-url]: https://github.com/nicolegooden/indecision-maker/graphs/contributors
