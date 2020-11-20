@@ -93,7 +93,7 @@ export const ResultPage = (props) => {
               || props.randomActivity.name
               }/details`
               }>
-             <button className="button pick-activity">Choose me!</button>
+             <button className="button pick-activity">choose me!</button>
           </Link>}
             <button 
               onClick={props.determineRandomActivity}
