@@ -17,7 +17,7 @@ export const Footer = () => {
                 </a>
               </li>
             </ul>
-            <p className="copy-rights">Ⓒ Indecision Maker is a product of Nicole, Blake and Orlando's Inc.</p>
+            <p className="copy-rights">Ⓒ Indecision Maker is a product of Nicole Gooden, Blake Donnelly, and Orlando Murcio.</p>
           </footer>    
     )
 }
