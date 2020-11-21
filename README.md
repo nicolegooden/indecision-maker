@@ -8,8 +8,8 @@
   - [Blake Donnelly](https://github.com/BlakeDonn)
   - [Orlando Murcio](https://www.github.com/atos20)
 
-## Project Directions
-[Indecision Maker deployed](http://nicolegooden.github.io/indecision-maker) 
+## Deployed Application
+[Indecision Maker](http://nicolegooden.github.io/indecision-maker) deployed via GitHub Pages.
 
 ## Overview
 
