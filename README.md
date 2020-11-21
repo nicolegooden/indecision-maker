@@ -17,7 +17,7 @@
 
 ## Context
 
-`Indecions Maker` is a project built in eight days. As a team we had the opportunity to choose any technology to learn and implement in conjunction with `React`. The technology of our choosing was `PostgreSQL`, and `Knex`. We decided to create a backend server that would populate the data dynamically using other API's. A big win in our learning was to experiment with the `PostgreSQL` workflow to `migrate` tables and `seed` data.
+`Indecion Maker` is a project built in eight days. As a team we had the opportunity to choose any technology to learn and implement in conjunction with `React`. The technology of our choosing was `PostgreSQL`, and `Knex`. We decided to create a backend server that would populate the data dynamically using other API's. A big win in our learning was to experiment with the `PostgreSQL` workflow to `migrate` tables and `seed` data.
 
 #### Indecision Maker Server
 
