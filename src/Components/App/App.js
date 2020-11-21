@@ -197,13 +197,17 @@ class App extends Component {
   showGenres = (activity) => {
     let allGenres = [];
     if (activity.genre) {
-      activity.genre.forEach((genre, i) => {
-        if (i <= 2) {
-          allGenres.push(genre);
-        }
-      })
+      if (Array.isArray(activity.genre)) {
+        activity.genre.forEach((genre, i) => {
+          if (i <= 2) {
+            allGenres.push(genre);
+          }
+        })
       return allGenres.map(genre => <h3 className='title'>{genre}</h3>)
-    }
+     } else {
+      return <h3 className='title'>{activity.genre}</h3>
+     }
+   }
   }
 
   render() {
