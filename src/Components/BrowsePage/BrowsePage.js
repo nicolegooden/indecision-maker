@@ -29,7 +29,7 @@ export const BrowsePage = (props) => {
     <section className="movies-section">
         <div className="bar-menu">
           <CgUserlane className="logo"/>
-          <Link to='/'>
+          <Link to='/indecision-maker'>
             <RiHomeSmileLine className="logo"/>
           </Link>
         </div>

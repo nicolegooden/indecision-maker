@@ -48,7 +48,7 @@ export const ResultPage = (props) => {
 
     return (
         <section className="result-container">
-            <Link to="/" className="home-logo">
+            <Link to="/indecision-maker" className="home-logo">
               <RiHomeSmileLine className=" logo" />
             </Link>
           <div className="app-logo">
