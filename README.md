@@ -23,7 +23,7 @@
 
   To learn more about our process with `Knex` and `PostgreSQL`, visit the following link:
 
-    [Indecision Maker Server](https://github.com/Atos20/indecision-maker-server)
+  [Indecision Maker Server](https://github.com/Atos20/indecision-maker-server)
 
 #### Technologies used:
 
