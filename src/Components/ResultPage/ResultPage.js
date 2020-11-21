@@ -23,10 +23,8 @@ export const ResultPage = (props) => {
             || activity.name
             || "unknown"}
           </h3>
-          <h3 className="title">{
-               activity.podcast_name
-            || activity.artist
-            }
+          <h3 className="title">
+            {activity.podcast_name || activity.artist}
           </h3>
           <h3 className="title">
             {activity.author || activity.materials}
@@ -48,7 +46,7 @@ export const ResultPage = (props) => {
 
     return (
         <section className="result-container">
-            <Link to="/" className="home-logo">
+            <Link to="/indecision-maker" className="home-logo">
               <RiHomeSmileLine className=" logo" />
             </Link>
           <div className="app-logo">

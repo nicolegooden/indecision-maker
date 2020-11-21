@@ -21,7 +21,7 @@
 
 #### Indecision Maker Server
 
-  * To learn more about our process with `Knex` and `PostgreSQL`, visit the following link:
+  To learn more about our process with `Knex` and `PostgreSQL`, visit the following link:
 
     [Indecision Maker Server](https://github.com/Atos20/indecision-maker-server)
 
@@ -78,7 +78,7 @@
 
 - When the user answers the questionnaire, the script collects the user's information and updates state in the parent component, `<App/>`, this way the algorithm handled by the parent will filter and randomize an actvity.
 
-  <img src="https://media.giphy.com/media/cfc797PcomQaZdAfMo/giphy.gif" height=auto width=75%/>
+ <img src="https://media.giphy.com/media/cfc797PcomQaZdAfMo/giphy.gif" height=auto width=75%/>
 
 #### Take 3
 
@@ -86,11 +86,11 @@
 
 The user's choices are saved in `state` and then used to filter the activities.
 
-  <img src="https://media.giphy.com/media/x6zztuZgQp1m4tse2X/giphy.gif" height=auto width=75%/>
+ <img src="https://media.giphy.com/media/x6zztuZgQp1m4tse2X/giphy.gif" height=auto width=75%/>
 
 #### Take 4
 
-**The `<ResultPage>` & `<DetailsPage>`**
+**`<ResultPage>` & `<DetailsPage>`**
 
 - This component display to the user an activity selected by the script. At this point the user has two options:
 
@@ -103,7 +103,7 @@ The user's choices are saved in `state` and then used to filter the activities.
 ### Set up
 
 - Clone the repository to your computer using `git clone git@github.com:nicolegooden/indecision-maker.git`
-  - To rename the repository locally, run `git clone git@github.com:nicolegooden/indecision-maker.git [what you want to name the repo]`
+- To rename the repository locally, run `git clone git@github.com:nicolegooden/indecision-maker.git [what you want to name the repo]`
 - Transition into the repository using `cd indecision-maker`
 - Run `npm install` or `npm i` to install all dependencies
 - Run `npm start` to view and interact with the application at `localhost:5000/`

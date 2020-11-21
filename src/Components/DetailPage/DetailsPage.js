@@ -14,7 +14,7 @@ export const DetailsPage = (props) => {
           <div className="bar-menu">
             <CgUserlane className="logo"/>
             <h1 className="details-title">All you need to know.</h1>
-            <Link to='/'>
+            <Link to='/indecision-maker'>
               <RiHomeSmileLine className="logo"/>
             </Link>
           </div>
