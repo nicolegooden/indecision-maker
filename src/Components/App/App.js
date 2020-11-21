@@ -194,11 +194,23 @@ class App extends Component {
     return possibleSuggestions
   }
 
+  showGenres = (activity) => {
+    let allGenres = [];
+    if (activity.genre) {
+      activity.genre.forEach((genre, i) => {
+        if (i <= 2) {
+          allGenres.push(genre);
+        }
+      })
+      return allGenres.map(genre => <h3 className='title'>{genre}</h3>)
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/indecision-maker'>
             <Homepage
               getActivityData={this.getActivityData}
               allMovies={this.state.movies}
@@ -242,6 +254,7 @@ class App extends Component {
                 randomActivity={this.state.randomActivity}
                 determineRandomActivity={this.determineRandomActivity}
                 error={this.state.error}
+                showGenres={this.showGenres}
               />
             }}>
           </Route>
