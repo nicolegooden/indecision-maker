@@ -23,10 +23,8 @@ export const ResultPage = (props) => {
             || activity.name
             || "unknown"}
           </h3>
-          <h3 className="title">{
-               activity.podcast_name
-            || activity.artist
-            }
+          <h3 className="title">
+            {activity.podcast_name || activity.artist}
           </h3>
           <h3 className="title">
             {activity.author || activity.materials}
